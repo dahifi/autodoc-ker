@@ -1,0 +1,21 @@
+[View code on GitHub](https://github.com/dahifi/autodoc-ker/capture_index.py)
+
+This code is part of a larger project called Autodoc-ker, which is an Autodoc index manager. The purpose of this code is to search for all .autodoc folders in a given directory, move them to a new location, and create symbolic links to the original location. This is done to organize Autodoc folders by repository and make them easier to manage.
+
+The code starts by parsing command-line arguments using the argparse module. The source_path argument specifies the directory to search for .autodoc folders. The destination_path variable is then defined as "./indexes", which is where the .autodoc folders will be moved. If the destination_path does not exist, it is created using os.makedirs().
+
+The code then uses the subprocess module to run a git command to get the URL of the remote 'origin' of the repository. The URL is split to get the organization and repository names. The os.walk() function is then used to recursively search for .autodoc folders in the source_path directory. For each .autodoc folder found, the code gets the path of the folder and its parent folder. It then reads the autodoc.config.json file to get the repository name and creates a subfolder in the destination_path for the repository. The .autodoc folder and autodoc.config.json file are moved to the repository's subfolder, and symbolic links are created from the original location to the new location.
+
+This code can be used to organize Autodoc folders by repository and make them easier to manage. For example, if a project has multiple repositories, each with their own .autodoc folder, this code can be used to move all .autodoc folders to a central location and create symbolic links to the original location. This makes it easier to manage Autodoc folders across multiple repositories and ensures that they are organized in a consistent way.
+## Questions: 
+ 1. What is the purpose of this code?
+    
+    This code is used to search for `.autodoc` folders in a specified directory, move them to a new location, and create symbolic links to the original location.
+
+2. What command-line arguments does this code accept?
+    
+    This code accepts a single command-line argument, `source_path`, which specifies the directory to search for `.autodoc` folders.
+
+3. What is the expected format of the `autodoc.config.json` file?
+    
+    The `autodoc.config.json` file is expected to contain a `repositoryUrl` field, which is used to determine the name of the repository.
