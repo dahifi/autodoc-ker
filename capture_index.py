@@ -2,6 +2,7 @@ import os
 import shutil
 import json
 import argparse
+import subprocess
 
 # Parse the command-line arguments
 parser = argparse.ArgumentParser(description="Index Autodoc folders.")
@@ -14,6 +15,14 @@ destination_path = os.path.expanduser("./indexes")
 # Create the destination path if it does not exist
 if not os.path.exists(destination_path):
     os.makedirs(destination_path)
+
+# Get the URL of the remote 'origin' of the repository
+git_cmd = ["git", "-C", args.source_path, "remote", "get-url", "origin"]
+git_output = subprocess.check_output(git_cmd).decode("utf-8").strip()
+git_url = git_output.split(":")[-1].split(".git")[0]
+
+# Get the organization and repository names from the URL
+org_id, repo_name = git_url.split("/")[-2:]
 
 # Recursively search for .autodoc folders in the source path
 for root, dirs, files in os.walk(args.source_path):
@@ -29,7 +38,7 @@ for root, dirs, files in os.walk(args.source_path):
             repo_name = config["repositoryUrl"].split("/")[-1]
 
         # Create a subfolder in the destination path for the repository
-        repo_dest_path = os.path.join(destination_path, repo_name)
+        repo_dest_path = os.path.join(destination_path, org_id, repo_name)
         if not os.path.exists(repo_dest_path):
             os.makedirs(repo_dest_path)
 
