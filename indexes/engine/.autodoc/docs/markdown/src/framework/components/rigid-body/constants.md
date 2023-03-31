@@ -1,0 +1,28 @@
+[View code on GitHub](https://github.com/playcanvas/engine/src/framework/components/rigid-body/constants.js)
+
+This code defines various constants related to rigid body physics simulation in the PlayCanvas engine. Rigid bodies are objects in the simulation that have mass and can interact with other objects through forces and collisions. The constants defined in this file are used to specify the type of rigid body, collision flags, activation states, groups, and masks.
+
+The `BODYTYPE_STATIC` constant is used to specify a rigid body that has infinite mass and cannot move. This type of body is typically used for static objects in the scene, such as walls or floors.
+
+The `BODYTYPE_DYNAMIC` constant is used to specify a rigid body that is simulated according to applied forces. This type of body can move and interact with other objects in the scene.
+
+The `BODYTYPE_KINEMATIC` constant is used to specify a rigid body that has infinite mass and does not respond to forces but can still be moved by setting its velocity or position. This type of body is typically used for objects that are controlled by the player or the game logic.
+
+The `BODYFLAG_STATIC_OBJECT`, `BODYFLAG_KINEMATIC_OBJECT`, and `BODYFLAG_NORESPONSE_OBJECT` constants are used to specify collision flags for rigid bodies. These flags determine how the body should respond to collisions with other objects in the scene.
+
+The `BODYSTATE_ACTIVE_TAG`, `BODYSTATE_ISLAND_SLEEPING`, `BODYSTATE_WANTS_DEACTIVATION`, `BODYSTATE_DISABLE_DEACTIVATION`, and `BODYSTATE_DISABLE_SIMULATION` constants are used to specify activation states for rigid bodies. These states determine whether the body is active and being simulated by the physics engine.
+
+The `BODYGROUP_*` constants are used to specify groups that rigid bodies can belong to. These groups are used to filter which objects can interact with each other in the simulation. For example, objects in the `BODYGROUP_STATIC` group may only interact with objects in the `BODYGROUP_DYNAMIC` group.
+
+The `BODYMASK_*` constants are used to specify masks that define which groups of objects a rigid body can collide with. For example, a body with a mask of `BODYMASK_STATIC` will only collide with objects in the `BODYGROUP_STATIC` group.
+
+Overall, this code provides a set of constants that can be used throughout the PlayCanvas engine to define and control the behavior of rigid bodies in the physics simulation. For example, when creating a new rigid body, the developer can specify its type using one of the `BODYTYPE_*` constants, and its collision flags using the `BODYFLAG_*` constants. Similarly, when defining collision detection rules, the developer can use the `BODYGROUP_*` and `BODYMASK_*` constants to filter which objects should interact with each other.
+## Questions: 
+ 1. What are the different types of rigid body available in this engine?
+- There are three types of rigid body available: `BODYTYPE_STATIC`, `BODYTYPE_DYNAMIC`, and `BODYTYPE_KINEMATIC`.
+
+2. What are the different activation states of a rigid body?
+- There are five different activation states of a rigid body: `BODYSTATE_ACTIVE_TAG`, `BODYSTATE_ISLAND_SLEEPING`, `BODYSTATE_WANTS_DEACTIVATION`, `BODYSTATE_DISABLE_DEACTIVATION`, and `BODYSTATE_DISABLE_SIMULATION`.
+
+3. What are the different body groups and masks available in this engine?
+- There are multiple body groups and masks available in this engine, including `BODYGROUP_DEFAULT`, `BODYGROUP_DYNAMIC`, `BODYGROUP_STATIC`, `BODYGROUP_KINEMATIC`, and many more. These can be used to filter which objects interact with each other.

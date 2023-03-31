@@ -1,0 +1,34 @@
+[View code on GitHub](https://github.com/playcanvas/engine/src/framework/handlers/scene-utils.js)
+
+The code defines a module called `SceneUtils` that provides a single function called `load`. The purpose of this function is to load a scene JSON file from a URL and invoke a callback function when the file has been loaded. The function takes three arguments: `url`, `maxRetries`, and `callback`.
+
+The `url` argument is a string that represents the URL of the scene JSON file to be loaded. If the `url` argument is not a string, the function assumes that it is an object with a `load` property that contains the URL of the scene JSON file to be loaded and an `original` property that contains the original URL passed to the function.
+
+The `maxRetries` argument is a number that represents the maximum number of times the function should retry loading the scene JSON file if the initial attempt fails. If `maxRetries` is greater than 0, the function will retry loading the file until it succeeds or until the maximum number of retries has been reached.
+
+The `callback` argument is a function that will be invoked when the scene JSON file has been loaded. The function takes two arguments: `err` and `response`. If the file was loaded successfully, `err` will be `null` and `response` will contain the loaded JSON data. If the file failed to load, `err` will contain an error message and `response` will be `undefined`.
+
+The function uses the `http` module from the PlayCanvas engine to load the scene JSON file. It calls the `http.get` function with the URL of the file and an options object that specifies whether to retry loading the file and how many times to retry. If the file is loaded successfully, the function invokes the callback function with `err` set to `null` and `response` set to the loaded JSON data. If the file fails to load, the function constructs an error message and invokes the callback function with `err` set to the error message and `response` set to `undefined`.
+
+This function is useful for loading scene JSON files in PlayCanvas projects. It provides a simple interface for loading files and handling errors, and it can be used in conjunction with other PlayCanvas modules to create complex scenes and applications. Here is an example of how to use the `SceneUtils.load` function:
+
+```
+import { SceneUtils } from 'path/to/SceneUtils.js';
+
+SceneUtils.load('path/to/scene.json', 3, function (err, response) {
+    if (!err) {
+        // Use the loaded JSON data to create a scene
+    } else {
+        console.error(err);
+    }
+});
+```
+
+This code loads the scene JSON file located at `'path/to/scene.json'` with a maximum of 3 retries. If the file is loaded successfully, the callback function creates a scene using the loaded JSON data. If the file fails to load, the callback function logs an error message to the console.
+## Questions: 
+ 1. What is the purpose of the `http` import and where is it coming from?
+   - The `http` import is coming from a file located at `../../platform/net/http.js` and is used to make HTTP requests.
+2. What is the expected format of the scene JSON file that is being loaded?
+   - The code does not provide information on the expected format of the scene JSON file.
+3. What happens if the `maxRetries` parameter is set to 0?
+   - If the `maxRetries` parameter is set to 0, the `retry` option in the `http.get` call will be `false` and no retries will be attempted if the initial request fails.

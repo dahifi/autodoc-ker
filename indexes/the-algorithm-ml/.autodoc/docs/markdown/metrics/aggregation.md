@@ -1,0 +1,32 @@
+[View code on GitHub](https://github.com/twitter/the-algorithm-ml/metrics/aggregation.py)
+
+This code contains aggregation metrics for the Twitter Recommendation Algorithm - Heavy Ranker and TwHIN embeddings project. The purpose of this code is to implement a numerical stable mean metrics computation using the Welford algorithm. The Welford algorithm is used to calculate the variance of a set of numbers in a numerically stable way. The StableMean class is a subclass of the torchmetrics.Metric class and implements the update and compute methods. 
+
+The update_mean function takes in four arguments: current_mean, current_weight_sum, value, and weight. It updates the mean according to the Welford formula and returns the updated mean and updated weighted sum. The stable_mean_dist_reduce_fn function takes in a tensor with the first dimension indicating workers and returns the accumulated mean from all workers. 
+
+The StableMean class has an __init__ method that initializes the mean_and_weight_sum state to a tensor of zeros with two elements. It also sets the dist_reduce_fx parameter to the stable_mean_dist_reduce_fn function. The update method takes in a value and weight and updates the current mean. The compute method computes and returns the accumulated mean. 
+
+This code can be used to calculate the mean of a set of numbers in a numerically stable way. For example, when using float32, the algorithm will give a valid output even if the "sum" is larger than the maximum float32 as long as the mean is within the limit of float32. This can be useful in machine learning applications where large numbers of data points need to be processed and aggregated. 
+
+Example usage:
+
+```
+from TwitterRecommendationAlgorithm import StableMean
+import torch
+
+mean = StableMean()
+data = torch.randn(1000)
+for d in data:
+    mean.update(d)
+result = mean.compute()
+print(result)
+```
+## Questions: 
+ 1. What is the purpose of this code?
+- This code contains functions and a class for computing a numerical stable mean metric using the Welford algorithm.
+
+2. What is the Welford algorithm?
+- The Welford algorithm is a method for computing the mean and variance of a set of numbers in a numerically stable way, meaning that it avoids numerical errors that can occur with large or small values.
+
+3. How does the `StableMean` class work?
+- The `StableMean` class implements the Welford algorithm for computing the mean metric, and provides methods for updating the mean with new values and computing the final mean. It also supports distributed computation by merging the state from multiple workers using the `stable_mean_dist_reduce_fn` function.

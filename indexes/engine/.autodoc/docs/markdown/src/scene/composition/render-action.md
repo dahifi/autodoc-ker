@@ -1,0 +1,18 @@
+[View code on GitHub](https://github.com/playcanvas/engine/src/scene/composition/render-action.js)
+
+The `RenderAction` class represents an entry in the final order of rendering of cameras and layers in the PlayCanvas engine. It is populated at runtime based on `LayerComposition`. 
+
+The class has several properties that are used to store information about the render action. The `layerIndex` property is an index into a layer stored in `LayerComposition.layerList`. The `cameraIndex` property is an index into a camera array of the layer, stored in `Layer.cameras`. The `camera` property is of type `CameraComponent` and represents the camera that is used for rendering. The `renderTarget` property is a render target that this render action renders to (taken from either camera or layer). The `lightClusters` property is of type `WorldClusters` and represents the light clusters. The `clearColor`, `clearDepth`, and `clearStencil` properties are used to store clear flags. The `triggerPostprocess` property is a boolean that is true if this render action should trigger postprocessing callback for the camera. The `firstCameraUse` and `lastCameraUse` properties are booleans that are true if this is the first or last render action using this camera. The `directionalLightsSet` property is a set that stores directional lights that need to update their shadows for this render action. The `directionalLights` property is an array that stores the same directional lights as the `directionalLightsSet` property. The `directionalLightsIndices` property is an array that stores the same directional lights as indices into `LayerComposition._lights`. The `viewBindGroups` property is an array of view bind groups (the number of these corresponds to the number of views when XR is used).
+
+The `RenderAction` class has several methods. The `destroy` method releases GPU resources. The `reset` method prepares the render action for re-use. The `isLayerEnabled` method takes a `LayerComposition` object as a parameter and returns true if the layer/sublayer referenced by the render action is enabled. The `collectDirectionalLights` method takes `cameraLayers`, `dirLights`, and `allLights` as parameters and stores directional lights that are needed for this camera based on layers it renders.
+
+Overall, the `RenderAction` class is an important part of the PlayCanvas engine as it represents an entry in the final order of rendering of cameras and layers. It stores important information about the render action and has methods that are used to prepare the render action for re-use and to collect directional lights.
+## Questions: 
+ 1. What is the purpose of the `RenderAction` class?
+- The `RenderAction` class represents an entry in the final order of rendering of cameras and layers in the PlayCanvas engine, and is populated at runtime based on `LayerComposition`.
+
+2. What is the significance of the `hasDirectionalShadowLights` getter?
+- The `hasDirectionalShadowLights` getter returns `true` if there are any directional lights that need to update their shadows for this render action.
+
+3. What is the `collectDirectionalLights` method used for?
+- The `collectDirectionalLights` method is used to store directional lights that are needed for this camera based on the layers it renders, and only shadow casting lights are considered.

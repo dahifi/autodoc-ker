@@ -1,0 +1,26 @@
+[View code on GitHub](https://github.com/playcanvas/engine/src/framework/components/audio-source/system.js)
+
+The code defines a class called `AudioSourceComponentSystem` that controls the playback of an audio sample. This class is an extension of `ComponentSystem` and is used to manage `AudioSourceComponent` instances. The `AudioSourceComponent` class is used to attach audio sources to entities in the PlayCanvas engine. 
+
+The `AudioSourceComponentSystem` class has a constructor that takes an instance of the PlayCanvas application as an argument. It sets the `id` property to `'audiosource'` and initializes the `ComponentType` and `DataType` properties to `AudioSourceComponent` and `AudioSourceComponentData`, respectively. It also sets the `schema` property to an array of strings that define the properties of the `AudioSourceComponent`. 
+
+The `AudioSourceComponentSystem` class has a method called `initializeComponentData` that initializes the properties of an `AudioSourceComponent` instance. It sets the `paused` property to `true` if the `enabled` and `activate` properties of the component are `false`. 
+
+The `AudioSourceComponentSystem` class has an `onInitialize` method that is called when the system is initialized. It plays the current audio source if the `audiosource` property of the root entity is enabled and activated. It also recursively initializes all child entities. 
+
+The `AudioSourceComponentSystem` class has an `onUpdate` method that is called every frame. It updates the position of the audio source if it is a 3D sound. 
+
+The `AudioSourceComponentSystem` class has an `onRemove` method that is called when an entity is removed. It stops the audio source and sets the `channel` property to `null`. 
+
+The `AudioSourceComponentSystem` class has a `setVolume` method that sets the volume for the entire `AudioSourceComponentSystem`. 
+
+The `AudioSourceComponentSystem` class is used to manage `AudioSourceComponent` instances in the PlayCanvas engine. It provides methods for initializing, updating, and removing audio sources. It also provides a method for setting the volume for all audio sources.
+## Questions: 
+ 1. What is the purpose of this code?
+- This code is a module for the PlayCanvas engine that controls the playback of an audio sample through an AudioSourceComponent.
+
+2. What is the difference between AudioSourceComponent and SoundComponentSystem?
+- AudioSourceComponent is a class that controls the playback of an audio sample, while SoundComponentSystem is a newer class that is intended to replace AudioSourceComponent and provides more features.
+
+3. What is the purpose of the `onUpdate` method?
+- The `onUpdate` method updates the position of the channel for 3D sounds based on the position of the entity that the AudioSourceComponent is attached to.

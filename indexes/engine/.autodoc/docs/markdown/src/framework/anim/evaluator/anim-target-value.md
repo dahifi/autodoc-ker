@@ -1,0 +1,22 @@
+[View code on GitHub](https://github.com/playcanvas/engine/src/framework/anim/evaluator/anim-target-value.js)
+
+The code defines a class called `AnimTargetValue` that is used to store and update the value of an animation target. This class is used in the PlayCanvas engine project to combine the values of multiple layer targets into a single value. 
+
+The `AnimTargetValue` class has two static properties called `TYPE_QUAT` and `TYPE_VEC3` that define the type of value stored, either quaternion or vector3. It also has several static properties that are used to store and manipulate quaternion and vector3 values. 
+
+The constructor of the `AnimTargetValue` class takes two parameters: `component` and `type`. The `component` parameter is an instance of the `AnimComponent` class that this target value is associated with, while the `type` parameter is the type of value stored, either quaternion or vector3. 
+
+The `AnimTargetValue` class has several methods that are used to update the value of the target. The `getWeight` method is used to get the weight of a layer at a given index. The `setMask` method is used to set the mask of a layer at a given index. The `updateWeights` method is used to update the weights of all layers. The `updateValue` method is used to update the value of the target at a given index. The `unbind` method is used to unbind the target value. 
+
+The `updateValue` method is the most complex method in the `AnimTargetValue` class. It takes two parameters: `index` and `value`. The `index` parameter is the index of the layer to update, while the `value` parameter is the value to update the target with. The method first checks if the layer at the given index is masked or if its weight is zero. If either of these conditions is true, the method returns without updating the target value. If the layer blend type is additive and the weights are not normalized, the method calculates the additive value and scales it by its weight. If the layer blend type is not additive or the weights are normalized, the method blends the value with the target value using the `AnimBlend` class. Finally, if a setter function is defined, the method calls it with the updated target value. 
+
+Overall, the `AnimTargetValue` class is an important part of the PlayCanvas engine project that is used to store and update the value of an animation target. It is used to combine the values of multiple layer targets into a single value, and it provides methods for updating the target value based on the weights and blend types of the layers.
+## Questions: 
+ 1. What is the purpose of the `AnimTargetValue` class?
+- The `AnimTargetValue` class is used to store and update the value of an animation target by combining the values of multiple layer targets into a single value.
+
+2. What types of values can be stored in an `AnimTargetValue` instance?
+- An `AnimTargetValue` instance can store values of either quaternion or vector3 type.
+
+3. What is the significance of the `dirty` property in an `AnimTargetValue` instance?
+- The `dirty` property is used to indicate whether the weights of the layer targets have been updated since the last time the value was updated. If `dirty` is `true`, the weights need to be updated before the value can be updated.

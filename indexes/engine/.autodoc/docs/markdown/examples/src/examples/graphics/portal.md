@@ -1,0 +1,24 @@
+[View code on GitHub](https://github.com/playcanvas/engine/examples/src/examples/graphics/portal.tsx)
+
+The `PortalExample` class is an example implementation of a portal in the PlayCanvas engine. The `example` method is the main entry point of the example, which takes an HTML canvas element and a device type as input parameters. The method creates a new PlayCanvas application, loads the required assets, sets up the scene, and creates entities for the portal, the portal visual geometry, and two other entities that are visible inside and outside the portal.
+
+The example starts by creating a new PlayCanvas application and loading the required assets. The assets include a cubemap texture, three container assets for the portal, statue, and bitmoji models, respectively. The `AssetListLoader` is used to load all the assets, and the `load` method is called with a callback function that initializes the scene and creates the entities.
+
+The scene is initialized by setting the canvas to fill the window and automatically change resolution to be the same as the canvas size. The skybox is set using the cubemap texture, and the tone mapping, skybox mip, and skybox intensity are set to specific values. A script called `Rotator` is created to rotate the scene, and another script called `Portal` is created to set up rendering the portal itself.
+
+The `Portal` script initializes the stencil parameters for all materials of the portal geometry. The stencil parameters are used to increment the value in the stencil buffer for stencil geometry. The script sets the stencil and other parameters on all materials, and only writes to the stencil buffer.
+
+The `PortalGeometry` script sets stencil options for entities inside or outside the portal. The script initializes the stencil parameters based on the value in the stencil buffer, either rendering the geometry when the value is equal or not equal to zero.
+
+The example creates a new camera entity with a camera component that renders both world and portal layers. A directional light entity is also created, and a root entity for the graphical scene is created. The portal entity is created as a plane that fills the inside of the portal geometry, and the portal visual geometry is created using the `instantiateRenderEntity` method of the `portal` asset. The statue and bitmoji entities are created with the `instantiateRenderEntity` method of their respective assets. The `PortalGeometry` script is added to both entities, with the `inside` attribute set to `true` for the statue entity and `false` for the bitmoji entity.
+
+Overall, the `PortalExample` class demonstrates how to create a portal in the PlayCanvas engine using stencil buffer rendering. The example shows how to set up the scene, create entities, and use scripts to set stencil parameters for entities inside or outside the portal. The example can be used as a starting point for creating more complex scenes with portals in the PlayCanvas engine.
+## Questions: 
+ 1. What is the purpose of the `PortalExample` class?
+- The `PortalExample` class is an example implementation of a portal in the PlayCanvas engine, which includes setting up the application, loading assets, creating entities, and adding scripts to them.
+
+2. What is the role of the `PortalGeometry` script?
+- The `PortalGeometry` script sets up stencil parameters for entities inside or outside the portal, based on the value in the stencil buffer. It is used to determine whether to render the geometry when the value is equal or not equal to zero.
+
+3. What is the purpose of the `bitmoji` entity?
+- The `bitmoji` entity is an example of an entity that is visible outside the portal only. It is created using the `bitmoji.glb` asset and a `portalGeometry` script with the `inside` attribute set to `false`.

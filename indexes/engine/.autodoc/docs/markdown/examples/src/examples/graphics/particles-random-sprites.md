@@ -1,0 +1,22 @@
+[View code on GitHub](https://github.com/playcanvas/engine/examples/src/examples/graphics/particles-random-sprites.tsx)
+
+The `ParticlesRandomSpritesExample` class is a code example that demonstrates how to use the PlayCanvas engine to create particle systems with randomly selected sprites. The purpose of this code is to show how to create a particle system that uses different sprites for each particle, and how to display the full sprite sheet for each particle system.
+
+The `example` method is the main entry point of the code example. It takes two arguments: a canvas element and a device type. It creates a new PlayCanvas application with a camera, a directional light, and a screen entity. It also creates two particle entities, each with a particle system component that uses a different sprite sheet. The particle system configuration is defined by the `particleSystemConfiguration` function, which takes an asset, the number of animation tiles in the x and y directions, and returns an object with various particle system properties.
+
+The `scaleCurve` and `alphaCurve` variables define curves that control the size and opacity of the particles over their lifetime. The `panel` and `panel2` entities are used to display the full sprite sheet for each particle system. The `addComponent` method is used to add a particle system component to each particle entity, with the configuration defined by the `particleSystemConfiguration` function. The `randomizeAnimIndex` property is set to true to randomly select a different animation for each particle.
+
+The `addComponent` method is also used to add an element component to each panel entity, with the texture asset set to the corresponding sprite sheet. The `anchor` and `pivot` properties are used to position the sprite sheet within the panel entity.
+
+Finally, the `start` method is called on the PlayCanvas application to start the rendering loop.
+
+This code example can be used as a starting point for creating more complex particle systems with different sprite sheets and animations. It demonstrates how to use the PlayCanvas engine to create particle systems that are visually appealing and interactive.
+## Questions: 
+ 1. What is the purpose of this code?
+- This code is an example of how to create and display particle systems with random sprites using the PlayCanvas engine.
+
+2. What assets are being used in this code?
+- Two texture assets are being used: 'particlesCoinsTexture' and 'particlesBonusTexture'.
+
+3. What is the configuration for the particle systems being created?
+- The particle systems have 32 particles, a lifetime of 2 seconds, a rate of 0.2 particles per second, and use a sphere emitter with a radius of 2.0. They also have animations with a specified number of tiles and frames, and use curves to control particle size and alpha values.

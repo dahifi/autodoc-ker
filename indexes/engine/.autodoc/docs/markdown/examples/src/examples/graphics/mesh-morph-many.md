@@ -1,0 +1,26 @@
+[View code on GitHub](https://github.com/playcanvas/engine/examples/src/examples/graphics/mesh-morph-many.tsx)
+
+The `MeshMorphManyExample` class is a code example that demonstrates how to use the PlayCanvas engine to create a mesh with multiple morph targets. The purpose of this code is to show how to create a mesh with a base shape and then modify it using multiple morph targets. The resulting mesh can be used to create complex animations and deformations.
+
+The `example` method is the main entry point of the code. It takes two parameters: a canvas element and a device type. The canvas element is used to render the scene, and the device type specifies the type of graphics device to use (e.g., WebGL or WebGPU).
+
+The code first creates an asset object that contains a texture used for the environment map. It then creates a graphics device using the `createGraphicsDevice` method and initializes the PlayCanvas application using the `AppBase` class. The canvas is set to fill the window, and the resolution is set to be the same as the canvas size.
+
+The code then creates an entity with a directional light component and an entity with a camera component. The camera is positioned to look at the origin of the scene. 
+
+The `createMorphTarget` function is a helper function that creates a morph target from the original positions, normals, and indices of the base mesh and a plane normal. The function modifies the vertices of the mesh to create a new shape. The `createMorphTarget` function is called multiple times to create a set of morph targets that are used to modify the base mesh.
+
+The `createCylinder` method is used to create a base mesh in the shape of a cylinder. The `getPosition`, `getNormals`, and `getIndices` methods are used to obtain the vertex and index data of the base mesh. The `createMorphTarget` function is then called multiple times to create a set of morph targets that are used to modify the base mesh.
+
+The resulting mesh is then rendered using a material and added to the scene. The `on("update")` method is used to modify the weights of the morph targets over time, resulting in a complex animation. The `texturePositions` and `textureNormals` properties of the `morphInstance` object are used to display debug information about the morph targets.
+
+Overall, this code demonstrates how to use the PlayCanvas engine to create complex animations and deformations using morph targets. It shows how to create a base mesh and then modify it using multiple morph targets to create a wide range of shapes and animations.
+## Questions: 
+ 1. What is the purpose of the `MeshMorphManyExample` class?
+- The `MeshMorphManyExample` class is an example of how to use the PlayCanvas engine to create a mesh with multiple morph targets that can be animated.
+
+2. What assets are being loaded in this code and how are they used?
+- The `helipad` texture asset is being loaded and used as the environment atlas for the scene's skybox.
+
+3. What is the purpose of the `createMorphTarget` function?
+- The `createMorphTarget` function creates a morph target from a base mesh by modifying the positions and normals of its vertices based on a specified plane normal and offset.

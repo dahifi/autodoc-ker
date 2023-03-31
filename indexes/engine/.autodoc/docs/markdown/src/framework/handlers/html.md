@@ -1,0 +1,36 @@
+[View code on GitHub](https://github.com/playcanvas/engine/src/framework/handlers/html.js)
+
+The code defines a class called `HtmlHandler` that is responsible for handling HTML resources. The class has three methods: `load`, `open`, and `patch`. 
+
+The `load` method is used to load an HTML resource from a given URL. It takes two parameters: `url` and `callback`. The `url` parameter can be either a string or an object that contains two properties: `load` and `original`. The `load` property is the URL to load the HTML resource from, while the `original` property is the original URL that was passed to the method. The `callback` parameter is a function that is called when the resource has been loaded. If the resource is loaded successfully, the `callback` function is called with two parameters: `null` and the loaded resource. If there is an error loading the resource, the `callback` function is called with an error message.
+
+The `open` method is used to open an HTML resource. It takes two parameters: `url` and `data`. The `url` parameter is the URL of the resource, while the `data` parameter is the data that was loaded by the `load` method. The `open` method simply returns the `data` parameter.
+
+The `patch` method is not implemented and does nothing.
+
+The `HtmlHandler` class is exported so that it can be used by other parts of the PlayCanvas engine. It is likely that this class is used by other classes or modules in the engine to handle HTML resources. For example, a module that loads and displays HTML pages in a game might use the `HtmlHandler` class to load and handle the HTML resources. 
+
+Here is an example of how the `load` method might be used:
+
+```
+const htmlHandler = new HtmlHandler();
+const url = 'https://example.com/index.html';
+
+htmlHandler.load(url, function (err, response) {
+    if (!err) {
+        // Display the loaded HTML resource
+        console.log(response);
+    } else {
+        console.error(err);
+    }
+});
+```
+## Questions: 
+ 1. What is the purpose of the `http` import from `../../platform/net/http.js`?
+- The `http` import is used to make an HTTP GET request to load an HTML resource.
+
+2. What is the `open` method used for in the `HtmlHandler` class?
+- The `open` method is not used in this implementation of the `HtmlHandler` class.
+
+3. What is the `patch` method used for in the `HtmlHandler` class?
+- The `patch` method is not used in this implementation of the `HtmlHandler` class.

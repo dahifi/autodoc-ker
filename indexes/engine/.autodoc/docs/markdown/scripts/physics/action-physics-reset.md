@@ -1,0 +1,24 @@
+[View code on GitHub](https://github.com/playcanvas/engine/scripts/physics/action-physics-reset.js)
+
+The code defines a script called `ActionPhysicsReset` that can be attached to entities in a PlayCanvas project. The purpose of the script is to reset the position and orientation of an entity's dynamic rigid body when a specified event is fired on the app. 
+
+The script defines an attribute called `event`, which is a string that represents the name of the event that will trigger the reset. When the script is initialized, it retrieves the position and rotation of the entity and stores them in variables. It then defines a function called `reset` that will be called when the specified event is fired. The `reset` function checks if the entity has a dynamic rigid body and, if so, resets it to its initial position and orientation with zero linear and angular velocity. 
+
+The script also sets up event listeners to handle changes to the `event` attribute and to clean up when the script is destroyed. When the `event` attribute is changed, the script removes the old event listener and adds a new one for the updated event. When the script is destroyed, it removes the event listener for the `event` attribute.
+
+This script can be useful in a variety of scenarios where an entity's position and orientation need to be reset in response to a specific event. For example, it could be used in a game where the player needs to return to a starting position after completing a level or in a physics simulation where objects need to be reset to their initial state after a certain action is taken. 
+
+Here is an example of how to use the `ActionPhysicsReset` script in a PlayCanvas project:
+
+1. Attach the script to an entity that has a dynamic rigid body component.
+2. Set the `event` attribute to the name of the event that should trigger the reset.
+3. Fire the specified event on the app to trigger the reset of the entity's rigid body.
+## Questions: 
+ 1. What is the purpose of this script in the PlayCanvas engine?
+- This script resets the position and orientation of an entity with a dynamic rigid body when a specified event is fired on the app.
+
+2. What attributes can be added to this script?
+- The only attribute that can be added to this script is 'event', which specifies the event that triggers the reset.
+
+3. What happens when the entity being reset does not have a dynamic rigid body?
+- Nothing happens when the entity being reset does not have a dynamic rigid body, as the reset function only executes if the entity has a dynamic rigid body.

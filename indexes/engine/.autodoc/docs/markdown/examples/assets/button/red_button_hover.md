@@ -1,0 +1,40 @@
+[View code on GitHub](https://github.com/playcanvas/engine/examples/assets/button/red_button_hover.json)
+
+This code is a JSON object that contains properties related to rendering a texture atlas asset in the PlayCanvas engine. 
+
+The `renderMode` property specifies the rendering mode for the texture atlas. In this case, it is set to `1`, which likely corresponds to a specific rendering method within the engine. 
+
+The `pixelsPerUnit` property specifies the number of pixels per unit for the texture atlas. This can be used to control the size of the asset when it is rendered in the game. 
+
+The `textureAtlasAsset` property specifies the path to the texture atlas asset that will be rendered. In this case, it is set to `"static/assets/button/red_button_atlas.json"`. This likely corresponds to a specific asset within the game that will be rendered as a button. 
+
+The `frameKeys` property is an array of integers that specifies which frames of the texture atlas should be rendered. In this case, it only contains the integer `0`, which likely corresponds to the first frame of the asset. 
+
+Overall, this code is used to specify the properties of a texture atlas asset that will be rendered in the PlayCanvas engine. It can be used to control the rendering mode, size, and specific frames of the asset. 
+
+Example usage:
+
+```javascript
+var buttonAsset = {
+  "renderMode": 1,
+  "pixelsPerUnit": 1,
+  "textureAtlasAsset": "static/assets/button/red_button_atlas.json",
+  "frameKeys": [0]
+};
+
+// Load the button asset into the engine
+var buttonEntity = new pc.Entity();
+buttonEntity.addComponent("element", {
+  type: "image",
+  spriteAsset: buttonAsset
+});
+``` 
+
+In this example, the `buttonAsset` object is used to specify the properties of a button asset that will be rendered in the game. The `addComponent` method is then used to add the button asset to a new entity in the game.
+## Questions: 
+ 1. What does the "renderMode" property do?
+   - The "renderMode" property likely determines how the graphics are rendered, but without more context it's impossible to say for sure.
+2. What is the significance of the "pixelsPerUnit" property?
+   - The "pixelsPerUnit" property likely determines the scale of the graphics, but without more context it's impossible to say for sure.
+3. What is the purpose of the "frameKeys" array?
+   - The "frameKeys" array likely contains keys that correspond to specific frames in an animation or sprite sheet, but without more context it's impossible to say for sure.

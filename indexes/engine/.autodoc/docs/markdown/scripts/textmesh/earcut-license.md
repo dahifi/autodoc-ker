@@ -1,0 +1,16 @@
+[View code on GitHub](https://github.com/playcanvas/engine/scripts/textmesh/earcut-license.txt)
+
+This code is a license file for the Mapbox software, which is being used in the PlayCanvas engine project. The license grants permission to use, copy, modify, and distribute the software for any purpose, with or without fee, as long as the copyright notice and permission notice are included in all copies.
+
+The license also includes a disclaimer that the software is provided "as is" and the author (Mapbox) does not provide any warranties with regard to the software, including any implied warranties of merchantability and fitness. The author is not liable for any special, direct, indirect, or consequential damages or any damages whatsoever resulting from loss of use, data, or profits, whether in an action of contract, negligence, or other tortious action, arising out of or in connection with the use or performance of the software.
+
+This license file is important for the PlayCanvas engine project as it ensures that the project is legally allowed to use and distribute the Mapbox software. It also provides a clear understanding of the terms and conditions under which the software can be used, which is important for maintaining the integrity of the project and avoiding any legal issues.
+
+An example of how this license file may be used in the PlayCanvas engine project is by including it in the project's documentation or in the source code repository. This ensures that anyone who uses or contributes to the project is aware of the license terms and conditions and can comply with them.
+## Questions: 
+ 1. Who is the author of this code and what is their affiliation with the PlayCanvas engine?
+- The author of this code is Mapbox, but there is no indication of their affiliation with the PlayCanvas engine.
+2. What is the purpose of this code and how does it relate to the PlayCanvas engine?
+- The code is a license for the software, indicating the terms under which it can be used, copied, and distributed. It does not directly relate to the functionality of the PlayCanvas engine.
+3. What are the limitations of liability for the author of this code?
+- The author disclaims all warranties and is not liable for any damages resulting from the use or performance of the software, including loss of use, data, or profits.

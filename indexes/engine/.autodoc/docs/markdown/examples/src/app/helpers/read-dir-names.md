@@ -1,0 +1,31 @@
+[View code on GitHub](https://github.com/playcanvas/engine/examples/src/app/helpers/read-dir-names.mjs)
+
+The code above is a function that reads the names of directories within a specified directory using the Node.js file system module (fs). The function takes in a single parameter, `dir`, which is the path to the directory whose subdirectories' names are to be read.
+
+The function first calls the `readdirSync` method of the `fs` module on the specified directory, passing in an options object with the `withFileTypes` property set to `true`. This option ensures that the method returns an array of `fs.Dirent` objects instead of just the names of the files and directories in the specified directory.
+
+The function then filters the array of `fs.Dirent` objects to only include those that represent directories using the `isDirectory()` method of the `fs.Dirent` class. Finally, the function maps the resulting array of `fs.Dirent` objects to an array of their names using the `name` property of each object.
+
+The resulting array of directory names is then returned by the function.
+
+This function can be used in the larger PlayCanvas engine project to dynamically load assets or scripts from subdirectories within a specified directory. For example, if the project has a directory structure for different levels of a game, this function can be used to read the names of the level directories and load the appropriate assets and scripts for each level. 
+
+Example usage:
+
+```
+import readDirectoryNames from './readDirectoryNames';
+
+const levelDir = './assets/levels';
+const levelNames = readDirectoryNames(levelDir);
+
+// levelNames is now an array of the names of the subdirectories within the 'levels' directory
+```
+## Questions: 
+ 1. What does this code do?
+   This code exports a function called `readDirectoryNames` that takes a directory path as an argument and returns an array of directory names within that directory.
+
+2. What library or module is being imported and used in this code?
+   This code imports the `fs` module, which is a built-in Node.js module for working with the file system.
+
+3. What is the expected output of the `readDirectoryNames` function?
+   The expected output of the `readDirectoryNames` function is an array of strings, where each string represents the name of a directory within the specified directory path.

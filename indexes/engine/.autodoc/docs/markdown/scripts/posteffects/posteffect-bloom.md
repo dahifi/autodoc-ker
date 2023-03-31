@@ -1,0 +1,24 @@
+[View code on GitHub](https://github.com/playcanvas/engine/scripts/posteffects/posteffect-bloom.js)
+
+## Code Explanation
+
+The code defines a post-processing effect called `BloomEffect` that applies a bloom effect to the scene. The bloom effect is a visual effect that simulates the way bright objects in the real world can cause a "glow" or "halo" effect around them. The effect is achieved by extracting the brightest parts of the image, blurring them, and then combining them back with the original image.
+
+The `BloomEffect` class extends the `PostEffect` class, which is a base class for all post-processing effects in the PlayCanvas engine. The class has three main properties that control the intensity, threshold, and blur amount of the bloom effect. The class also defines three shaders that are used to extract the bright areas of the image, blur them horizontally and vertically, and combine them back with the original image.
+
+The `render` method of the `BloomEffect` class is responsible for rendering the bloom effect. The method takes an input target, an output target, and a rectangle that defines the area of the screen to render. The method first resizes the render targets used for the effect, then it renders the scene into the first render target using the `extractShader` shader. The method then applies a horizontal blur to the first render target and stores the result in the second render target using the `blurShader` shader. The method applies a vertical blur to the second render target and stores the result back in the first render target using the same `blurShader` shader. Finally, the method combines the first render target with the original image and stores the result in the output target using the `combineShader` shader.
+
+The `Bloom` script is a component that can be attached to a camera entity to enable the bloom effect. The script creates an instance of the `BloomEffect` class and adds it to the camera's post-effects queue. The script also listens for changes to the `bloomIntensity`, `bloomThreshold`, and `blurAmount` properties and updates the effect accordingly.
+
+## Example Usage
+
+To use the `Bloom` script, attach it to a camera entity in your scene. You can then adjust the `bloomIntensity`, `bloomThreshold`, and `blurAmount` properties in the script's attributes panel to control the strength and appearance of the bloom effect. For example, you can increase the `bloomIntensity` property to make the bloom effect more pronounced, or decrease the `bloomThreshold` property to include more pixels in the effect. You can also adjust the `blurAmount` property to control the amount of blurring applied to the bright areas of the image.
+## Questions: 
+ 1. What is the purpose of the `calculateBlurValues` function?
+- The `calculateBlurValues` function is used to compute the weights and offsets for the gaussian blur filter.
+
+2. What are the default values for `bloomThreshold`, `blurAmount`, and `bloomIntensity`?
+- The default value for `bloomThreshold` is 0.25, the default value for `blurAmount` is 4, and the default value for `bloomIntensity` is 1.25.
+
+3. What is the purpose of the `Bloom` script?
+- The `Bloom` script is used to add a bloom post-processing effect to a camera in a PlayCanvas scene. It allows the developer to adjust the intensity, threshold, and blur amount of the effect.

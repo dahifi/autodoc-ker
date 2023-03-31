@@ -1,0 +1,18 @@
+[View code on GitHub](https://github.com/playcanvas/engine/src/framework/anim/binder/default-anim-binder.js)
+
+The `DefaultAnimBinder` class is an implementation of the `AnimBinder` interface for animating a skeleton in the graph-node hierarchy. It is used to bind animation data to the properties of a skeleton, such as its position, rotation, and scale. The class is part of the PlayCanvas engine project and is located in a file within the project.
+
+The `DefaultAnimBinder` class has a constructor that takes a `graph` parameter, which is a reference to the root node of the graph-node hierarchy. The constructor initializes several properties of the class, including a cache of node names, a cache of animation targets, and a list of active nodes. It also defines several handler functions that are used to create animation targets for different types of properties.
+
+The `findNode` method is used to find a node in the graph-node hierarchy based on a given path. If the path is not found, the method returns null. The `resolve` method is used to create an animation target for a given path. If the path is not found or the property is not supported, the method returns null. The `unresolve` method is used to remove an animation target for a given path. The `update` method is used to flag animating nodes as dirty, which causes them to be updated during the next animation frame.
+
+The `DefaultAnimBinder` class is used in the larger PlayCanvas engine project to animate skeletons in 3D models. It is used by other classes in the project that need to animate the position, rotation, or scale of a skeleton. For example, the `AnimationComponent` class uses the `DefaultAnimBinder` class to bind animation data to the properties of a skeleton. The `DefaultAnimBinder` class is also used by the `AnimationSystem` class to update the animation state of entities in the scene.
+## Questions: 
+ 1. What is the purpose of the `DefaultAnimBinder` class?
+- The `DefaultAnimBinder` class is an implementation of the `AnimBinder` interface used for animating a skeleton in the graph-node hierarchy.
+
+2. What are the properties and methods of the `DefaultAnimBinder` class?
+- The `DefaultAnimBinder` class has properties such as `graph`, `nodes`, `targetCache`, `nodeCounts`, `activeNodes`, and `handlers`. It also has methods such as `_isPathInMask`, `_isPathActive`, `findNode`, `createAnimTarget`, `resolve`, `unresolve`, `update`, and `assignMask`.
+
+3. What is the purpose of the `_mask` property and the `assignMask` method?
+- The `_mask` property is used to filter which nodes are active during animation. The `assignMask` method is used to assign a new mask to the `DefaultAnimBinder` instance and returns `true` if the mask is different from the current one.

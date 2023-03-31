@@ -1,0 +1,18 @@
+[View code on GitHub](https://github.com/playcanvas/engine/examples/src/examples/user-interface/world-to-screen.tsx)
+
+The `WorldToScreenExample` class is a code example that demonstrates how to convert a coordinate in world space into a screen's space using the PlayCanvas engine. The purpose of this code is to show how to create a 3D world with entities that have 2D UI elements attached to them, such as text and health bars, that follow the entities as they move around the world. 
+
+The `example` method takes an HTML canvas element and a device type as input parameters. It creates a graphics device using the `pc.createGraphicsDevice` method and initializes a PlayCanvas application using the `pc.AppBase` class. It then creates several entities, including a camera, a ground plane, a light, and a 2D screen. The `createPlayer` function is called three times to create three player entities with different starting angles, speeds, and radii. Each player entity has a capsule render component and a text element that hovers above its head. 
+
+The `worldToScreenSpace` function is used to convert a world-space coordinate to a screen-space coordinate. It takes a `pc.Vec3` representing the world-space coordinate, a `pc.CameraComponent`, and a `pc.ScreenComponent` as input parameters. It returns a `pc.Vec3` representing the input world position relative to the camera and screen. The `createPlayer` function uses this function to update the position of the player's text element every frame so that it always hovers above the player's head. 
+
+The `WorldToScreenExample` class is a useful code example for developers who want to create 3D worlds with 2D UI elements that follow entities as they move around the world. It demonstrates how to use the PlayCanvas engine to create a graphics device, initialize an application, create entities with different components, and convert world-space coordinates to screen-space coordinates. Developers can use this code as a starting point for their own projects or modify it to suit their specific needs.
+## Questions: 
+ 1. What does this code do?
+- This code is an example of how to convert a coordinate in world space into a screen's space using the PlayCanvas engine. It creates a 3D scene with a camera, ground, light, and three player entities that move around and display UI elements above their heads.
+
+2. What external dependencies does this code have?
+- This code imports the PlayCanvas engine using a relative path, and it also loads two external assets: a checkboard texture and a Courier font.
+
+3. What is the purpose of the `worldToScreenSpace` function?
+- The `worldToScreenSpace` function takes a 3D coordinate in world space and converts it to a 2D coordinate in screen space, relative to a camera and a screen. It also takes into account the pixel ratio and screen scaling to ensure accurate positioning. This function is used to position the UI elements above the player entities' heads.

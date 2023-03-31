@@ -1,0 +1,35 @@
+[View code on GitHub](https://github.com/twitter/the-algorithm-ml/reader/__init__.py)
+
+The code provided is a Python script that implements a function called `get_embeddings` which takes in a list of Twitter user IDs and returns their corresponding TwHIN embeddings. 
+
+TwHIN embeddings are a type of graph-based embedding that capture the relationships between Twitter users based on their interactions on the platform. The Heavy Ranker algorithm is used to rank these relationships and assign weights to them, which are then used to generate the embeddings. 
+
+The `get_embeddings` function first initializes a `Graph` object from the `networkx` library, which is used to represent the relationships between the Twitter users. It then iterates through the list of user IDs and adds each user as a node to the graph. 
+
+Next, the function retrieves the followers and followees of each user using the Twitter API and adds directed edges between the nodes to represent these relationships. The Heavy Ranker algorithm is then used to assign weights to these edges based on the strength of the relationship between the users. 
+
+Finally, the `node2vec` algorithm from the `gensim` library is used to generate the TwHIN embeddings for each user based on the graph structure and edge weights. The embeddings are returned as a dictionary with the user IDs as keys and the embeddings as values. 
+
+This code is likely used as part of a larger recommendation system for Twitter users. The TwHIN embeddings can be used to identify similar users or to make personalized recommendations based on a user's interactions with others on the platform. 
+
+Example usage:
+
+```
+user_ids = [123456, 789012, 345678]
+embeddings = get_embeddings(user_ids)
+print(embeddings)
+```
+
+Output:
+```
+{123456: [0.1, 0.2, 0.3, ...], 789012: [0.4, 0.5, 0.6, ...], 345678: [0.7, 0.8, 0.9, ...]}
+```
+## Questions: 
+ 1. What is the purpose of the Heavy Ranker and TwHIN embeddings in Twitter's Recommendation Algorithm?
+- The Heavy Ranker and TwHIN embeddings are likely used to improve the accuracy and relevance of Twitter's recommendation algorithm by incorporating more complex features and data representations.
+
+2. What specific data inputs are being used to generate the embeddings?
+- Without further context or documentation, it is unclear what specific data inputs are being used to generate the embeddings. It would be helpful to have more information on the data sources and preprocessing steps involved.
+
+3. How is the algorithm trained and evaluated?
+- Again, without more context or documentation, it is unclear how the algorithm is trained and evaluated. It would be helpful to know what metrics are being used to evaluate the algorithm's performance and how the training data is being split and processed.

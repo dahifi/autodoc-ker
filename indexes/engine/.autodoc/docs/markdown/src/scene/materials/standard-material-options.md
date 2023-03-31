@@ -1,0 +1,30 @@
+[View code on GitHub](https://github.com/playcanvas/engine/src/scene/materials/standard-material-options.js)
+
+The code defines a class called `StandardMaterialOptions` that contains a set of options used to control the shader frontend shader generation for the PlayCanvas engine. The purpose of this class is to provide a way to customize the appearance of materials in a 3D scene. 
+
+The class contains a number of boolean properties that control whether certain constants should affect the material's appearance. For example, the `diffuseTint` property controls whether the `diffuse` constant should affect the diffuse color of the material. Similarly, the `metalnessTint` property controls whether the `metalness` constant should affect the metalness value of the material. 
+
+The class also contains properties that control the encoding of certain textures, such as the `emissiveEncoding` and `lightMapEncoding` properties. Additionally, there are properties that control whether certain channels in normal maps should be inverted, such as the `glossInvert` property.
+
+One notable property is `litOptions`, which is an instance of the `LitOptions` class. This class contains options related to lighting, such as whether to use normal maps or not. The `pass` property of `StandardMaterialOptions` is used to set the value of `LitOptions`'s `pass` property, which determines the rendering pass for the material.
+
+Overall, `StandardMaterialOptions` provides a way to customize the appearance of materials in a 3D scene by controlling various shader options. It is likely used in conjunction with other classes in the PlayCanvas engine to create and render 3D scenes. 
+
+Example usage:
+
+```javascript
+import { StandardMaterialOptions } from "playcanvas-engine";
+
+const options = new StandardMaterialOptions();
+options.diffuseTint = true;
+options.metalnessTint = true;
+options.litOptions.useNormalMap = true;
+options.pass = 1;
+```
+## Questions: 
+ 1. What is the purpose of the `LitOptions` import and how is it used in this code?
+- The `LitOptions` import is used to create a new instance of the `LitOptions` class and assign it to the `litOptions` property of the `StandardMaterialOptions` class.
+2. What is the significance of the `_pass` property and how is it related to `pass`?
+- The `_pass` property is a private property that is used to store the value of `pass`. The `pass` getter and setter methods are used to get and set the value of `_pass` respectively, and also update the `_pass` property of the `litOptions` object.
+3. What is the purpose of the `chunks` property and how is it used?
+- The `chunks` property is an array that is used to store the names of shader chunks that should be included in the shader program. It is not used or modified in this code, but can be used by other parts of the engine to customize the shader program.

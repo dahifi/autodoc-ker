@@ -1,0 +1,14 @@
+[View code on GitHub](https://github.com/playcanvas/engine/src/core/path.js)
+
+The code defines a namespace called `path` that provides a set of functions for working with file paths. The `path` namespace has several functions that can be used to manipulate file paths, including `join`, `normalize`, `split`, `getBasename`, `getDirectory`, `getExtension`, `isRelativePath`, and `extractPath`.
+
+The `join` function takes two or more path segments and joins them together using the `delimiter` property of the `path` namespace. If the second segment starts with the delimiter, it replaces the first segment. If the first segment does not end with the delimiter and the second segment does not start with the delimiter, the delimiter is inserted between them. The `normalize` function removes any `.` or `..` segments from the path and returns the normalized path. The `split` function splits the path into two parts: the directory and the filename. The `getBasename` function returns the filename from the path, and the `getDirectory` function returns the directory from the path. The `getExtension` function returns the extension of the file from the path. The `isRelativePath` function checks if the path is relative or absolute. The `extractPath` function returns the path without the filename.
+
+These functions can be used to manipulate file paths in a cross-platform way, regardless of the operating system. The `path` namespace is useful for working with file paths in web applications, game engines, and other software projects that need to manipulate file paths. For example, the `join` function can be used to join a base path with a filename to create a full path to a file. The `getExtension` function can be used to determine the file type of a file based on its extension. The `normalize` function can be used to ensure that a path is in a standard format before using it in other functions.
+## Questions: 
+ 1. What is the purpose of the `Debug` import and how is it used in the `join` function?
+- The `Debug` import is used for debugging purposes and is used to assert that the `one` and `two` arguments in the `join` function are not undefined.
+2. What is the difference between `getBasename` and `getDirectory` functions?
+- `getBasename` returns the filename of the path while `getDirectory` returns the directory part of the path.
+3. What is the purpose of the `isRelativePath` function and how does it determine if a path is relative?
+- The `isRelativePath` function determines if a path is relative by checking if it does not start with a slash and does not include a colon and double slash. Its purpose is to check if a string is a relative path.

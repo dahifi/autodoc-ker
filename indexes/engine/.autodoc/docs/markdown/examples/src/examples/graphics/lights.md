@@ -1,0 +1,18 @@
+[View code on GitHub](https://github.com/playcanvas/engine/examples/src/examples/graphics/lights.tsx)
+
+The code is a part of the PlayCanvas engine project and is written in React. It is an example of how to use the PlayCanvas engine to create a 3D scene with different types of lights. The code creates a LightsExample class that has two methods: controls and example. The controls method returns a React component that contains UI controls for the lights in the scene. The example method creates a 3D scene with a statue, a ground plane, and three types of lights: omni, spot, and directional. The method also sets up the UI controls to manipulate the lights in the scene.
+
+The example method first creates a graphics device using the PlayCanvas engine. It then loads the assets required for the scene, including the statue model, textures, and cubemaps. After loading the assets, it creates the entities for the statue, camera, ground plane, and lights. The method also sets up the lighting and the controls for the lights. Finally, it starts the update loop that rotates the lights.
+
+The controls method returns a React component that contains UI controls for the lights in the scene. The controls are organized into three panels, one for each type of light. Each panel contains controls for enabling/disabling the light, adjusting its intensity, shadow intensity, and cookie intensity. The controls are implemented using the PlayCanvas engine's Observer class, which allows the UI controls to be linked to the light properties in the scene.
+
+Overall, the code demonstrates how to use the PlayCanvas engine to create a 3D scene with different types of lights and how to manipulate the lights using UI controls. The code can be used as a starting point for creating more complex 3D scenes with the PlayCanvas engine.
+## Questions: 
+ 1. What is the purpose of the LightsExample class?
+- The LightsExample class is an example of how to use lights in a PlayCanvas project. It includes controls for adjusting the properties of different types of lights and demonstrates how to create and manipulate entities with lights.
+
+2. What dependencies does this code have?
+- This code imports React and several modules from the PlayCanvas engine. It also imports components from the @playcanvas/pcui/react and @playcanvas/observer packages.
+
+3. What is the example() method responsible for?
+- The example() method sets up a PlayCanvas application with a canvas element and initializes various components and assets. It then creates entities with different types of lights and sets up event listeners to allow the user to toggle the lights on and off. Finally, it includes an update loop that rotates the lights and updates their properties based on user input.

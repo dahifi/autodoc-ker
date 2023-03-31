@@ -1,0 +1,25 @@
+[View code on GitHub](https://github.com/playcanvas/engine/src/scene/shader-lib/chunks/lit/frag/reflectionSheen.js)
+
+The code provided is a GLSL shader function that adds a reflection sheen effect to a 3D object. The function takes in three parameters: `worldNormal`, `viewDir`, and `gloss`. 
+
+`worldNormal` is a vector that represents the surface normal of the object in world space. `viewDir` is a vector that represents the direction from the camera to the object. `gloss` is a scalar value that represents the glossiness of the object's surface.
+
+The function first calculates the dot product of `worldNormal` and `viewDir` and stores it in a variable called `NoV`. It then calculates `alphaG` by squaring the `gloss` value.
+
+Next, the function calculates two values `a` and `b` using an analytical approximation. The values of `a` and `b` depend on the value of `gloss`. If `gloss` is less than 0.25, then `a` and `b` are calculated using one set of coefficients. Otherwise, a different set of coefficients is used. 
+
+Finally, the function calculates `DG` using the values of `a`, `b`, `NoV`, and `gloss`. `DG` represents the amount of reflection sheen to be added to the object. The function then calls another function called `calcReflection` to calculate the reflection of the object and multiplies it by `DG`. The result is then added to a variable called `sReflection`.
+
+This function is likely used in a larger project that involves rendering 3D objects with realistic lighting and shading effects. The function is called for each pixel of the object's surface during the rendering process to add a reflection sheen effect. The `sReflection` variable is likely used to accumulate the reflection sheen effect for each pixel and is combined with other lighting and shading effects to produce the final rendered image.
+## Questions: 
+ 1. What does this code do?
+   
+   This code defines a function called `addReflectionSheen` that calculates the sheen effect on a reflective surface based on the glossiness of the material.
+
+2. What is the purpose of the `sReflection` variable?
+   
+   The code does not provide information about the `sReflection` variable. It is likely defined elsewhere in the code and used to accumulate the reflection value calculated by this function.
+
+3. What is the significance of the conditional statements in the function?
+   
+   The conditional statements are used to approximate the sheen values analytically instead of using a lookup table (LUT). The values are calculated differently based on the glossiness of the material, with different coefficients used for glossiness values below or above 0.25.

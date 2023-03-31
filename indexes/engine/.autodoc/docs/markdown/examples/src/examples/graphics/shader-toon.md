@@ -1,0 +1,36 @@
+[View code on GitHub](https://github.com/playcanvas/engine/examples/src/examples/graphics/shader-toon.tsx)
+
+The `ShaderToonExample` class is a code example that demonstrates how to create a toon shader in the PlayCanvas engine. The toon shader is a type of non-photorealistic rendering (NPR) technique that creates a cartoon-like effect by reducing the number of colors and shading gradients in a 3D model. 
+
+The `ShaderToonExample` class contains a static `FILES` object that defines the vertex and fragment shaders for the toon shader. The vertex shader calculates the diffuse intensity of the model's surface and passes it to the fragment shader as a texture coordinate. The fragment shader uses this texture coordinate to look up the color of the resulting fragment. The `example` method of the `ShaderToonExample` class creates a new graphics device and initializes a new PlayCanvas application. It loads a 3D model of a statue and creates a new camera and light entity. It then creates a new shader from the vertex and fragment shaders defined in the `FILES` object and applies it to the statue model. Finally, it rotates the statue entity in the scene.
+
+This code example can be used as a starting point for creating custom shaders in the PlayCanvas engine. Developers can modify the vertex and fragment shaders to create different types of NPR effects or to achieve specific visual styles. The `ShaderToonExample` class can also be used as a reference for loading 3D models, creating entities, and manipulating materials in a PlayCanvas application. 
+
+Example usage:
+
+```
+import ShaderToonExample from 'path/to/ShaderToonExample';
+
+const canvas = document.getElementById('application-canvas');
+const deviceType = 'webgl2';
+const files = {
+  'shader.vert': /* glsl */`
+    // custom vertex shader code
+  `,
+  'shader.frag': /* glsl */`
+    // custom fragment shader code
+  `
+};
+
+const shaderToonExample = new ShaderToonExample();
+shaderToonExample.example(canvas, deviceType, files);
+```
+## Questions: 
+ 1. What does this code do?
+- This code defines a class called `ShaderToonExample` which contains a static `example` method that creates a 3D scene with a statue model and applies a toon shader to it.
+
+2. What dependencies does this code have?
+- This code imports the `pc` module from a relative path that is three levels up from the current directory.
+
+3. What is the purpose of the `example` method?
+- The `example` method creates a 3D scene with a statue model and applies a toon shader to it. It also sets up the camera, light, and material for the scene.

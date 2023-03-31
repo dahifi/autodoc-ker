@@ -1,0 +1,16 @@
+[View code on GitHub](https://github.com/playcanvas/engine/examples/assets/models/SheenChair.txt)
+
+This code does not contain any functional code, but rather provides information about a 3D model called "Sheen Chair". The information includes the title of the model, its source location on GitHub, and the author of the model, which is Wayfair LLC. Additionally, the license type for the model is specified as CC-BY-4.0, which allows for commercial use as long as the author is credited.
+
+This information is likely included in the larger PlayCanvas engine project to provide context and attribution for any 3D models used within the project. By including this information, developers using the PlayCanvas engine can ensure that they are properly crediting the authors of any models they use and complying with any licensing requirements.
+
+An example of how this information might be used in the PlayCanvas engine project is if a developer wanted to use the Sheen Chair model in their game or application. They would be able to access the source location on GitHub to download the model, and would know that they need to credit Wayfair LLC as the author and comply with the CC-BY-4.0 license requirements. This information can help ensure that the PlayCanvas engine project is using 3D models in a legal and ethical manner.
+## Questions: 
+ 1. **What is the purpose of this code?**\
+A smart developer might want to know what this code is actually doing within the PlayCanvas engine and how it fits into the overall functionality of the engine.
+
+2. **What is the Sheen Chair model and why is it important?**\
+A smart developer might want to know more about the Sheen Chair model, its source, and its author to understand its significance within the PlayCanvas engine.
+
+3. **What are the licensing requirements for this code and the Sheen Chair model?**\
+A smart developer might want to know more about the licensing requirements for both the code and the Sheen Chair model to ensure that they are in compliance with the licensing terms and conditions.

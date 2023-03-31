@@ -1,0 +1,43 @@
+[View code on GitHub](https://github.com/playcanvas/engine/scripts/posteffects/posteffect-luminosity.js)
+
+## PlayCanvas Engine: Luminosity Effect
+
+The `LuminosityEffect` class is a post-processing effect that outputs the luminosity of the input render target. This effect is used to create a grayscale version of the scene by converting the RGB color values to a single luminance value.
+
+The `LuminosityEffect` class is defined as a subclass of the `PostEffect` class, which is a base class for all post-processing effects in the PlayCanvas engine. The constructor of the `LuminosityEffect` class takes a `GraphicsDevice` object as a parameter, which is used to create a shader program for the effect.
+
+The shader program for the `LuminosityEffect` class is defined in the constructor using GLSL code. The shader program takes a texture sampler as input and outputs a grayscale version of the texture. The shader program calculates the luminance value of each texel in the texture by multiplying the RGB color values with a vector of weights and summing the results. The resulting luminance value is then used to set the RGB color values of the output texel, while preserving the alpha value.
+
+The `LuminosityEffect` class overrides the `render` method of the `PostEffect` class to implement the effect. The `render` method takes an input render target, an output render target, and a rectangle as parameters. The method sets the input texture sampler of the shader program to the color buffer of the input render target and draws a full-screen quad to the output render target using the shader program.
+
+The `Luminosity` script is a component that adds the `LuminosityEffect` to a camera's post-effects queue. The `initialize` method of the script creates a new instance of the `LuminosityEffect` class and adds it to the camera's post-effects queue. The script also listens to the `state` event of the entity to enable or disable the effect when the entity is enabled or disabled. Finally, the script removes the effect from the queue when the entity is destroyed.
+
+Example usage:
+
+```javascript
+var entity = new pc.Entity();
+var camera = new pc.Camera();
+entity.addComponent('camera', {
+    camera: camera,
+    postEffects: new pc.PostEffectQueue()
+});
+entity.addComponent('script', {
+    scripts: {
+        enabled: true,
+        luminosity: {
+            enabled: true
+        }
+    }
+});
+```
+
+In this example, a new entity is created with a camera component and a script component. The camera component is configured with a new post-effects queue. The script component is configured with the `Luminosity` script and enabled by default. The `Luminosity` script adds the `LuminosityEffect` to the camera's post-effects queue, which applies the effect to the camera's output render target.
+## Questions: 
+ 1. What does this code do?
+- This code defines a post effect called LuminosityEffect that outputs the luminosity of the input render target. It also creates a script called Luminosity that initializes the effect and adds it to the camera's post effects queue.
+
+2. What are the inputs and outputs of the LuminosityEffect?
+- The LuminosityEffect takes an input render target and an output render target as parameters in its render function. The input target is used to sample the color buffer, and the output target is used to render the effect.
+
+3. What is the purpose of the dot product calculation in the LuminosityEffect shader?
+- The dot product calculation is used to calculate the luminosity value of the texel by multiplying the RGB values with a vector of weights (0.299, 0.587, 0.114) and summing the results. This is a common method for calculating luminosity that takes into account the sensitivity of the human eye to different colors.

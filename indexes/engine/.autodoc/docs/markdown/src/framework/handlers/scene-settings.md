@@ -1,0 +1,34 @@
+[View code on GitHub](https://github.com/playcanvas/engine/src/framework/handlers/scene-settings.js)
+
+The `SceneSettingsHandler` class is a part of the PlayCanvas engine project and is responsible for handling scene settings. The purpose of this class is to provide a way to load and open scene settings for a given URL. 
+
+The class imports `SceneUtils` from another file called `scene-utils.js`. The `SceneUtils` module is used to load the scene data from the given URL. The `load` method of the `SceneSettingsHandler` class takes in a URL and a callback function. It then calls the `load` method of the `SceneUtils` module with the given URL and the maximum number of retries allowed. If the scene data is successfully loaded, the callback function is called with the loaded data as an argument.
+
+The `open` method of the `SceneSettingsHandler` class takes in a URL and data. It then returns the `settings` property of the given data. This method is used to open the scene settings for a given URL.
+
+The `constructor` method of the `SceneSettingsHandler` class takes in an `app` object and sets it as a property of the class. It also sets the `maxRetries` property to 0.
+
+Overall, the `SceneSettingsHandler` class provides a way to load and open scene settings for a given URL. It is a useful tool for developers working on the PlayCanvas engine project who need to access and modify scene settings. 
+
+Example usage:
+
+```
+import { SceneSettingsHandler } from './scene-settings-handler.js';
+
+const app = new pc.Application();
+const sceneSettingsHandler = new SceneSettingsHandler(app);
+
+sceneSettingsHandler.load('https://example.com/scene.json', (data) => {
+  const settings = sceneSettingsHandler.open('https://example.com/scene.json', data);
+  console.log(settings);
+});
+```
+## Questions: 
+ 1. What is the purpose of the SceneUtils module being imported?
+    - The SceneUtils module is being used to load a scene from a given URL with a specified number of retries.
+
+2. What is the significance of the maxRetries property being set to 0 in the constructor?
+    - The maxRetries property determines the number of times the scene will attempt to load before failing. Setting it to 0 means that it will not retry if it fails on the first attempt.
+
+3. What does the open method do and what is its expected return value?
+    - The open method takes a URL and data as parameters and returns the settings data from the loaded scene.

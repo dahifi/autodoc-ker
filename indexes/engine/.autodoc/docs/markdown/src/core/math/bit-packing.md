@@ -1,0 +1,25 @@
+[View code on GitHub](https://github.com/playcanvas/engine/src/core/math/bit-packing.js)
+
+The `BitPacking` object provides functionality for operating on values stored as bits in a number. It contains four methods: `set`, `get`, `all`, and `any`.
+
+The `set` method sets a value to specified bits of a number. It takes four parameters: `storage`, which is the number to store the bits into; `value`, which is the value to store; `shift`, which is the number of bits to shift the value; and `mask`, which is an optional parameter that limits the number of storage bits and defaults to 1. The method first clears the space by performing a bitwise AND operation on `storage` and the complement of the mask shifted by the shift amount. It then sets the bits by performing a bitwise OR operation on the result and the value shifted by the shift amount. The method returns the updated storage value.
+
+The `get` method gets the value of specified bits from a number. It takes three parameters: `storage`, which is the number to extract the bits from; `shift`, which is the number of bits to shift the mask; and `mask`, which is an optional parameter that limits the number of storage bits and defaults to 1. The method extracts the bits by performing a bitwise right shift on `storage` by the shift amount and a bitwise AND operation on the result and the mask. The method returns the extracted value.
+
+The `all` method tests if all specified bits are set. It takes three parameters: `storage`, which is the number to test; `shift`, which is the number of bits to shift the mask; and `mask`, which is an optional parameter that limits the number of storage bits and defaults to 1. The method first shifts the mask by the shift amount and assigns the result to a variable. It then tests if the bitwise AND operation between `storage` and the shifted mask is equal to the shifted mask. The method returns true if all bits in the mask are set in the storage.
+
+The `any` method tests if any specified bits are set. It takes three parameters: `storage`, which is the number to test; `shift`, which is the number of bits to shift the mask; and `mask`, which is an optional parameter that limits the number of storage bits and defaults to 1. The method tests if the bitwise AND operation between `storage` and the mask shifted by the shift amount is not equal to 0. The method returns true if any bits in the mask are set in the storage.
+
+These methods can be used in the larger project to manipulate and extract values stored as bits in a number. For example, they could be used in a game engine to store and retrieve information about game objects, such as their position, rotation, and scale. The `set` method could be used to set the position of an object by storing its x, y, and z coordinates as bits in a single number. The `get` method could be used to extract the x, y, or z coordinate from the number. The `all` and `any` methods could be used to test if certain flags or properties are set for an object.
+## Questions: 
+ 1. What is the purpose of the BitPacking API?
+    
+    The BitPacking API provides functionality for operating on values stored as bits in a number.
+
+2. How does the `set` method work?
+    
+    The `set` method sets a value to specified bits of a number by clearing the space, then setting the bits, and finally returning the updated storage.
+
+3. What is the difference between the `all` and `any` methods?
+    
+    The `all` method tests if all specified bits are set in the storage, while the `any` method tests if any specified bits are set in the storage.

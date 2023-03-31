@@ -1,0 +1,20 @@
+[View code on GitHub](https://github.com/playcanvas/engine/src/scene/shader-lib/chunks/common/frag/reproject.js)
+
+The code provided is a GLSL shader that is used to filter and process environment maps. The shader requires several #DEFINEs to be set before it can be used. These #DEFINEs specify the processing function, decode function, encode function, source function, and target function. The shader also requires several uniforms to be set, including the source texture or cubemap, the number of samples to use when filtering, and the size of the source cubemap.
+
+The shader supports three different source projections: cubemap, equirectangular, and octahedral. The shader provides functions to sample each of these projections. The shader also provides functions to modify the seams of the cubemap and octahedral projections to reduce artifacts.
+
+The shader provides two processing functions: reproject and prefilter. The reproject function takes a single sample or multiple samples of the environment map and reprojects them onto the target cubemap face. The prefilter function takes pre-generated samples of the environment map and convolves them with the target cubemap face.
+
+The shader provides several decode and encode functions for converting between different color spaces. The supported decode functions are decodeRGBM, decodeRGBE, decodeGamma, and decodeLinear. The supported encode functions are encodeRGBM, encodeRGBE, encodeGamma, and encodeLinear.
+
+Overall, this shader is an important component of the PlayCanvas engine's rendering pipeline. It allows for the filtering and processing of environment maps, which are an essential component of many 3D scenes. The shader's support for multiple source projections and color spaces makes it a versatile tool for rendering a wide range of scenes.
+## Questions: 
+ 1. What is the purpose of this shader and what are the required #DEFINEs?
+- The purpose of this shader is to filter and prefilter cubemaps and equirectangular maps. The required #DEFINEs are PROCESS_FUNC, DECODE_FUNC, ENCODE_FUNC, SOURCE_FUNC, and TARGET_FUNC.
+
+2. What are the different supported projections and how are they implemented?
+- The different supported projections are cubemap, equirectangular, and octahedral. They are implemented through various functions such as sampleCubemap, sampleEquirect, sampleOctahedral, getDirectionCubemap, getDirectionEquirect, and getDirectionOctahedral.
+
+3. What is the purpose of the unpackSample function and how is it used in the prefilterSamples and prefilterSamplesUnweighted functions?
+- The unpackSample function is used to extract a sample from a texture containing pre-generated samples. It returns the sample as a vector and the mip level as a float. The prefilterSamples and prefilterSamplesUnweighted functions use this function to decode the samples and calculate the filtered result.

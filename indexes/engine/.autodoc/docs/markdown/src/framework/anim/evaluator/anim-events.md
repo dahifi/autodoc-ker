@@ -1,0 +1,44 @@
+[View code on GitHub](https://github.com/playcanvas/engine/src/framework/anim/evaluator/anim-events.js)
+
+The code defines a class called `AnimEvents` which is used to store a sorted array of animation events that should be fired sequentially during the playback of an `pc.AnimTrack`. The purpose of this class is to provide a way to define and manage animation events that occur during the playback of an animation track. 
+
+The `AnimEvents` class has a constructor that takes an array of objects representing animation events. Each event object has a `name` property which is a string representing the name of the event, a `time` property which is a number representing the time in seconds at which the event should occur, and any additional properties that are optional and will be available in the `EventHandler` callback's event object. 
+
+The constructor sorts the events array in ascending order based on the `time` property of each event object. This ensures that the events are fired in the correct order during the playback of the animation track. 
+
+The `AnimEvents` class has a getter method called `events` which returns the sorted array of animation events. This allows other parts of the code to access the events array without being able to modify it directly. 
+
+This class can be used in the larger PlayCanvas engine project to define and manage animation events for various types of animations. For example, it could be used to define events that occur during the playback of a character's walk cycle animation, such as footstep sounds or dust particles being kicked up. 
+
+Here is an example of how the `AnimEvents` class could be used in the PlayCanvas engine project:
+
+```
+const events = new pc.AnimEvents([
+    {
+        name: 'footstep',
+        time: 0.5,
+        sound: 'footstep.wav',
+        particles: 'dust.png'
+    },
+    {
+        name: 'footstep',
+        time: 1.5,
+        sound: 'footstep.wav',
+        particles: 'dust.png'
+    }
+]);
+
+const animTrack = new pc.AnimTrack();
+animTrack.events = events;
+```
+
+In this example, an `AnimEvents` instance is created with two events representing footstep sounds and dust particles being kicked up during a character's walk cycle animation. The `AnimEvents` instance is then assigned to an `AnimTrack` instance which is used to play the animation. During the playback of the animation, the events will be fired at the specified times, triggering the footstep sounds and particle effects.
+## Questions: 
+ 1. What is the purpose of the AnimEvents class?
+- The AnimEvents class stores a sorted array of animation events that should fire sequentially during the playback of an AnimTrack.
+
+2. What parameters does the constructor of the AnimEvents class take?
+- The constructor takes an array of objects representing animation events.
+
+3. What is the format of an animation event object and what properties can it have?
+- An animation event object has a name and time property (given in seconds), and can have additional optional properties that will be available in the EventHandler callback's event object.

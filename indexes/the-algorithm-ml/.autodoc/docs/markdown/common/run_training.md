@@ -1,0 +1,31 @@
+[View code on GitHub](https://github.com/twitter/the-algorithm-ml/common/run_training.py)
+
+This code provides a wrapper function for single node, multi-GPU PyTorch training. The function `maybe_run_training` takes in a `train_fn` argument, which is the function responsible for training, and a `module_name` argument, which is the name of the module that this function was called from. 
+
+If the necessary distributed PyTorch environment variables (WORLD_SIZE, RANK) have been set, then `train_fn` is executed. Otherwise, this function calls `torchrun` and points at the calling module `module_name`. After this call, the necessary environment variables are set and training will commence.
+
+The function also takes in optional arguments such as `nproc_per_node`, which specifies the number of workers per node, and `num_nodes`, which specifies the number of nodes. If `num_nodes` is not specified, it is inferred from the environment. 
+
+The function first checks if the necessary environment variables are set by calling `is_distributed_worker()`. If they are set, it assumes that any other environment variables are also set and starts the actual training. Otherwise, it sets up the necessary arguments for `torchrun` and calls it on the module. 
+
+This code is useful for distributed PyTorch training, where the training is split across multiple nodes and GPUs. By using this wrapper function, the user can easily specify the necessary arguments for distributed training and the function takes care of the rest. 
+
+Example usage:
+
+```
+def train_fn():
+  # training code here
+
+maybe_run_training(train_fn, "my_module", nproc_per_node=2, num_nodes=2)
+```
+
+This will run the `train_fn` function with 2 workers per node and 2 nodes. If the necessary environment variables are not set, `torchrun` will be called on the `my_module` module and the training will commence.
+## Questions: 
+ 1. What is the purpose of the `maybe_run_training` function?
+- The `maybe_run_training` function is a wrapper function for single node, multi-GPU Pytorch training that checks if the necessary distributed Pytorch environment variables have been set and executes `train_fn(**training_kwargs)` if they have, otherwise it calls torchrun and sets the necessary environment variables to commence training.
+
+2. What is the purpose of the `is_distributed_worker` function?
+- The `is_distributed_worker` function checks if the necessary distributed Pytorch environment variables (WORLD_SIZE, RANK) have been set and returns a boolean value indicating whether the current process is a distributed worker.
+
+3. What is the purpose of the `cmd` list in the `maybe_run_training` function?
+- The `cmd` list in the `maybe_run_training` function contains the command-line arguments that will be passed to torchrun to start the distributed training process, including the number of nodes and workers per node, the module name, and any additional training arguments.

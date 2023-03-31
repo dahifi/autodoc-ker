@@ -1,0 +1,25 @@
+[View code on GitHub](https://github.com/playcanvas/engine/src/scene/model.js)
+
+The code defines a class called `Model` that represents a graphical object that can be added to or removed from a scene. It contains a hierarchy and any number of mesh instances. The class has several properties including `graph`, an instance of `GraphNode` class that represents the root node of the model's graph node hierarchy, `meshInstances`, an array of `MeshInstance` objects contained in this model, `skinInstances`, an array of `SkinInstance` objects contained in this model, and `morphInstances`, an array of `MorphInstance` objects contained in this model.
+
+The class has a constructor that initializes some properties including `cameras` and `lights`. It also has a method called `getMaterials()` that returns an array of materials used by the mesh instances in the model. The method loops through the `meshInstances` array and adds the material of each mesh instance to the `materials` array if it is not already in the array.
+
+The class has a method called `clone()` that clones the model. The method creates a new hierarchy and mesh instances, but meshes are shared between the clone and the specified model. The method duplicates the node hierarchy, skin instances, morph instances, and mesh instances. It then creates a new instance of the `Model` class and sets its properties to the cloned values. Finally, it synchronizes the hierarchy of the cloned model.
+
+The class also has a method called `destroy()` that destroys skinning texture and possibly deletes vertex/index buffers of a model. It loops through the `meshInstances` array and calls the `destroy()` method of each mesh instance.
+
+The class has a method called `generateWireframe()` that generates the necessary internal data for a model to be renderable as wireframe. Once this function has been called, any mesh instance in the model can have its `renderStyle` property set to `RENDERSTYLE_WIREFRAME`.
+
+Overall, the `Model` class provides a way to represent a graphical object in a scene and manipulate its properties. It can be used to create, clone, destroy, and render models in a PlayCanvas engine project.
+## Questions: 
+ 1. What is the purpose of the `Model` class?
+    
+    The `Model` class is a graphical object that can be added to or removed from a scene. It contains a hierarchy and any number of mesh instances.
+
+2. How can a developer clone a `Model` instance?
+    
+    A developer can clone a `Model` instance by calling the `clone()` method on the instance. The returned model has a newly created hierarchy and mesh instances, but meshes are shared between the clone and the specified model.
+
+3. What is the purpose of the `generateWireframe()` method?
+    
+    The `generateWireframe()` method generates the necessary internal data for a model to be renderable as wireframe. Once this function has been called, any mesh instance in the model can have its renderStyle property set to `RENDERSTYLE_WIREFRAME`.

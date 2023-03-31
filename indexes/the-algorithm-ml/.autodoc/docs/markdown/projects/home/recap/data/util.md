@@ -1,0 +1,28 @@
+[View code on GitHub](https://github.com/twitter/the-algorithm-ml/projects/home/recap/data/util.py)
+
+This code provides functions for converting between different tensor representations used in the Twitter Recommendation Algorithm - Heavy Ranker and TwHIN embeddings project. Specifically, it provides functions for converting between torch tensors and torchrec keyed tensors and jagged tensors, as well as for converting between TensorFlow tensors and PyTorch tensors.
+
+The `keyed_tensor_from_tensors_dict` function takes a dictionary of torch tensors and returns a `torchrec.KeyedTensor` object, which is a wrapper around a list of tensors with associated keys. This function is useful for passing multiple tensors with different keys to a function that expects a single tensor.
+
+The `jagged_tensor_from_tensor` function converts a torch tensor to a `torchrec.JaggedTensor`, which is a tensor with variable-length rows. This function is useful for representing sparse tensors or tensors with variable-length sequences.
+
+The `keyed_jagged_tensor_from_tensors_dict` function takes a dictionary of (sparse) torch tensors and returns a `torchrec.KeyedJaggedTensor`, which is a wrapper around a list of jagged tensors with associated keys. This function is useful for passing multiple jagged tensors with different keys to a function that expects a single jagged tensor.
+
+The `_compute_jagged_tensor_from_tensor` function is a helper function used by `jagged_tensor_from_tensor` and `keyed_jagged_tensor_from_tensors_dict` to compute the values and lengths of a jagged tensor from a dense or sparse tensor.
+
+The `_tf_to_numpy` function is a helper function used by `sparse_or_dense_tf_to_torch` to convert a TensorFlow tensor to a NumPy array.
+
+The `_dense_tf_to_torch` function is a helper function used by `sparse_or_dense_tf_to_torch` to convert a dense TensorFlow tensor to a PyTorch tensor.
+
+The `sparse_or_dense_tf_to_torch` function converts a TensorFlow tensor to a PyTorch tensor, either as a dense tensor or a sparse tensor. This function is useful for converting TensorFlow tensors to PyTorch tensors for use in the Twitter Recommendation Algorithm - Heavy Ranker and TwHIN embeddings project.
+
+Overall, these functions provide a way to convert between different tensor representations used in the project, which is important for interoperability between different parts of the project that may use different tensor representations.
+## Questions: 
+ 1. What is the purpose of this code?
+- This code provides functions to convert torch and tensorflow tensors to torchrec keyed and jagged tensors.
+
+2. What is the input and output of the `keyed_jagged_tensor_from_tensors_dict` function?
+- The input is a dictionary of (sparse) torch tensors, and the output is a torchrec keyed jagged tensor.
+
+3. What is the purpose of the `_tf_to_numpy` function?
+- The purpose of the `_tf_to_numpy` function is to convert a tensorflow tensor to a numpy array.

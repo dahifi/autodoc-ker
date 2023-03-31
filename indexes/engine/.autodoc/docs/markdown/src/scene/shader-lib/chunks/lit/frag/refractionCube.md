@@ -1,0 +1,32 @@
+[View code on GitHub](https://github.com/playcanvas/engine/src/scene/shader-lib/chunks/lit/frag/refractionCube.js)
+
+The code above is a GLSL shader code that is used to add refraction to a material in the PlayCanvas engine. The purpose of this code is to simulate the effect of light passing through a transparent material, such as glass or water, and bending as it enters and exits the material. 
+
+The `refract2` function takes in a view vector, a surface normal, and an index of refraction (IOR) value. It calculates the refracted vector using Snell's law and returns it. This function is used to calculate the direction of the refracted light ray as it passes through the material.
+
+The `addRefraction` function takes in several parameters, including the world normal, view direction, thickness, gloss, specularity, albedo, and transmission. It first calculates the reflection direction using the `refract2` function and the material's refraction index. It then calls the `addReflection` function to add the reflection to the material. Finally, it mixes the diffuse light with the reflection and applies the transmission value to simulate the effect of light passing through the material.
+
+This code is used in the PlayCanvas engine to create realistic materials with refraction, such as glass or water. It can be used in combination with other shader code to create complex materials with various properties. For example, the `iridescenceFresnel` and `IridescenceArgs` parameters can be used to add iridescence to the material, which is the phenomenon of colors changing as the angle of view changes. 
+
+Here is an example of how this code can be used in a PlayCanvas project:
+
+```javascript
+// create a material with refraction
+var material = new pc.StandardMaterial();
+material.refractionIndex = 1.5; // set the material's refraction index
+material.chunks.refraction = /* glsl */`
+    addRefraction(vNormalW, -normalize(vPositionW), 0.1, 0.5, vec3(1), vec3(1), 0.8);
+`; // add the refraction code to the material's shader
+
+// assign the material to a mesh instance
+var meshInstance = new pc.MeshInstance(node, mesh, material);
+``` 
+
+In this example, a new `StandardMaterial` is created and the `refractionIndex` property is set to 1.5 to simulate the refraction of light passing through glass. The `chunks.refraction` property is then set to the GLSL code above to add the refraction effect to the material's shader. Finally, the material is assigned to a `MeshInstance` to be rendered in the scene.
+## Questions: 
+ 1. What does the `refract2` function do?
+   - The `refract2` function calculates the refraction vector of a given view vector and normal, based on the material's index of refraction.
+2. What is the purpose of the `addRefraction` function?
+   - The `addRefraction` function adds refraction to the material's lighting calculation, based on various input parameters such as thickness, gloss, and transmission.
+3. What is the `LIT_IRIDESCENCE` preprocessor directive used for?
+   - The `LIT_IRIDESCENCE` preprocessor directive is used to conditionally include additional input parameters related to iridescence, if the feature is enabled.

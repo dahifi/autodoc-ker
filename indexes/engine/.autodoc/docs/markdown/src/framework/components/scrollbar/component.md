@@ -1,0 +1,22 @@
+[View code on GitHub](https://github.com/playcanvas/engine/src/framework/components/scrollbar/component.js)
+
+The `ScrollbarComponent` is a class that enables a group of entities to behave like a draggable scrollbar. It is part of the PlayCanvas engine project and is used to create scrollbars in 2D and 3D applications. 
+
+The `ScrollbarComponent` has several properties that can be set to customize its behavior. The `orientation` property determines whether the scrollbar moves horizontally or vertically. It can be set to `ORIENTATION_HORIZONTAL` or `ORIENTATION_VERTICAL`, and it defaults to `ORIENTATION_HORIZONTAL`. The `value` property determines the current position value of the scrollbar, in the range 0 to 1, and it defaults to 0. The `handleSize` property determines the size of the handle relative to the size of the track, in the range 0 to 1. For a vertical scrollbar, a value of 1 means that the handle will take up the full height of the track. The `handleEntity` property determines the entity to be used as the scrollbar handle. This entity must have a `Scrollbar` component.
+
+The `ScrollbarComponent` class extends the `Component` class and has several methods that are used to handle events and update the scrollbar's position and size. The `_onHandleElementGain()` method is called when the scrollbar handle is added to the scene. It creates a new `ElementDragHelper` object that is used to handle drag events on the scrollbar handle. The `_onHandleElementLose()` method is called when the scrollbar handle is removed from the scene. It destroys the `ElementDragHelper` object. The `_onHandleDrag()` method is called when the scrollbar handle is dragged. It updates the scrollbar's value based on the position of the handle.
+
+The `_onSetValue()`, `_onSetHandleSize()`, and `_onSetOrientation()` methods are called when the `value`, `handleSize`, and `orientation` properties are set, respectively. They update the scrollbar's position and size based on the new values. The `_updateHandlePositionAndSize()` method is called to update the position and size of the scrollbar handle based on the current value and handle size. The `_handlePositionToScrollValue()` and `_scrollValueToHandlePosition()` methods are used to convert between the position of the scrollbar handle and the scrollbar's value.
+
+The `onEnable()`, `onDisable()`, and `onRemove()` methods are called when the scrollbar is enabled, disabled, or removed from the scene, respectively. They enable or disable the scrollbar handle's drag events and destroy the `ElementDragHelper` object.
+
+Overall, the `ScrollbarComponent` class provides a flexible and customizable way to create scrollbars in PlayCanvas applications.
+## Questions: 
+ 1. What is the purpose of this code?
+- This code defines a `ScrollbarComponent` class that enables a group of entities to behave like a draggable scrollbar.
+
+2. What properties can be set on a `ScrollbarComponent` instance?
+- A `ScrollbarComponent` instance can have properties such as `orientation`, `value`, `handleSize`, and `handleEntity`.
+
+3. What events can be fired by a `ScrollbarComponent` instance?
+- A `ScrollbarComponent` instance can fire a `set:value` event whenever the scroll value changes.

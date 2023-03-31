@@ -1,0 +1,24 @@
+[View code on GitHub](https://github.com/playcanvas/engine/src/framework/stats.js)
+
+The code defines a class called `ApplicationStats` that records performance-related statistics for the PlayCanvas engine application. The purpose of this class is to provide developers with information about the performance of their application, which can be used to optimize it.
+
+The `ApplicationStats` class has several properties that store different types of performance-related statistics. The `frame` property stores statistics related to the rendering of frames, such as frames per second (fps), time to render a frame (ms), and time to update the scene (updateTime). It also stores statistics related to other aspects of rendering, such as the number of triangles, shaders, and materials used.
+
+The `drawCalls` property stores statistics related to the number of draw calls made during rendering. Draw calls are used to render objects on the screen, and the number of draw calls can have a significant impact on performance. The `misc` property stores other miscellaneous statistics, such as the time it takes to create render targets.
+
+The `particles` property stores statistics related to particle systems, such as the number of updates per frame and the time it takes to update particles.
+
+The `shaders` property stores statistics related to the number of shaders used by the graphics device, and the `vram` property stores statistics related to the amount of video memory used by the graphics device.
+
+The `getApplication` function is imported from `globals.js` and is used to get the current application instance. The `scene`, `lightmapper`, and `batcher` properties are getters that return statistics related to the scene, lightmapping, and batching, respectively.
+
+Overall, the `ApplicationStats` class provides developers with a way to monitor the performance of their PlayCanvas engine application and identify areas that need optimization. For example, if the number of draw calls is high, developers can try to reduce it by using batching or other optimization techniques.
+## Questions: 
+ 1. What is the purpose of this code and how is it used in the PlayCanvas engine?
+- This code defines a class called `ApplicationStats` that records performance-related statistics for the PlayCanvas engine. It is used to monitor and optimize the engine's performance.
+
+2. What parameters does the `constructor` function of the `ApplicationStats` class take?
+- The `constructor` function takes a single parameter called `device`, which is an instance of the `GraphicsDevice` class defined in another file.
+
+3. What other statistics are being tracked besides performance-related ones?
+- The code also tracks statistics related to draw calls, memory usage, particles, shaders, and various other miscellaneous metrics.

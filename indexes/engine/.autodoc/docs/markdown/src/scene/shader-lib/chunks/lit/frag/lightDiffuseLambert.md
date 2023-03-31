@@ -1,0 +1,35 @@
+[View code on GitHub](https://github.com/playcanvas/engine/src/scene/shader-lib/chunks/lit/frag/lightDiffuseLambert.js)
+
+The code above is a function that calculates the diffuse lighting of a given surface. It takes in four parameters: `worldNormal`, `viewDir`, `lightDir`, and `lightDirNorm`. 
+
+`worldNormal` is a vector that represents the normal of the surface in world space. `viewDir` is a vector that represents the direction from the surface to the viewer's position. `lightDir` is a vector that represents the direction from the surface to the light source. Finally, `lightDirNorm` is a normalized vector that represents the direction of the light source.
+
+The function calculates the diffuse lighting by taking the dot product of the `worldNormal` and the negated `lightDirNorm`. The negation is necessary because the dot product returns the cosine of the angle between the two vectors, and we want to calculate the angle between the `worldNormal` and the direction that the light is coming from. The `max` function is used to ensure that the result is always positive, as negative values would indicate that the surface is facing away from the light source.
+
+This function is likely used in the larger PlayCanvas engine project to calculate the lighting of 3D models in a scene. It can be used in conjunction with other lighting functions to create realistic lighting effects. For example, the result of this function could be multiplied by the color of the light source to create a diffuse lighting effect on the surface. 
+
+Here is an example of how this function could be used in a shader:
+
+```
+vec3 worldNormal = normalize(vNormal);
+vec3 viewDir = normalize(vViewDir);
+vec3 lightDir = normalize(uLightPos - vPosition);
+vec3 lightDirNorm = normalize(lightDir);
+
+float diffuse = getLightDiffuse(worldNormal, viewDir, lightDir, lightDirNorm);
+vec3 lightColor = vec3(1.0, 1.0, 1.0); // white light
+vec3 diffuseColor = lightColor * diffuse;
+
+gl_FragColor = vec4(diffuseColor, 1.0);
+```
+
+In this example, `vNormal` and `vViewDir` are vertex shader outputs that represent the surface normal and the direction from the surface to the viewer's position, respectively. `uLightPos` is a uniform variable that represents the position of the light source. The result of `getLightDiffuse` is multiplied by the color of the light source to create a diffuse lighting effect, which is then used as the final color of the fragment.
+## Questions: 
+ 1. What does this code do?
+   - This code exports a GLSL function that calculates the diffuse lighting contribution of a light source on a surface given the surface normal, view direction, and light direction.
+
+2. What are the input parameters for this function?
+   - The input parameters for this function are `worldNormal`, which is a vec3 representing the surface normal in world space, `viewDir`, which is a vec3 representing the view direction in world space, `lightDir`, which is a vec3 representing the direction of the light source in world space, and `lightDirNorm`, which is a vec3 representing the normalized direction of the light source in world space.
+
+3. What is the expected output of this function?
+   - The expected output of this function is a float value representing the diffuse lighting contribution of the light source on the surface, which is calculated using the dot product between the surface normal and the negated normalized light direction, clamped to a minimum value of 0.0.

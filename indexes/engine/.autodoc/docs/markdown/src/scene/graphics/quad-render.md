@@ -1,0 +1,32 @@
+[View code on GitHub](https://github.com/playcanvas/engine/src/scene/graphics/quad-render.js)
+
+The code defines a class called `QuadRender` that is used to render a quad using a specified shader. The class is part of the PlayCanvas engine project and is located in a file within the project. 
+
+The `QuadRender` class has a constructor that takes a `Shader` object as an argument. The constructor creates a new instance of the `QuadRender` class and initializes its properties. If the device supports uniform buffers, the constructor adds uniform buffer support to the shader and creates a uniform buffer and a bind group. The uniform buffer is used to store the shader's uniform data, and the bind group is used to bind the uniform buffer to the shader. 
+
+The `QuadRender` class has a `render` method that is used to render the quad. The method takes two optional arguments: `viewport` and `scissor`. If the `viewport` argument is provided, the method modifies the viewport and scissor settings of the device to render the quad within the specified viewport and scissor rectangle. If the `viewport` argument is not provided, the method uses the default viewport and scissor settings of the device. 
+
+The `QuadRender` class has a `destroy` method that is used to destroy the resources associated with the instance of the class. The method destroys the uniform buffer and the bind group. 
+
+The `QuadRender` class is used to render a quad using a specified shader. The class can be used to render a quad in a variety of scenarios, such as rendering a background image or a user interface element. 
+
+Example usage of the `QuadRender` class:
+
+```javascript
+const shader = pc.createShaderFromCode(app.graphicsDevice, vertexShader, fragmentShader, `MyShader`);
+const quad = new QuadRender(shader);
+quad.render();
+quad.destroy();
+```
+## Questions: 
+ 1. What is the purpose of the `QuadRender` class?
+    
+    The `QuadRender` class is an object that renders a quad using a specified shader.
+
+2. What graphics features does the `QuadRender` class support?
+    
+    The `QuadRender` class supports uniform buffers and bind groups, and it uses a tristrip primitive type.
+
+3. How can a developer use the `QuadRender` class?
+    
+    A developer can create a new `QuadRender` instance with a specified shader, call its `render` method to render the quad, and then destroy the instance with its `destroy` method.

@@ -1,0 +1,22 @@
+[View code on GitHub](https://github.com/playcanvas/engine/examples/webgpu-temp/two.html)
+
+This code is an HTML file that creates a canvas element and loads the PlayCanvas engine. The purpose of this code is to create a 3D scene using the PlayCanvas engine and render it on the canvas element. 
+
+The code imports various modules from the PlayCanvas engine, including Asset, AppBase, Shader, Texture, RenderTarget, Entity, Tracing, and Material. It also imports component systems for rendering, camera, and light, as well as resource handlers for textures and containers. 
+
+The code defines an assets object that contains a texture asset and a model asset. The model asset is loaded from a GLB file and is used to create a render entity that is added to the scene. The code also creates a camera entity and a directional light entity that are added to the scene. 
+
+The code sets up a render loop that updates the camera position and rotation over time. The camera orbits around the scene, while looking at a fixed point. 
+
+The code uses the WebGPU API to create a graphics device and initialize the PlayCanvas engine. It also sets up tracing for shader allocation. 
+
+Overall, this code sets up a basic PlayCanvas scene with a camera, light, and model asset. It demonstrates how to use the PlayCanvas engine to create 3D scenes and render them on a canvas element.
+## Questions: 
+ 1. What is the purpose of this code?
+- This code is a HTML file that creates a canvas element and imports various modules from the PlayCanvas engine to render a 3D model.
+
+2. What is the significance of the `createGraphicsDevice` function?
+- The `createGraphicsDevice` function creates a graphics device using the WebGPU API and initializes it with the specified options.
+
+3. What is the purpose of the `onLoaded` function?
+- The `onLoaded` function is called after all assets have finished loading and initializes the scene by creating entities, adding components, and setting up the camera and lighting.

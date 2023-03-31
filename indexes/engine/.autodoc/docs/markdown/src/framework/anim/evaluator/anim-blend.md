@@ -1,0 +1,26 @@
+[View code on GitHub](https://github.com/playcanvas/engine/src/framework/anim/evaluator/anim-blend.js)
+
+The code defines a class called `AnimBlend` that contains several static methods for blending and manipulating animations. The purpose of this class is to provide a set of utility functions that can be used to blend different types of animations, such as vector and quaternion animations.
+
+The `dot` method calculates the dot product of two arrays of numbers. This method is used to calculate the length of a vector, which is used in the `normalize` method to normalize a vector. The `normalize` method takes an array of numbers and normalizes it to a unit vector. This method is used to normalize quaternions, which are used to represent rotations.
+
+The `set` method sets the values of an array to the values of another array. This method is used to set the values of a quaternion to the values of another quaternion. If the type parameter is set to 'quaternion', the method normalizes the quaternion before setting its values.
+
+The `blendVec` method blends two arrays of numbers using a linear interpolation. This method is used to blend vector animations.
+
+The `blendQuat` method blends two quaternions using a spherical linear interpolation. This method is used to blend quaternion animations.
+
+The `blend` method is a wrapper method that calls either `blendVec` or `blendQuat` depending on the type parameter.
+
+The `stableSort` method sorts an array using a stable sorting algorithm. This method is used to sort animations in a way that preserves their order.
+
+Overall, the `AnimBlend` class provides a set of utility functions that can be used to blend and manipulate animations in the PlayCanvas engine. These methods are used to create smooth and seamless animations that can be used in games and other interactive applications.
+## Questions: 
+ 1. What is the purpose of the `AnimBlend` class?
+- The `AnimBlend` class provides static methods for blending and sorting animations.
+
+2. What types of data can be blended using the `AnimBlend` class?
+- The `AnimBlend` class can blend vectors and quaternions.
+
+3. What is the purpose of the `stableSort` method in the `AnimBlend` class?
+- The `stableSort` method performs a stable sort on an array of items using a provided comparison function.

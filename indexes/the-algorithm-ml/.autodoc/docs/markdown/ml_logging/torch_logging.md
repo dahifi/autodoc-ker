@@ -1,0 +1,21 @@
+[View code on GitHub](https://github.com/twitter/the-algorithm-ml/ml_logging/torch_logging.py)
+
+This code overrides the default logger in the `absl_logging` module to make it rank-aware for distributed PyTorch usage. The purpose of this is to ensure that logs are only printed on the appropriate rank in a distributed setting, rather than being printed multiple times across all ranks. 
+
+The `rank_specific` function takes a logger as input and returns a new logger that is rank-specific. It does this by wrapping each logging method (e.g. `fatal`, `error`, `warning`, etc.) with a new method that checks whether the current process is part of a distributed PyTorch setup and whether the current rank matches the specified rank for the log message. If the current process is not part of a distributed setup, the log message is printed normally. If the current process is part of a distributed setup and the current rank matches the specified rank, the log message is printed. If the current process is part of a distributed setup and the specified rank is negative, the log message is printed on all ranks. 
+
+The `rank_specific` function also registers each new logging method with the `absl_logging` module so that it doesn't interfere with other logging lines. 
+
+Overall, this code is a small but important part of the larger Twitter Recommendation Algorithm - Heavy Ranker and TwHIN embeddings project, as it ensures that log messages are printed correctly in a distributed PyTorch setup. It can be used by importing the `logging` object from this module and using its logging methods (e.g. `logging.info`, `logging.warning`, etc.) in place of the default `absl_logging` methods.
+## Questions: 
+ 1. What is the purpose of this code?
+    
+    This code overrides the absl logger to be rank-aware for distributed pytorch usage.
+
+2. What is the significance of the `rank` parameter in the `_inner` function?
+    
+    The `rank` parameter in the `_inner` function is used to specify which rank to log the message on when running in a distributed environment.
+
+3. What is the purpose of the `rank_specific` function?
+    
+    The `rank_specific` function ensures that a given logger is only overridden once and registers the `_inner` function with the absl logging module to avoid trampling logging lines.

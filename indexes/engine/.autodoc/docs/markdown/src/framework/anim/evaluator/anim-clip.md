@@ -1,0 +1,18 @@
+[View code on GitHub](https://github.com/playcanvas/engine/src/framework/anim/evaluator/anim-clip.js)
+
+The `AnimClip` class in the PlayCanvas engine project is responsible for managing the running state of an animation track. It contains and updates the animation cursor and performs looping logic. The class is not intended to be used directly by developers, but rather as a helper class for other parts of the engine that require animation functionality.
+
+The constructor of the `AnimClip` class takes in several parameters, including the animation data, the initial time of the clip, the speed of the animation playback, whether the clip is playing or not, whether the clip should loop, and an event handler to call when an event is fired by the clip. The class also has several getter and setter methods for various properties, such as the name of the clip, the animation track, the time, the speed, the loop, the blend weight, and the blend order.
+
+The `alignCursorToCurrentTime` method is responsible for moving the event cursor to the event that should fire after the current time. The `activeEventsForFrame` method checks whether the next event occurs during the current frame and fires the event if it does. The `progressForTime` method returns the progress of the animation for a given time. The `_update` method updates the time of the clip, performs looping, and updates the snapshot if the time has changed. The `play`, `stop`, `pause`, `resume`, and `reset` methods are used to control the playback of the clip.
+
+Overall, the `AnimClip` class is an important part of the PlayCanvas engine project as it provides a way to manage the running state of an animation track. It is used by other parts of the engine that require animation functionality, such as the animation system and the entity component system. Developers can use the engine's animation system to create and manage animations for their games and applications. For example, they can create an animation clip for a character's walk cycle and use the `AnimClip` class to manage the playback of the animation.
+## Questions: 
+ 1. What is the purpose of the `AnimClip` class?
+- The `AnimClip` class wraps the running state of an animation track, contains and updates the animation 'cursor', and performs looping logic.
+
+2. What are the properties that can be set and retrieved using the `set` and `get` methods?
+- The properties that can be set and retrieved using the `set` and `get` methods are `name`, `track`, `time`, `speed`, `loop`, `blendWeight`, `blendOrder`, and `eventCursor`.
+
+3. What is the purpose of the `activeEventsForFrame` method?
+- The `activeEventsForFrame` method checks whether the next event occurs during the current frame and fires the event if it does. It also checks for events that occur during the clipped duration of the current frame if the frame overlaps with the end of the track.

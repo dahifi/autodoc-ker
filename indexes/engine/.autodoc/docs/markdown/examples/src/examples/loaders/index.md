@@ -1,0 +1,26 @@
+[View code on GitHub](https://github.com/playcanvas/engine/examples/src/examples/loaders/index.mjs)
+
+The code above is a module that exports several examples related to 3D model loading and exporting in the PlayCanvas engine project. The module imports six different examples, each located in a separate file, and exports them as named exports.
+
+The first example, `DracoGlbExample`, is related to loading 3D models in the GLB format using the Draco compression library. This example demonstrates how to use the `DracoLoader` class from the `@loaders.gl/draco` package to decode compressed GLB data.
+
+The second example, `LoadersGlExample`, shows how to use the `GLTFLoader` class from the `@loaders.gl/gltf` package to load 3D models in the GLTF format. This example also demonstrates how to use the `GLTFEnvironment` class to create a basic environment for the loaded model.
+
+The third example, `GlbExample`, is similar to the first example but shows how to load uncompressed GLB data using the `GLBLoader` class from the `@loaders.gl/glb` package.
+
+The fourth example, `GltfExportExample`, demonstrates how to export a 3D model in the GLTF format using the `GLTFExporter` class from the `@loaders.gl/gltf` package.
+
+The fifth example, `ObjExample`, shows how to load 3D models in the OBJ format using the `OBJLoader` class from the `@loaders.gl/obj` package.
+
+Finally, the sixth example, `UsdzExportExample`, demonstrates how to export a 3D model in the USDZ format using the `USDZExporter` class from the `@loaders.gl/usdz` package.
+
+By exporting these examples, other developers can easily learn how to use the different loaders and exporters available in the PlayCanvas engine project. For example, a developer who needs to load a 3D model in the GLTF format can refer to the `LoadersGlExample` code to see how it's done. Similarly, a developer who needs to export a 3D model in the USDZ format can refer to the `UsdzExportExample` code.
+## Questions: 
+ 1. **What is the purpose of this code file?**\
+This code file exports several examples related to loading and exporting 3D models in different formats using the PlayCanvas engine.
+
+2. **What are the examples included in this file?**\
+This file includes examples for loading and exporting 3D models in Draco GLB, regular GLB, GLTF, OBJ, and USDZ formats.
+
+3. **Where are the actual implementations of these examples located?**\
+The actual implementations of these examples are located in separate files imported at the beginning of this code file, such as `draco-glb.js` and `gltf-export.js`.

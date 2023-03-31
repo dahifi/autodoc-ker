@@ -1,0 +1,24 @@
+[View code on GitHub](https://github.com/twitter/the-algorithm-ml/projects/twhin/optimizer.py)
+
+This code defines a function `build_optimizer` that builds an optimizer for a Twhin model. The Twhin model is an implementation of a recommendation algorithm used by Twitter. The optimizer is built by combining two optimizers: one for the embeddings and one for per-relation translations. 
+
+The function takes two arguments: `model` and `config`. `model` is an instance of the `TwhinModel` class, which represents the recommendation algorithm model. `config` is an instance of the `TwhinModelConfig` class, which contains configuration information for the model.
+
+The function first defines a partial function `translation_optimizer_fn` that creates an optimizer for per-relation translations. The optimizer is created using the `get_optimizer_class` function from the `tml.optimizers.optimizer` module, which returns a class for the specified optimizer algorithm. The `get_optimizer_algorithm_config` function from the `tml.optimizers.config` module is then used to get the configuration for the optimizer algorithm. The configuration is passed to the optimizer class constructor as keyword arguments using the `**` syntax. The resulting optimizer is then wrapped in a `keyed.KeyedOptimizerWrapper` object, which is used to apply the optimizer to the relevant parameters of the model.
+
+Next, the function creates a dictionary `lr_dict` that maps each table name in the model's embeddings to a learning rate. The learning rate is obtained from the configuration for the corresponding optimizer algorithm. The learning rate for the per-relation translations optimizer is also added to the dictionary.
+
+The function then creates a `keyed.CombinedOptimizer` object that combines the embeddings optimizer and the per-relation translations optimizer. The embeddings optimizer is referred to using the key `FUSED_OPT_KEY`, and the per-relation translations optimizer is referred to using the key `TRANSLATION_OPT_KEY`. The combined optimizer is returned by the function.
+
+Finally, the function creates a learning rate scheduler using the `LRShim` class from the `tml.optimizers.optimizer` module. However, this scheduler is not used in the current implementation.
+
+This function is used to build an optimizer for the Twhin model in the larger recommendation algorithm project. The optimizer is a crucial component of the model, as it is responsible for updating the model's parameters during training to minimize the loss function. By combining two optimizers, the function is able to optimize both the embeddings and the per-relation translations of the model. The resulting optimizer is then used during training to update the model's parameters.
+## Questions: 
+ 1. What is the purpose of this code?
+- This code builds an optimizer for a Twhin model that combines the embeddings optimizer with an optimizer for per-relation translations.
+
+2. What external libraries or modules does this code use?
+- This code uses modules from `tml.projects.twhin.models`, `tml.optimizers`, `tml.ml_logging.torch_logging`, and `torchrec.optim`.
+
+3. What is the role of the LRShim class in this code?
+- The LRShim class is used to adjust the learning rate of the optimizer during training based on a predefined schedule. However, in this code, it is currently commented out and not being used.

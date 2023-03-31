@@ -1,0 +1,37 @@
+[View code on GitHub](https://github.com/playcanvas/engine/src/scene/shader-lib/chunks/standard/frag/detailModes.js)
+
+The code provided is a set of functions that perform color blending operations. These functions are intended to be used in the context of a graphics engine, specifically the PlayCanvas engine. 
+
+The first two functions, `detailMode_mul` and `detailMode_add`, perform simple multiplication and addition operations on two input colors, respectively. These operations are commonly used in graphics to adjust the brightness or contrast of an image.
+
+The next two functions, `detailMode_screen` and `detailMode_overlay`, implement more complex blending modes. `detailMode_screen` implements the "screen" blending mode, which is commonly used to brighten an image. `detailMode_overlay` implements the "overlay" blending mode, which is used to increase contrast and add a sense of depth to an image.
+
+The final two functions, `detailMode_min` and `detailMode_max`, return the minimum and maximum values of the input colors, respectively. These functions are useful for implementing effects such as thresholding or edge detection.
+
+Overall, these functions provide a set of tools for blending colors in a variety of ways, allowing developers to create a wide range of visual effects. For example, a developer could use the `detailMode_screen` function to create a bright, glowing effect on a particular object in a scene, or use the `detailMode_overlay` function to add depth and contrast to a background image. 
+
+Here is an example of how one of these functions could be used in a larger project:
+
+```javascript
+// create two colors
+const color1 = new pc.Color(1, 0, 0);
+const color2 = new pc.Color(0, 1, 0);
+
+// blend the colors using the detailMode_screen function
+const blendedColor = detailMode_screen(color1, color2);
+
+// set the color of a material to the blended color
+material.diffuse = blendedColor;
+```
+## Questions: 
+ 1. What is the purpose of this code?
+    
+    This code defines several functions for manipulating colors in a detail mode, including multiplication, addition, screen blending, overlay blending, minimum, and maximum.
+
+2. What is the input and output of each function?
+    
+    Each function takes two vec3 color values as input and returns a vec3 color value as output.
+
+3. Where can I find more information about the blend modes used in the `detailMode_screen` and `detailMode_overlay` functions?
+    
+    The `detailMode_screen` function uses the blend mode described on the Wikipedia page for "Screen" blend modes, while the `detailMode_overlay` function uses the blend mode described on the Wikipedia page for "Overlay" blend modes. More information about these blend modes can be found on those pages.

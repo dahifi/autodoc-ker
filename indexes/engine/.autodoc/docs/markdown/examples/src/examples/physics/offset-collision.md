@@ -1,0 +1,28 @@
+[View code on GitHub](https://github.com/playcanvas/engine/examples/src/examples/physics/offset-collision.tsx)
+
+The `OffsetCollisionExample` class is a part of the PlayCanvas engine project and is responsible for demonstrating how to use the engine's physics and animation systems to create a simple game. The purpose of this code is to create a 3D environment where a character model can move around and interact with other objects in the scene. 
+
+The `example` method is the main entry point of the class and takes three arguments: a canvas element, a device type, and some data. The canvas element is used to render the scene, the device type specifies the type of graphics device to use, and the data argument is not used in this example. 
+
+The `demo` function is called after the Ammo physics engine is loaded and initializes the scene by creating assets, setting up the graphics device, and creating an instance of the PlayCanvas application. The `createOptions` object is used to specify the component systems and resource handlers that will be used by the application. 
+
+The `app` object is used to manage the scene and its entities. The `setCanvasFillMode` and `setCanvasResolution` methods are used to set the canvas to fill the window and automatically change resolution to be the same as the canvas size. 
+
+The `createMaterial` function is used to create a new material with a specified color. The `red` and `gray` materials are used to create the floor and other objects in the scene. 
+
+The `floor` entity is created with a render component, a rigidbody component, and a collision component. The `modelEntity` entity is created from a loaded model using the render component and an anim component is added to it. The `animStateGraphData` object is used to create an animation state graph that is loaded into the anim component. 
+
+The `cameraEntity` entity is created with a camera component and is positioned to look at the `modelEntity`. The `ball` entity is created as a template that can be cloned in the update loop. 
+
+The `app.on("update")` function is used to create a falling ball every 0.2 seconds and to show active and frozen bodies in red and gray, respectively. The `app.scene.immediate.drawWireSphere` method is used to render the offset collision of the `modelEntity`. 
+
+Overall, this code demonstrates how to use the PlayCanvas engine to create a simple 3D game with physics and animation. It shows how to create entities with different components, how to load assets, and how to use the update loop to create dynamic behavior.
+## Questions: 
+ 1. What is the purpose of the `example` method in this code?
+- The `example` method is a function that sets up a PlayCanvas application and creates a demo scene with physics and collision components.
+
+2. What is the significance of the `WEBGPU_ENABLED` property?
+- The `WEBGPU_ENABLED` property is a boolean flag that indicates whether the demo should use the WebGPU graphics API instead of WebGL.
+
+3. What is the `createMaterial` function used for?
+- The `createMaterial` function is used to create a new `StandardMaterial` with a specified diffuse color, which is used to render objects in the demo scene.

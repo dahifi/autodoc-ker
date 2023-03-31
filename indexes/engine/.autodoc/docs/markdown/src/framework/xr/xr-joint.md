@@ -1,0 +1,22 @@
+[View code on GitHub](https://github.com/playcanvas/engine/src/framework/xr/xr-joint.js)
+
+The code defines a class called `XrJoint` that represents a joint of a finger in a WebXR hand input system. The class has several private and public properties and methods that allow for getting the position and rotation of a joint in world space, as well as other information about the joint.
+
+The `XrJoint` class constructor takes four parameters: `index`, `id`, `hand`, and `finger`. `index` is the index of the joint within a finger, `id` is the ID of the joint based on WebXR Hand Input Specs, `hand` is the hand that the joint relates to, and `finger` is the finger that the joint is related to. `finger` can be null in the case of the wrist joint.
+
+The `XrJoint` class has several private properties, including `_index`, `_id`, `_hand`, `_finger`, `_wrist`, `_tip`, `_radius`, `_localTransform`, `_worldTransform`, `_localPosition`, `_localRotation`, `_position`, `_rotation`, and `_dirtyLocal`. `_index` is the index of the joint within a finger, `_id` is the ID of the joint based on WebXR Hand Input Specs, `_hand` is the hand that the joint relates to, `_finger` is the finger that the joint is related to, `_wrist` is a boolean that is true if the joint is a wrist, `_tip` is a boolean that is true if the joint is a tip of a finger, `_radius` is the radius of the joint, `_localTransform` is a `Mat4` object that represents the local transform of the joint, `_worldTransform` is a `Mat4` object that represents the world transform of the joint, `_localPosition` is a `Vec3` object that represents the local position of the joint, `_localRotation` is a `Quat` object that represents the local rotation of the joint, `_position` is a `Vec3` object that represents the world space position of the joint, `_rotation` is a `Quat` object that represents the world space rotation of the joint, and `_dirtyLocal` is a boolean that is true if the local transform of the joint has changed.
+
+The `XrJoint` class has several public methods, including `getPosition()`, `getRotation()`, `index`, `hand`, `finger`, `wrist`, `tip`, and `radius`. `getPosition()` returns the world space position of the joint as a `Vec3` object. `getRotation()` returns the world space rotation of the joint as a `Quat` object. `index` returns the index of the joint within a finger. `hand` returns the hand that the joint relates to. `finger` returns the finger that the joint is related to. `wrist` returns true if the joint is a wrist. `tip` returns true if the joint is a tip of a finger. `radius` returns the radius of the joint, which is a distance from the joint to the edge of the skin.
+
+The code also defines a constant called `tipJointIds` that is an array of IDs of the tip joints of the fingers. The IDs are based on WebXR Hand Input Specs. The constant is only defined if the code is running in a browser and the `window.XRHand` object is available. The code also defines an object called `tipJointIdsIndex` that is used to quickly check if a joint ID is a tip joint ID.
+
+Overall, the `XrJoint` class provides a way to represent and manipulate joints of a finger in a WebXR hand input system. It allows for getting the position and rotation of a joint in world space, as well as other information about the joint. The `XrJoint` class is likely used in conjunction with other classes in the PlayCanvas engine to provide a complete WebXR hand input system.
+## Questions: 
+ 1. What is the purpose of the `tipJointIds` array and how is it used in the code?
+- The `tipJointIds` array is used to store the IDs of the tip joints of each finger in a hand. It is used to determine whether a joint is a tip joint or not in the `XrJoint` class constructor.
+
+2. What is the `_dirtyLocal` property used for in the `XrJoint` class?
+- The `_dirtyLocal` property is used to determine whether the local transform of a joint needs to be updated or not. It is set to `true` whenever the joint is updated, and set to `false` whenever the local transform is computed.
+
+3. What is the purpose of the `getPosition` and `getRotation` methods in the `XrJoint` class?
+- The `getPosition` method returns the world space position of a joint, while the `getRotation` method returns the world space rotation of a joint. These methods are used to get the position and rotation of a joint in the world space, which can be useful for various applications such as rendering or physics simulations.

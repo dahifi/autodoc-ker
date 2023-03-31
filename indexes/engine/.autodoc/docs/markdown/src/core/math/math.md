@@ -1,0 +1,36 @@
+[View code on GitHub](https://github.com/playcanvas/engine/src/core/math/math.js)
+
+The code above is a collection of utility functions for mathematical operations. The `math` object contains a set of methods that can be used to perform various mathematical operations such as conversion, interpolation, rounding, and checking whether a number is between two other numbers. 
+
+The `math` object contains the following methods:
+
+- `DEG_TO_RAD` and `RAD_TO_DEG`: These are conversion factors between degrees and radians. They are used to convert angles from degrees to radians and vice versa.
+
+- `clamp`: This method takes a number and two other numbers representing the minimum and maximum values. It returns the original number if it is within the range of the minimum and maximum values. If the number is less than the minimum value, the minimum value is returned. If the number is greater than the maximum value, the maximum value is returned.
+
+- `intToBytes24` and `intToBytes32`: These methods take an integer and convert it into an array of bytes. `intToBytes24` returns an array of 3 bytes, while `intToBytes32` returns an array of 4 bytes.
+
+- `bytesToInt24` and `bytesToInt32`: These methods take an array of bytes and convert it into an integer. `bytesToInt24` takes an array of 3 bytes and returns a 24-bit integer, while `bytesToInt32` takes an array of 4 bytes and returns a 32-bit integer.
+
+- `lerp` and `lerpAngle`: These methods perform linear interpolation between two numbers or two angles. `lerp` takes two numbers and a value between 0 and 1, and returns a value that is linearly interpolated between the two numbers. `lerpAngle` takes two angles in degrees and a value between 0 and 1, and returns an angle that is linearly interpolated between the two angles.
+
+- `powerOfTwo`, `nextPowerOfTwo`, and `nearestPowerOfTwo`: These methods perform operations related to powers of two. `powerOfTwo` takes a number and returns true if it is a power of two, and false otherwise. `nextPowerOfTwo` takes a number and returns the next power of two that is greater than or equal to the number. `nearestPowerOfTwo` takes a number and returns the nearest power of two.
+
+- `random`: This method takes two numbers representing a range and returns a random number between those two numbers.
+
+- `smoothstep` and `smootherstep`: These methods perform smooth interpolation between two numbers. `smoothstep` takes two numbers and a value between 0 and 1, and returns a value that is smoothly interpolated between the two numbers. `smootherstep` is an improved version of `smoothstep` that has zero 1st and 2nd order derivatives at t=0 and t=1.
+
+- `roundUp`: This method takes a number and a multiple, and returns the number rounded up to the nearest multiple.
+
+- `between`: This method takes a number and two other numbers representing upper or lower thresholds, and returns true if the number is between the two thresholds. If the `inclusive` parameter is true, the method also returns true if the number is equal to either of the thresholds.
+
+These methods can be used in various parts of the PlayCanvas engine project that require mathematical operations. For example, `lerp` and `lerpAngle` can be used to interpolate between two values over time, while `powerOfTwo`, `nextPowerOfTwo`, and `nearestPowerOfTwo` can be used to perform operations related to textures and rendering.
+## Questions: 
+ 1. What is the purpose of the `math` namespace?
+- The `math` namespace contains various math-related functions and constants.
+
+2. What is the difference between `bytesToInt24` and `bytesToInt32` functions?
+- `bytesToInt24` converts 3 8-bit numbers into a single unsigned 24-bit number, while `bytesToInt32` converts 4 8-bit numbers into a single unsigned 32-bit number.
+
+3. What is the purpose of the `smootherstep` function?
+- The `smootherstep` function is an improved version of the `smoothstep` function that has zero 1st and 2nd order derivatives at t=0 and t=1. It is used for smoothly interpolating values between a range.

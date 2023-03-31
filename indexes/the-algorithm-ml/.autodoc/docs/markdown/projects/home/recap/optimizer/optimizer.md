@@ -1,0 +1,22 @@
+[View code on GitHub](https://github.com/twitter/the-algorithm-ml/projects/home/recap/optimizer/optimizer.py)
+
+The code defines functions for building optimizers and learning rate schedules for the Twitter Recommendation Algorithm - Heavy Ranker and TwHIN embeddings project. The `build_optimizer` function takes in a PyTorch model, an optimizer configuration, and an optional embedding optimizer configuration. It returns an optimizer instance and a scheduler instance. 
+
+The `RecapLRShim` class is a shim that adheres to the torch.optim scheduler API and can be used anywhere that exponential decay can be used. It takes in an optimizer, a dictionary of learning rates, an embedding learning rate, and other optional parameters. It returns a list of learning rates computed using the `compute_lr` function. 
+
+The `build_optimizer` function first defines an optimizer function using the `torch.optim.Adam` function with default parameters. It then creates a dictionary of parameter groups for the optimizer based on the optimizer configuration. If the optimizer configuration specifies multi-task learning rates, the function creates a dictionary of parameter groups for each task and adds them to the parameter groups dictionary. It also creates a dictionary of all learning rates for each task. If the optimizer configuration specifies a backbone learning rate, it adds it to the all learning rates dictionary. If an embedding optimizer configuration is provided and there are dense embeddings, it adds the embedding learning rate to the all learning rates dictionary. If the optimizer configuration specifies a single task learning rate, it adds it to the all learning rates dictionary. 
+
+The function then creates a list of optimizer instances using the `keyed.KeyedOptimizerWrapper` function for each parameter group in the parameter groups dictionary. If there are dense embeddings, it creates an additional optimizer instance using the `torch.optim.SGD` function. It then checks if the parameter groups keys match the all learning rates keys and raises an error if they do not match. If there is a fused optimizer, it adds it to the optimizer list and sets the embedding learning rate to the one provided in the embedding optimizer configuration. 
+
+Finally, the function creates a `RecapLRShim` instance using the optimizer, all learning rates, and embedding learning rate. It returns the optimizer and scheduler instances. 
+
+This code is used to build optimizers and learning rate schedules for the Twitter Recommendation Algorithm - Heavy Ranker and TwHIN embeddings project. It can be used to train the model and optimize the learning rates for each task.
+## Questions: 
+ 1. What is the purpose of the RecapLRShim class?
+- The RecapLRShim class is a shim to get learning rates into a LRScheduler and adheres to the torch.optim scheduler API.
+
+2. What does the build_optimizer function do?
+- The build_optimizer function builds an optimizer and scheduler for a given torch model, probably with DDP/DMP.
+
+3. What is the purpose of the _DENSE_EMBEDDINGS constant?
+- The _DENSE_EMBEDDINGS constant is used to identify the parameter group for dense embeddings in the model.

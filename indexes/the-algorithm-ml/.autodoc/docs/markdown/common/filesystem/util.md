@@ -1,0 +1,18 @@
+[View code on GitHub](https://github.com/twitter/the-algorithm-ml/common/filesystem/util.py)
+
+This code provides utilities for interacting with file systems, specifically for the Twitter's Recommendation Algorithm - Heavy Ranker and TwHIN embeddings project. The code imports the LocalFileSystem implementation from the fsspec library and the GCSFileSystem implementation from the gcsfs library. 
+
+The `infer_fs` function takes a path as input and returns the appropriate file system implementation based on the path's prefix. If the path starts with "gs://", the function returns the GCSFileSystem implementation. If the path starts with "hdfs://", the function raises a NotImplementedError since HDFS is not yet supported. Otherwise, the function returns the LocalFileSystem implementation. 
+
+The `is_local_fs` and `is_gcs_fs` functions take a file system object as input and return a boolean indicating whether the file system is the LocalFileSystem or GCSFileSystem implementation, respectively. These functions may be used to check which file system is being used in other parts of the project. 
+
+Overall, this code provides a convenient way to interact with different file systems in the Twitter's Recommendation Algorithm - Heavy Ranker and TwHIN embeddings project. For example, the `infer_fs` function can be used to automatically select the appropriate file system implementation based on the path provided, while the `is_local_fs` and `is_gcs_fs` functions can be used to check which file system is being used in other parts of the project.
+## Questions: 
+ 1. What file systems are supported by this code?
+- The code supports local file system and Google Cloud Storage (GCS) file system.
+
+2. How does the code determine which file system to use?
+- The code determines which file system to use based on the prefix of the path. If the path starts with "gs://", it uses GCS file system. If it starts with "hdfs://", it raises a NotImplementedError. Otherwise, it uses local file system.
+
+3. What is the purpose of the functions `is_local_fs` and `is_gcs_fs`?
+- The functions `is_local_fs` and `is_gcs_fs` are used to check if a given file system object is a local file system or a GCS file system, respectively.

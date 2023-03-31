@@ -1,0 +1,31 @@
+[View code on GitHub](https://github.com/playcanvas/engine/src/platform/graphics/webgl/webgl-buffer.js)
+
+The code defines a class called WebglBuffer which is an implementation of the Buffer for WebGL. The purpose of this class is to create and manage a WebGL buffer object. 
+
+The class has a few methods and properties. The `destroy` method is used to delete the buffer object when it is no longer needed. The `initialized` property is a boolean that indicates whether the buffer has been initialized or not. The `loseContext` method is used to release the buffer object when the WebGL context is lost. The `unlock` method is used to create or update the buffer object with new data.
+
+The `unlock` method takes four arguments: `device`, `usage`, `target`, and `storage`. The `device` argument is an object that contains the WebGL context. The `usage` argument is an integer that specifies how the buffer will be used. The `target` argument is an integer that specifies the target buffer object. The `storage` argument is an ArrayBuffer or an ArrayBufferView that contains the data to be stored in the buffer.
+
+The `usage` argument can be one of four constants: `BUFFER_STATIC`, `BUFFER_DYNAMIC`, `BUFFER_STREAM`, or `BUFFER_GPUDYNAMIC`. These constants are imported from another file called `constants.js`. The `target` argument can be one of several WebGL buffer targets, such as `gl.ARRAY_BUFFER` or `gl.ELEMENT_ARRAY_BUFFER`.
+
+The `unlock` method first checks if the buffer object has been created. If not, it creates a new buffer object using the `gl.createBuffer()` method. It then sets the WebGL buffer usage based on the `usage` argument and binds the buffer object to the target using `gl.bindBuffer()`. Finally, it stores the data in the buffer object using `gl.bufferData()`.
+
+Overall, this class is an important part of the PlayCanvas engine as it provides a way to create and manage WebGL buffer objects. It can be used in various parts of the engine, such as rendering and physics, to store and manipulate data efficiently. Here is an example of how this class might be used:
+
+```
+const buffer = new WebglBuffer();
+const data = new Float32Array([1.0, 2.0, 3.0, 4.0]);
+buffer.unlock(device, BUFFER_STATIC, gl.ARRAY_BUFFER, data);
+```
+## Questions: 
+ 1. What is the purpose of this code and what does it do?
+    
+    This code defines a class called `WebglBuffer` which is a WebGL implementation of a buffer. It has methods for destroying the buffer, checking if it has been initialized, and unlocking the buffer for use.
+
+2. What are the possible values for the `usage` parameter in the `unlock` method and what do they do?
+    
+    The possible values for the `usage` parameter are `BUFFER_STATIC`, `BUFFER_DYNAMIC`, `BUFFER_STREAM`, and `BUFFER_GPUDYNAMIC`. They determine how the buffer will be used and how often it will be updated. `BUFFER_STATIC` is for data that will not change often, `BUFFER_DYNAMIC` is for data that will change frequently, `BUFFER_STREAM` is for data that will be updated every frame, and `BUFFER_GPUDYNAMIC` is for data that will be updated frequently on the GPU.
+
+3. What is the purpose of the `loseContext` method?
+    
+    The `loseContext` method sets the `bufferId` property to `null`, which effectively destroys the buffer. This is used when the WebGL context is lost and the buffer needs to be recreated when the context is restored.

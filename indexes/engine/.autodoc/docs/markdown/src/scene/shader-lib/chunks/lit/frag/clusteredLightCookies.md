@@ -1,0 +1,23 @@
+[View code on GitHub](https://github.com/playcanvas/engine/src/scene/shader-lib/chunks/lit/frag/clusteredLightCookies.js)
+
+The code provided is a set of functions that are used to retrieve a cookie texture for use in clustered lighting. A cookie texture is a texture that is used to modify the light emitted by a light source. The texture is applied to the light source and the resulting light is then projected onto the scene. The functions in this code are used to retrieve the cookie texture and apply it to the light source.
+
+The first function, `_getCookieClustered`, takes in a texture, a UV coordinate, an intensity value, a boolean value indicating whether the texture is RGB or not, and a cookie channel. The function returns a vec3 value that represents the modified light. The function first retrieves the pixel value from the texture at the given UV coordinate. The intensity value is then used to mix the pixel value with a vec4 value of 1.0. The resulting pixel value is then either returned as an RGB value or as a dot product of the pixel value and the cookie channel.
+
+The second function, `getCookie2DClustered`, takes in a texture, a transformation matrix, a world position, an intensity value, a boolean value indicating whether the texture is RGB or not, and a cookie channel. The function returns a vec3 value that represents the modified light. The function first applies the transformation matrix to the world position to get the projected position. The function then calls `_getCookieClustered` with the texture, the projected position, the intensity value, the boolean value indicating whether the texture is RGB or not, and the cookie channel.
+
+The third function, `getCookieCubeClustered`, takes in a texture, a direction vector, an intensity value, a boolean value indicating whether the texture is RGB or not, a cookie channel, a shadow texture resolution, a shadow edge pixel value, and an omni atlas viewport. The function returns a vec3 value that represents the modified light. The function first retrieves the UV coordinate from the cubemap atlas using the direction vector, the shadow texture resolution, the shadow edge pixel value, and the omni atlas viewport. The function then calls `_getCookieClustered` with the texture, the UV coordinate, the intensity value, the boolean value indicating whether the texture is RGB or not, and the cookie channel.
+
+Overall, these functions are used to retrieve and apply a cookie texture to a light source in a clustered lighting system. The functions take in various parameters to modify the light emitted by the light source. These functions are likely used in a larger project that involves rendering a 3D scene with lighting.
+## Questions: 
+ 1. What does the `_getCookieClustered` function do?
+    
+    The `_getCookieClustered` function takes in a texture, UV coordinates, intensity, a boolean value, and a cookie channel and returns either the RGB value of the pixel or the dot product of the pixel and the cookie channel, depending on the value of the boolean.
+
+2. What is the purpose of the `getCookie2DClustered` function?
+
+    The `getCookie2DClustered` function takes in a texture, a transformation matrix, a world position, intensity, a boolean value, and a cookie channel, and returns the result of calling `_getCookieClustered` with the appropriate parameters.
+
+3. What is the purpose of the `getCookieCubeClustered` function?
+
+    The `getCookieCubeClustered` function takes in a texture, a direction vector, intensity, a boolean value, a cookie channel, a shadow texture resolution, shadow edge pixels, and an omni atlas viewport, and returns the result of calling `_getCookieClustered` with the appropriate parameters. It is specifically designed for clustered omni lights with the cookie texture stored in the cookie atlas.

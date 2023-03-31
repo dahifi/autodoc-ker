@@ -1,0 +1,23 @@
+[View code on GitHub](https://github.com/playcanvas/engine/src/framework/anim/binder/anim-binder.js)
+
+The code defines a class called `AnimBinder` which is used by the `AnimEvaluator` class in the PlayCanvas engine to resolve animation target path strings into instances of `AnimTarget`. The purpose of this class is to provide utility functions for working with animation target paths, as well as to define methods that are called by the `AnimEvaluator` during the animation process.
+
+The `AnimBinder` class provides two static methods for working with animation target paths. The `joinPath` method takes a list of path segments and joins them into a path string using the full stop character (or another character if one is supplied). The `splitPath` method takes a path string and splits it into its segments, resolving any character escaping that may be present.
+
+The class also provides three instance methods that are called by the `AnimEvaluator`. The `resolve` method takes an animation curve path and returns an instance of `AnimTarget` that will handle setting the value of the target, or null if no such target exists. The `unresolve` method is called when the `AnimEvaluator` no longer has a curve driving a given key. The `update` method is called by the `AnimEvaluator` once per frame after animation updates are done.
+
+Finally, the class provides a static `encode` method that takes an entity path, component, and property path and returns a string that encodes the locator. This method is used to convert a locator array into its string version.
+
+Overall, the `AnimBinder` class provides utility functions for working with animation target paths and defines methods that are called by the `AnimEvaluator` during the animation process. It is an important part of the PlayCanvas engine and is used to ensure that animations are handled correctly.
+## Questions: 
+ 1. What is the purpose of the `AnimBinder` class?
+    
+    The `AnimBinder` class is used by the `AnimEvaluator` to resolve animation target path strings into instances of `AnimTarget`.
+
+2. What do the `joinPath` and `splitPath` methods do?
+    
+    The `joinPath` method joins a list of path segments into a path string using the full stop character or another character if supplied. The `splitPath` method splits a path string into its segments and resolves character escaping.
+
+3. What is the purpose of the `encode` method?
+    
+    The `encode` method converts a locator array into its string version, which is used to encode the entity location, component, and property location as a string.

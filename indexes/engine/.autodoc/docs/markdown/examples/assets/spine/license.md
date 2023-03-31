@@ -1,0 +1,23 @@
+[View code on GitHub](https://github.com/playcanvas/engine/examples/assets/spine/license.txt)
+
+This code is a license file for a project that contains images and a project file. The purpose of this license is to specify the terms and conditions under which the images and project file can be used and redistributed. 
+
+The license allows for the redistribution of the images as long as they are accompanied by the license file. However, it prohibits the commercial use of the images. This means that the images cannot be used for any commercial purposes, such as advertising or selling products.
+
+The project file, on the other hand, is released into the public domain. This means that it can be used as the basis for derivative work. This allows other developers to build upon the project file and create their own projects based on it.
+
+Overall, this license file serves as a legal agreement between the owner of the images and project file and anyone who wants to use or redistribute them. It ensures that the owner's rights are protected while still allowing for the images and project file to be used and built upon by others.
+
+Example usage of this license file would be to include it in the root directory of the project containing the images and project file. This would ensure that anyone who wants to use or redistribute the images and project file is aware of the terms and conditions under which they can do so.
+## Questions: 
+ 1. What is the purpose of this code?
+   
+   This code is a license file for the images in the PlayCanvas engine project, allowing for their redistribution as long as the license file is included and prohibiting commercial use of the images.
+
+2. Who is the author of this code?
+   
+   The author of this code is Esoteric Software, as indicated in the copyright statement.
+
+3. Are there any restrictions on the use of the project file?
+   
+   No, the project file is released into the public domain and may be used as the basis for derivative work without any restrictions.

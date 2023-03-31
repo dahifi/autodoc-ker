@@ -1,0 +1,22 @@
+[View code on GitHub](https://github.com/playcanvas/engine/src/scene/batching/skin-batch-instance.js)
+
+The code defines a class called `SkinBatchInstance` which is derived from another class called `SkinInstance`. The purpose of this class is to make changes to the `SkinInstance` class so that it is suitable for batching. 
+
+Batching is a technique used in computer graphics to improve performance by reducing the number of draw calls made to the graphics card. In this case, the `SkinBatchInstance` class is used to batch together multiple instances of skinned meshes. 
+
+The constructor of the `SkinBatchInstance` class takes in a `device`, an array of `nodes`, and a `rootNode`. The `nodes` array contains the bones of the skinned mesh, and the `rootNode` is the root node of the mesh. The constructor initializes the `SkinBatchInstance` object by calling the `init` method of the `SkinInstance` class, passing in the number of bones in the `nodes` array. It then sets the `device` and `rootNode` properties of the object, and sets the `bones` property to the `nodes` array. 
+
+The `updateMatrices` method of the `SkinBatchInstance` class is empty, indicating that it does not need to be overridden for batching. 
+
+The `updateMatrixPalette` method of the `SkinBatchInstance` class is used to update the matrix palette of the skinned mesh. The matrix palette is an array of matrices that are used to transform the vertices of the mesh. The method loops through each bone in the `bones` array, gets its world transform matrix, and copies it into the matrix palette. The matrix is transposed from a 4x4 matrix to a 4x3 matrix, which is the format used by the vertex shader. Finally, the `uploadBones` method of the `SkinInstance` class is called to upload the matrix palette to the graphics card. 
+
+The `SkinBatchInstance` class is exported so that it can be used in other parts of the PlayCanvas engine project. An example of how it might be used is to create multiple instances of a skinned mesh and add them to a batch. This would reduce the number of draw calls made to the graphics card, improving performance.
+## Questions: 
+ 1. What is the purpose of this code and how does it relate to the PlayCanvas engine?
+- This code defines a class called `SkinBatchInstance` that is derived from `SkinInstance` and is used for batching. It is part of the PlayCanvas engine's skinning system.
+
+2. What parameters does the `SkinBatchInstance` constructor take and what do they represent?
+- The constructor takes a `device` object, an array of `nodes`, and a `rootNode`. The `device` is a graphics device used for rendering, `nodes` is an array of nodes that represent the bones of the skin, and `rootNode` is the root node of the skin.
+
+3. What is the purpose of the `updateMatrixPalette` method and how does it work?
+- The `updateMatrixPalette` method updates the matrix palette used for skinning by copying the world transforms of the skin's bones into the matrix palette. It transposes the matrices from 4x4 to 4x3 format and uploads them to the graphics device for use in rendering.

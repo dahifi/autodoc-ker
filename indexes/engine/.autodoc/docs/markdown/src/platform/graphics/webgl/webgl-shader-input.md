@@ -1,0 +1,26 @@
+[View code on GitHub](https://github.com/playcanvas/engine/src/platform/graphics/webgl/webgl-shader-input.js)
+
+The code defines a class called `WebglShaderInput` which represents a shader uniform. A shader uniform is a variable in a shader program that can be set from outside the program. The purpose of this class is to manage the state of a shader uniform, including its name, type, location, and value.
+
+The class constructor takes four parameters: a `graphicsDevice` object, which is used to manage the shader input; a `name` string, which is the name of the shader input; a `type` number, which is the type of the shader input; and a `locationId` number or `WebGLUniformLocation` object, which is the location id of the shader input.
+
+The class has several properties, including `locationId`, which is the location id of the shader input; `scopeId`, which is the scope id for the attribute name; `version`, which is a `Version` object used to track changes to the shader input; `dataType`, which is the data type of the shader input; `value`, which is an array of values for the shader input; and `array`, which is an array used to hold texture unit ids.
+
+The class also has a conditional statement that checks if the name of the shader input ends with "[0]". If it does, the data type is changed to an array data type based on the original data type. For example, if the original data type was `UNIFORMTYPE_FLOAT`, it is changed to `UNIFORMTYPE_FLOATARRAY`.
+
+This class is likely used in the larger PlayCanvas engine project to manage the state of shader uniforms in WebGL programs. It provides a convenient way to set and update the values of shader uniforms, which are critical for rendering graphics in a WebGL context. Here is an example of how this class might be used:
+
+```javascript
+const graphicsDevice = new GraphicsDevice();
+const shaderInput = new WebglShaderInput(graphicsDevice, 'u_color', UNIFORMTYPE_VEC4, 0);
+shaderInput.value = [1, 0, 0, 1]; // set the value of the shader uniform to red
+```
+## Questions: 
+ 1. What is the purpose of the `WebglShaderInput` class?
+- The `WebglShaderInput` class represents a shader uniform and is used to manage shader inputs.
+
+2. What are the parameters of the `WebglShaderInput` constructor?
+- The `WebglShaderInput` constructor takes in a `graphicsDevice` object, a `name` string, a `type` number, and a `locationId` number or `WebGLUniformLocation` object.
+
+3. What is the purpose of the `value` and `array` properties of the `WebglShaderInput` class?
+- The `value` property is an array used to store the value of the shader input, while the `array` property is an array used to hold texture unit ids.

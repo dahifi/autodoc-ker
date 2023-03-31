@@ -1,0 +1,22 @@
+[View code on GitHub](https://github.com/playcanvas/engine/src/framework/handlers/container.js)
+
+# PlayCanvas Engine: ContainerHandler.js
+
+The `ContainerHandler.js` file is a module that contains the `ContainerHandler` class and the `ContainerResource` class. The `ContainerHandler` class is responsible for loading files that contain multiple resources, such as glTF files that can contain textures, models, and animations. The `ContainerResource` class is a container for a list of animations, textures, materials, renders, and a model.
+
+The `ContainerHandler` class implements the `ResourceHandler` interface and has three methods: `load`, `open`, and `patch`. The `load` method loads the resource from the specified URL and calls the callback function when the resource is loaded or an error occurs. The `open` method parses the resource data and returns the parsed data. The `patch` method patches the asset with the specified data.
+
+The `ContainerResource` class has four properties: `renders`, `materials`, `textures`, and `animations`. These properties are arrays of `Asset` objects that represent the resources contained in the container. The class also has three methods: `instantiateModelEntity`, `instantiateRenderEntity`, and `getMaterialVariants`. The `instantiateModelEntity` method instantiates an entity with a model component based on the container's model. The `instantiateRenderEntity` method instantiates an entity with a render component based on the container's model. The `getMaterialVariants` method queries the list of available material variants.
+
+The `ContainerResource` class also has two methods that apply material variants to the container's entities: `applyMaterialVariant` and `applyMaterialVariantInstances`. The `applyMaterialVariant` method applies a material variant to an entity hierarchy, while the `applyMaterialVariantInstances` method applies a material variant to a set of mesh instances.
+
+Overall, the `ContainerHandler.js` file provides a way to load and parse files that contain multiple resources and provides a container for these resources. The `ContainerResource` class provides methods to instantiate entities with model and render components and apply material variants to these entities.
+## Questions: 
+ 1. What is the purpose of the `ContainerResource` class?
+- The `ContainerResource` class is a container for a list of animations, textures, materials, renders, and a model. It provides methods for instantiating entities with model or render components, querying available material variants, and applying material variants to entities or mesh instances.
+
+2. What types of resources can be loaded using the `ContainerHandler` class?
+- The `ContainerHandler` class can load files that contain multiple resources, such as glTF files that can contain textures, models, and animations. It supports various resource types, including global, node, light, camera, animation, material, image, texture, buffer, and bufferView.
+
+3. What is the purpose of the `maxRetries` property in the `ContainerHandler` class?
+- The `maxRetries` property sets the maximum number of times the parser should retry loading a resource if it fails. It applies to both the `GlbParser` and any other parsers registered with the `parsers` property of the `ContainerHandler` instance.

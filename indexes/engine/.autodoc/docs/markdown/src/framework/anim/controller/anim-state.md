@@ -1,0 +1,18 @@
+[View code on GitHub](https://github.com/playcanvas/engine/src/framework/anim/controller/anim-state.js)
+
+The code defines a class called `AnimState` which represents a single state that the controller can be in. Each state contains either a single `AnimNode` or a `AnimBlendTree` of multiple `AnimNodes`, which will be used to animate the Entity while the state is active. An `AnimState` will stay active and play as long as there is no `AnimTransition` with its conditions met that has that `AnimState` as its source state.
+
+The `AnimState` class has several properties and methods that allow for the manipulation of the state's animations. The `_animations` and `_animationList` properties are used to store the animations associated with the state. The `addAnimation` method is used to add an animation to the state. The `animations` property is used to get or set the list of animations associated with the state. The `hasAnimations` property is used to determine if the state has any animations associated with it. The `speed` and `loop` properties are used to set the speed and loop properties of the state's animations.
+
+The `AnimState` class also has several methods that are used to get information about the state's animations. The `nodeCount` property is used to get the number of nodes in the state's blend tree. The `playable` property is used to determine if the state is playable. The `looping` property is used to determine if the state's animations should loop. The `totalWeight` property is used to get the total weight of the state's animations. The `timelineDuration` property is used to get the duration of the state's animations.
+
+The `AnimState` class is used in the larger project to define the different states that the controller can be in. Each state has a set of animations associated with it that will be played while the state is active. The `AnimState` class is also used to get information about the state's animations, such as the number of nodes in the blend tree and the duration of the animations. Overall, the `AnimState` class is an important part of the PlayCanvas engine that allows for the creation and manipulation of animations in the engine.
+## Questions: 
+ 1. What is the purpose of the `AnimState` class?
+- The `AnimState` class defines a single state that the controller can be in, which contains either a single `AnimNode` or a `AnimBlendTree` of multiple `AnimNodes`, used to animate the Entity while the state is active.
+
+2. What is the `_createTree` method used for?
+- The `_createTree` method is used to create a new `AnimBlendTree` hierarchy based on the specified type, parameters, and children.
+
+3. What is the purpose of the `addAnimation` method?
+- The `addAnimation` method is used to add a new animation to the `AnimState` instance, which is associated with a specific `AnimNode` or `AnimBlendTree` based on the specified path.

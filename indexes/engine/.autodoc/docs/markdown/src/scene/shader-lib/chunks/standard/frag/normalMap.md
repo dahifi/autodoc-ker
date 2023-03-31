@@ -1,0 +1,22 @@
+[View code on GitHub](https://github.com/playcanvas/engine/src/scene/shader-lib/chunks/standard/frag/normalMap.js)
+
+The code provided is a GLSL shader code that is used to generate normal maps for 3D models. Normal maps are used to add detail to a 3D model without increasing the polygon count. The purpose of this code is to calculate the normal vector of a point on a 3D model's surface. The normal vector is a vector that is perpendicular to the surface at that point. This information is used to calculate how light interacts with the surface, which is important for creating realistic lighting effects.
+
+The code starts by checking if the MAPTEXTURE flag is defined. If it is defined, it means that a normal map texture is being used. The code then declares a uniform variable called material_bumpiness, which is used to control the amount of bumpiness in the surface. If MAPTEXTURE is not defined, the code uses the vertex normal vector instead.
+
+The getNormal() function is then defined. This function calculates the normal vector for a point on the surface. If MAPTEXTURE is defined, the code unpacks the normal map texture using the texture2DBias() function. This function takes three arguments: a sampler, a UV coordinate, and a texture bias. The sampler is a reference to the texture that is being used as the normal map. The UV coordinate is the position on the surface where the normal vector is being calculated. The texture bias is used to adjust the texture sampling to avoid texture seams. The unpackNormal() function is then used to convert the texture data into a normal vector.
+
+The normal vector is then adjusted based on the material_bumpiness value. This is done using the mix() function, which takes three arguments: a starting value, an ending value, and a blend factor. The blend factor is a value between 0 and 1 that determines how much of the ending value is used. In this case, the starting value is (0, 0, 1), which represents a flat surface. The ending value is the normal vector from the texture. The blend factor is material_bumpiness, which controls how much of the normal vector is used. The resulting vector is then multiplied by the dTBN matrix, which transforms the vector from tangent space to world space.
+
+If MAPTEXTURE is not defined, the code simply uses the vertex normal vector, which is already in world space. The resulting normal vector is then normalized using the normalize() function and stored in the dNormalW variable.
+
+Overall, this code is an important part of the PlayCanvas engine's rendering pipeline. It is used to generate normal maps for 3D models, which are essential for creating realistic lighting effects. The material_bumpiness value can be adjusted to control the amount of detail in the surface. This code is likely used in conjunction with other shaders and rendering techniques to create a complete 3D scene.
+## Questions: 
+ 1. What is the purpose of the `MAPTEXTURE` preprocessor directive?
+- The `MAPTEXTURE` preprocessor directive is used to conditionally compile code based on whether a texture map is present or not.
+
+2. What is the `material_bumpiness` uniform used for?
+- The `material_bumpiness` uniform is used to control the amount of bumpiness applied to the normal map.
+
+3. What is the `addNormalDetail` function used for?
+- The `addNormalDetail` function is used to add additional detail to the normal map.

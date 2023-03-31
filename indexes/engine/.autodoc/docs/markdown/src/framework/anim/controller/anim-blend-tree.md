@@ -1,0 +1,21 @@
+[View code on GitHub](https://github.com/playcanvas/engine/src/framework/anim/controller/anim-blend-tree.js)
+
+The `AnimBlendTree` class is a part of the PlayCanvas engine project and is used to blend multiple `AnimNodes` together. It is used to create a hierarchy of `AnimNodes` and can be the child of other `AnimBlendTrees`. The class takes a blend type as an argument which defines which function should be used to determine the weights of each of its children, based on the current parameter value.
+
+The constructor of the `AnimBlendTree` class takes several arguments including the `AnimState` that this `AnimBlendTree` belongs to, the parent of the `AnimBlendTree`, the name of the `BlendTree`, the coordinate/vector that is used to determine the weight of this node when it's part of a `AnimBlendTree`, the anim component parameters which are used to calculate the current weights of the blend trees children, the child nodes that this blend tree should create, and functions used to create child blend trees of varying types and to get the current parameter values at runtime.
+
+The `AnimBlendTree` class has several methods including `get weight()` which calculates the weight of the `AnimBlendTree` based on the weights of its children and its parent, `get syncAnimations()` which returns whether the speed of each blended animation will be synchronized, `getChild(name)` which returns the child node with the given name, `updateParameterValues()` which updates the parameter values of the `AnimBlendTree`, `getNodeWeightedDuration(i)` which returns the weighted duration of the child node at index `i`, and `getNodeCount()` which returns the number of child nodes in the `AnimBlendTree`.
+
+Overall, the `AnimBlendTree` class is an important part of the PlayCanvas engine project as it allows for the creation of complex animations by blending multiple `AnimNodes` together and creating a hierarchy of `AnimNodes`.
+## Questions: 
+ 1. What is the purpose of the `AnimBlendTree` class and how is it used in the PlayCanvas engine?
+   
+   The `AnimBlendTree` class is used to store and blend multiple `AnimNodes` together, and can be the child of other `AnimBlendTrees` to create a hierarchy of `AnimNodes`. It takes a blend type as an argument which defines which function should be used to determine the weights of each of its children, based on the current parameter value.
+
+2. What parameters are required to create a new instance of the `AnimBlendTree` class?
+   
+   To create a new instance of the `AnimBlendTree` class, the following parameters are required: `state` (the `AnimState` that this `AnimBlendTree` belongs to), `parent` (the parent of the `AnimBlendTree`, if not null), `name` (the name of the `BlendTree`), `point` (the coordinate/vector used to determine the weight of this node when it's part of a `BlendTree`), `parameters` (the anim component parameters used to calculate the current weights of the blend trees children), `children` (the child nodes that this blend tree should create), `syncAnimations` (a boolean indicating whether the speed of each blended animation should be synchronized), `createTree` (a function used to create child blend trees of varying types), and `findParameter` (a function used at runtime to get the current parameter values).
+
+3. What is the purpose of the `getChild` method in the `AnimBlendTree` class?
+   
+   The `getChild` method is used to retrieve a child node of the `AnimBlendTree` by name. It iterates through the `_children` array and returns the child node with a matching `name` property, or `null` if no matching child node is found.

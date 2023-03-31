@@ -1,0 +1,28 @@
+[View code on GitHub](https://github.com/playcanvas/engine/src/scene/composition/light-composition-data.js)
+
+The code defines a class called `LightCompositionData` which is used to store data needed by the `LayerComposition` to manage a light. The class has two properties: `shadowCastersSet` and `shadowCastersList`. `shadowCastersSet` is a set used for fast de-duplication of shadow casters, while `shadowCastersList` is an array used for fast iteration of shadow casters.
+
+The class has three methods: `constructor`, `clearShadowCasters`, and `addShadowCasters`. The `constructor` method initializes the `shadowCastersSet` and `shadowCastersList` properties. The `clearShadowCasters` method clears the `shadowCastersSet` and `shadowCastersList` properties. The `addShadowCasters` method adds unique shadow casters to the `shadowCastersSet` and `shadowCastersList` properties.
+
+The `addShadowCasters` method takes an array of shadow casters as an argument and iterates over it. For each item in the array, it checks if the item is already in the `shadowCastersSet`. If the item is not in the set, it adds the item to both the `shadowCastersSet` and `shadowCastersList`.
+
+This class can be used in the larger PlayCanvas engine project to manage lights and their shadow casters. For example, when a new light is added to the scene, an instance of `LightCompositionData` can be created to store the light's shadow casters. The `addShadowCasters` method can be called to add the light's shadow casters to the `shadowCastersSet` and `shadowCastersList`. The `clearShadowCasters` method can be called to clear the shadow casters when the light is removed from the scene.
+
+Example usage:
+
+```
+const lightData = new LightCompositionData();
+const shadowCasters = [mesh1, mesh2, mesh3];
+lightData.addShadowCasters(shadowCasters);
+```
+
+In this example, an instance of `LightCompositionData` is created and an array of shadow casters is passed to the `addShadowCasters` method to add them to the `shadowCastersSet` and `shadowCastersList`.
+## Questions: 
+ 1. What is the purpose of the LightCompositionData class?
+    - The LightCompositionData class is used to store data needed to manage a light in the LayerComposition.
+
+2. What is the difference between the shadowCastersSet and shadowCastersList?
+    - The shadowCastersSet is used for fast de-duplication of shadow casters, while the shadowCastersList is used for fast iteration.
+
+3. What does the addShadowCasters method do?
+    - The addShadowCasters method adds unique shadow casters to both the shadowCastersSet and shadowCastersList.

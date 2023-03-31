@@ -1,0 +1,18 @@
+[View code on GitHub](https://github.com/playcanvas/engine/examples/src/examples/loaders/usdz-export.tsx)
+
+The code defines a class called UsdzExportExample that exports a 3D model in the USDZ format. The class is a part of the PlayCanvas engine project and is written in TypeScript. The class has two static properties, CATEGORY and NAME, which are used to categorize and name the example in the PlayCanvas editor. The class also has a static property called WEBGPU_ENABLED, which is a boolean value that determines whether the example can be run on WebGPU-enabled devices.
+
+The class has two methods, controls and example. The controls method returns a React component that renders a button with the text "Download USDZ". The onClick event of the button emits a "download" event using the Observer pattern.
+
+The example method takes four parameters: a canvas element, a device type, a pcx object, and a data object. The method creates a graphics device using the pc.createGraphicsDevice method and initializes a PlayCanvas application using the pc.AppBase constructor. The method then loads two assets, a texture and a 3D model, using the pc.Asset constructor and the pc.AssetListLoader class. The method creates a camera entity, sets the skybox, and spins the 3D model. Finally, the method exports the 3D model in the USDZ format using the pcx.UsdzExporter class and the build method. The exported file is downloaded when the "Download USDZ" button is clicked.
+
+This code can be used as an example of how to export a 3D model in the USDZ format using the PlayCanvas engine. The code can be modified to export different 3D models and textures by changing the URLs in the assets object. The code can also be modified to add more functionality, such as adding more buttons to download different formats or adding more 3D models to the scene.
+## Questions: 
+ 1. What is the purpose of the `UsdzExportExample` class?
+- The `UsdzExportExample` class is an example of how to export a 3D model to USDZ format using the PlayCanvas engine.
+
+2. What dependencies does this code have?
+- This code imports React, `pc` from a relative path, `Button` and `Observer` from `@playcanvas/pcui/react`.
+
+3. What does the `example` method do?
+- The `example` method initializes a PlayCanvas app, loads assets, creates entities, sets up a camera, sets the skybox, exports a 3D model to USDZ format, and triggers a download of the resulting file when a button is clicked.

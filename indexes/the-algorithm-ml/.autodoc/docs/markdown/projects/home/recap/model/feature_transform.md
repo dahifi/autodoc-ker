@@ -1,0 +1,28 @@
+[View code on GitHub](https://github.com/twitter/the-algorithm-ml/projects/home/recap/model/feature_transform.py)
+
+This code defines several PyTorch modules that are used in the Twitter Recommendation Algorithm - Heavy Ranker and TwHIN embeddings project. 
+
+The `BatchNorm` module applies batch normalization to a 1D tensor of features. It takes in the number of features and a `BatchNormConfig` object that specifies whether to use affine parameters and the momentum value for the running mean and variance. 
+
+The `LayerNorm` module applies layer normalization to a tensor of arbitrary shape. It takes in the shape of the tensor and a `LayerNormConfig` object that specifies the epsilon value for numerical stability and whether to use affine parameters. 
+
+The `Log1pAbs` module applies a safe log transform to a tensor of arbitrary shape. It uses the `log_transform` function defined above, which takes in a tensor and returns the element-wise sign times the natural logarithm of one plus the absolute value of the tensor. 
+
+The `InputNonFinite` module replaces non-finite values (NaN and Inf) in a tensor with a specified fill value. It takes in a fill value and returns a tensor of the same shape as the input tensor. 
+
+The `Clamp` module clamps the values of a tensor to a specified range. It takes in a minimum and maximum value and returns a tensor of the same shape as the input tensor. 
+
+The `DoubleNormLog` module performs a series of transformations on continuous and binary features. It first applies `InputNonFinite`, `Log1pAbs`, and `BatchNorm` (if specified) to the continuous features, and then clamps the values to a specified range using `Clamp`. It then concatenates the continuous and binary features and applies layer normalization (if specified) to the concatenated tensor. 
+
+The `build_features_preprocessor` function returns an instance of the `DoubleNormLog` module with the specified configuration and input shapes. 
+
+Overall, these modules are used to preprocess features for input into the Twitter Recommendation Algorithm - Heavy Ranker and TwHIN embeddings model. They provide functionality for normalizing, transforming, and clamping feature values to improve model performance.
+## Questions: 
+ 1. What is the purpose of this code file?
+- This code file contains modules for performing various normalization and transformation operations on input features for Twitter's Recommendation Algorithm.
+
+2. What types of input features does the `DoubleNormLog` module expect?
+- The `DoubleNormLog` module expects both continuous and binary features as input.
+
+3. Why does the `LayerNorm` module raise a `NotImplementedError` if the `axis` parameter in the config is not `-1`?
+- The `LayerNorm` module only supports normalization along the last dimension of the input tensor, so if the `axis` parameter is not `-1`, it is not currently implemented and will raise a `NotImplementedError`.

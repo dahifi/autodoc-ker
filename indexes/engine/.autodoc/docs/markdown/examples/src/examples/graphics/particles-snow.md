@@ -1,0 +1,22 @@
+[View code on GitHub](https://github.com/playcanvas/engine/examples/src/examples/graphics/particles-snow.tsx)
+
+The code is an example of how to create a snow particle system using the PlayCanvas engine. The purpose of the code is to demonstrate how to create a particle system that simulates snowfall. The code creates an application, sets up a camera and a directional light, and then creates a particle system entity that emits snowflakes. 
+
+The example function takes two parameters, a canvas element and a device type. The canvas element is used to create the application, and the device type is not used in this code. 
+
+The code starts by creating an application object and an assets object. The assets object contains a single texture asset, which is a snowflake image. The assetListLoader is used to load the assets, and when the assets are loaded, the application is started. 
+
+The canvas is set to fill the window, and the resolution is set to be the same as the canvas size. A camera entity and a directional light entity are created and added to the scene hierarchy. 
+
+The particle system is created by creating a new entity and adding a particle system component to it. The particle system component is configured to emit 100 particles, each with a lifetime of 10 seconds. The particles are emitted at a rate of 0.1 particles per second, and they are emitted in all directions. The velocity of the particles is set using two curve sets, which define the velocity in the x, y, and z directions. The rotation speed of the particles is set using two curves, which define the rotation speed in degrees per second. The scale of the particles is set using a single curve, which defines the scale of the particles over their lifetime. Finally, the color of the particles is set to the snowflake texture asset. 
+
+Overall, this code demonstrates how to create a snow particle system using the PlayCanvas engine. The code can be used as a starting point for creating more complex particle systems, and it can be customized to create different types of particle effects.
+## Questions: 
+ 1. What is the purpose of this code?
+- This code is an example of a particle system that generates snowflakes using the PlayCanvas engine.
+
+2. What dependencies does this code have?
+- This code imports the entire PlayCanvas library using the wildcard symbol `*`, and it also imports the `HTMLCanvasElement` type from the global namespace.
+
+3. What is the structure of the particle system being created?
+- The particle system has 100 particles, each with a lifetime of 10 seconds and a rate of 0.1 particles per second. The particles are emitted from a point with a circular spread of 5 units in the x-axis, and they have a downward velocity that varies randomly between -0.4 and -0.7 units per second. The particles also have a random rotation speed between -100 and 100 degrees per second, and a constant scale of 0.1. Finally, the particles are textured with a snowflake image.

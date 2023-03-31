@@ -1,0 +1,29 @@
+[View code on GitHub](https://github.com/playcanvas/engine/src/scene/shader-lib/chunks/lit/frag/refractionDynamic.js)
+
+The code above is a shader function that adds refraction to a 3D object in the PlayCanvas engine. Refraction is the bending of light as it passes through a medium, and this function simulates that effect on a material. The function takes in several parameters, including the world normal of the object, the view direction, the thickness of the material, the glossiness, the specularity, the albedo, and the transmission. 
+
+The function first extracts the scale of the object from its model transform and calculates the refraction vector based on the thickness and scale of the object. It then calculates the point of refraction and projects it to texture space so that it can be sampled. The function uses the built-in `getGrabScreenPos` function to convert the screen position to grab texture UV coordinates. 
+
+The function then calculates the refraction color by sampling the scene color map at the UV coordinates. If the `SUPPORTS_TEXLOD` flag is defined, the function uses the index of refraction (IOR) and roughness to select the appropriate mip level. Otherwise, it simply samples the texture at the given UV coordinates. 
+
+The final step is to calculate the transmittance, which is the final refraction color. If the material has an attenuation distance, the function calculates the attenuation and applies it to the length of the refraction vector. Otherwise, it simply uses the refraction color. The function then applies the fresnel effect on the refraction and mixes it with the diffuse light based on the transmission parameter. 
+
+This function is used in the larger PlayCanvas engine project to simulate the refraction of light on materials. It can be used to create realistic glass, water, or other transparent materials. Developers can customize the parameters of the function to achieve the desired effect. For example, they can adjust the thickness, glossiness, and specularity of the material to create different types of glass. They can also adjust the transmission parameter to control the amount of refraction. 
+
+Here is an example of how this function can be used in a PlayCanvas project:
+
+```javascript
+// create a new material with refraction
+var material = new pc.StandardMaterial();
+material.refraction = true;
+material.refractionIndex = 1.5; // set the index of refraction
+material.attenuationDistance = 10; // set the attenuation distance
+material.attenuation = new pc.Vec3(1, 1, 1); // set the attenuation color
+
+// set the material on a mesh instance
+var meshInstance = new pc.MeshInstance(node, mesh, material);
+```
+## Questions: 
+ 1. What does this code do?
+    
+    This code defines a function

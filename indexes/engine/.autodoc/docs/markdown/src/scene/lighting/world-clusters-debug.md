@@ -1,0 +1,22 @@
+[View code on GitHub](https://github.com/playcanvas/engine/src/scene/lighting/world-clusters-debug.js)
+
+The code defines a class called `WorldClustersDebug` that provides a static method `render` to visualize the occupancy of cells in a 3D grid. The class imports several modules from the PlayCanvas engine, including `Color`, `Mat4`, and `Vec3` from the `core/math` package, `PRIMITIVE_TRIANGLES` from `platform/graphics/constants`, and `BLEND_ADDITIVEALPHA` from `constants`. It also imports `GraphNode`, `Mesh`, `MeshInstance`, and `StandardMaterial` from the engine's `scene` module.
+
+The `render` method takes two arguments: `worldClusters` and `scene`. `worldClusters` is an object that contains information about the cells in the 3D grid, including their positions and occupancy. `scene` is the scene object that the visualization will be rendered in.
+
+The `render` method first extracts some information from `worldClusters`, including the number of cells in each dimension, the minimum and maximum bounds of the grid, and the number of lights in each cell. It then generates a set of grid lines to visualize the boundaries of each cell in the grid. The grid lines are stored in two arrays, `gridPositions` and `gridColors`, which are static properties of the `WorldClustersDebug` class.
+
+Next, the method generates a set of cubes to visualize the occupancy of each cell in the grid. The cubes are added to a dynamic mesh that is created if it does not already exist. The color of each cube is determined by the number of lights in the corresponding cell, with low occupancy cells being colored white and high occupancy cells being colored red. The cubes are rendered using an additive alpha blend mode, which allows them to be overlaid on top of other objects in the scene.
+
+Finally, the method renders the grid lines and the cubes using the `drawLineArrays` and `drawMesh` methods of the `scene` object. The grid lines are rendered as a set of colored lines, while the cubes are rendered as a set of triangles.
+
+This code is likely used in the PlayCanvas engine to help developers visualize the occupancy of cells in a 3D grid, which can be useful for debugging and optimizing lighting and other effects in a scene. The `WorldClustersDebug` class could be used in conjunction with other tools and techniques to help developers fine-tune the performance and visual quality of their PlayCanvas projects.
+## Questions: 
+ 1. What is the purpose of the `WorldClustersDebug` class?
+- The `WorldClustersDebug` class is used to render debug information for the `worldClusters` object in a scene.
+
+2. What is the format of the data used to generate the grid lines?
+- The grid lines are generated using three nested for-loops that iterate over the `cells` of the `worldClusters` object and calculate the positions of the lines based on the `boundsMin`, `boundsMax`, and `cellDelta` values.
+
+3. What type of material is used to render the cell occupancy cubes?
+- The material used to render the cell occupancy cubes is a `StandardMaterial` with various properties set, including `useLighting = false`, `emissiveVertexColor = true`, and `blendType = BLEND_ADDITIVEALPHA`.

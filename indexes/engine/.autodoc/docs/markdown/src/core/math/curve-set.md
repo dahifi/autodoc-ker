@@ -1,0 +1,26 @@
+[View code on GitHub](https://github.com/playcanvas/engine/src/core/math/curve-set.js)
+
+The code defines a class called `CurveSet` which is a collection of curves. It imports two other classes, `Curve` and `CurveEvaluator`, and a constant `CURVE_SMOOTHSTEP` from other files. 
+
+The `CurveSet` class has a constructor that takes an array of arrays of keys (pairs of numbers with the time first and value second) as an argument. It creates a new `Curve` instance for each array of keys and adds it to the `curves` array. If no argument is provided, it creates a new `Curve` instance and adds it to the `curves` array. If a single number is provided as an argument, it creates that many `Curve` instances and adds them to the `curves` array. If an array of arrays of keys is provided as an argument, it creates a new `Curve` instance for each array of keys and adds it to the `curves` array.
+
+The `CurveSet` class has a `length` property that returns the number of curves in the curve set. It also has a `type` property that sets and gets the interpolation scheme applied to all curves in the curve set. The interpolation scheme can be `CURVE_LINEAR`, `CURVE_SMOOTHSTEP`, `CURVE_SPLINE`, or `CURVE_STEP`. It defaults to `CURVE_SMOOTHSTEP`. 
+
+The `CurveSet` class has a `get` method that returns a specific curve in the curve set. It takes an index as an argument and returns the curve at the specified index.
+
+The `CurveSet` class has a `value` method that returns the interpolated value of all curves in the curve set at the specified time. It takes a time and an optional result array as arguments. If the result array is not supplied, the function allocates a new array internally to return the result.
+
+The `CurveSet` class has a `clone` method that returns a clone of the specified curve set object.
+
+The `CurveSet` class has two private methods, `quantize` and `quantizeClamped`, that are used internally to sample the curveset at regular intervals over the range [0..1] and return the set of quantized values. The `quantizeClamped` method also clamps the result to a specified minimum and maximum value.
+
+Overall, the `CurveSet` class provides a way to create and manipulate a collection of curves with different interpolation schemes. It can be used in the larger project to define animations, particle effects, and other dynamic behaviors.
+## Questions: 
+ 1. What is the purpose of the `CurveSet` class and how is it used?
+- The `CurveSet` class is a collection of curves that can be used to interpolate values over time. It can be instantiated with an array of arrays of keys, and its `value` method can be used to get the interpolated curve values at a specified time.
+
+2. What interpolation schemes are available for the curves in a `CurveSet` and how can they be set?
+- The interpolation schemes available for the curves in a `CurveSet` are `CURVE_LINEAR`, `CURVE_SMOOTHSTEP`, `CURVE_SPLINE`, and `CURVE_STEP`. They can be set using the `type` property of the `CurveSet` instance.
+
+3. What is the purpose of the `quantize` and `quantizeClamped` methods of the `CurveSet` class?
+- The `quantize` method samples the curveset at regular intervals over the range [0..1] and returns a set of quantized values. The `quantizeClamped` method does the same, but clamps the result to a specified minimum and maximum value. These methods are used internally and are not intended to be called directly by developers.

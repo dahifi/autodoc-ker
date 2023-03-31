@@ -1,0 +1,26 @@
+[View code on GitHub](https://github.com/playcanvas/engine/src/framework/parsers/texture/img.js)
+
+The code defines a class called `ImgParser` that is responsible for parsing browser-supported image formats and loading them as textures. This class implements the `TextureParser` interface and is used in the larger PlayCanvas engine project to handle image assets.
+
+The `ImgParser` class has a constructor that takes in a `registry` and a `device`. The `registry` parameter is used to determine whether to set the `crossOrigin` property to `'anonymous'` or `null`. The `device` parameter is used to check if the browser supports the `ImageBitmap` interface.
+
+The `load` method of the `ImgParser` class is used to load an image asset. It takes in a `url`, a `callback`, and an optional `asset` parameter. If the `asset` parameter has a `file` property with `contents`, the method checks if the browser supports the `ImageBitmap` interface. If it does, the method calls the `_loadImageBitmapFromData` method to load the image. Otherwise, it creates a new `url` object using `URL.createObjectURL` and a `Blob` object containing the `contents` of the `asset` file. The method then calls the `_loadImage` method to load the image.
+
+The `_loadImage` method is responsible for loading an image using the `Image` constructor. It takes in a `url`, an `originalUrl`, a `crossOrigin`, and a `callback`. If `crossOrigin` is truthy, it sets the `crossOrigin` property of the `Image` object to `crossOrigin`. The method then sets up an `onload` callback that calls the `callback` with the loaded `Image` object. If the image fails to load, the method retries loading the image a few times before calling the `callback` with an error.
+
+The `_loadImageBitmap` method is responsible for loading an image using the `http` module and the `createImageBitmap` method. It takes in a `url`, an `originalUrl`, a `crossOrigin`, and a `callback`. The method makes an HTTP GET request to the `url` using the `http.get` method and passes in options to cache the response, set the response type to `'blob'`, and retry the request if it fails. If the request succeeds, the method calls the `createImageBitmap` method to create an `ImageBitmap` object from the `Blob` response and passes it to the `callback`. If the request fails, the method calls the `callback` with an error.
+
+The `_loadImageBitmapFromData` method is responsible for loading an image from data using the `createImageBitmap` method. It takes in `data` and a `callback`. The method creates a new `Blob` object from the `data` and passes it to the `createImageBitmap` method to create an `ImageBitmap` object. The method then passes the `ImageBitmap` object to the `callback`.
+
+The `open` method of the `ImgParser` class is used to open an image asset. It takes in a `url`, `data`, and a `device`. The method creates a new `Texture` object using the `Texture` constructor and sets its properties using the `data` parameter. The method then sets the source of the `Texture` object to `data` and returns the `Texture` object.
+
+Overall, the `ImgParser` class is a crucial part of the PlayCanvas engine project as it handles the loading and parsing of image assets. It provides a way to load images as textures and supports cross-origin loading and retrying failed requests.
+## Questions: 
+ 1. What is the purpose of this code file?
+- This code file contains a parser for browser-supported image formats used in the PlayCanvas engine.
+
+2. What is the significance of the `crossOrigin` property in the `ImgParser` class?
+- The `crossOrigin` property is used to determine whether to set the `crossOrigin` attribute of an image element to "anonymous" or not, which affects how cookies are sent in some browsers.
+
+3. What is the purpose of the `_loadImageBitmap` method in the `ImgParser` class?
+- The `_loadImageBitmap` method is used to load an image as an `ImageBitmap` object, which can be more efficient than loading it as an `Image` element in some cases.

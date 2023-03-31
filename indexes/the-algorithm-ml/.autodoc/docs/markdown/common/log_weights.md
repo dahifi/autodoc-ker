@@ -1,0 +1,18 @@
+[View code on GitHub](https://github.com/twitter/the-algorithm-ml/common/log_weights.py)
+
+The code in this file is responsible for logging model weights and norms of embedding tables for the Twitter Recommendation Algorithm. 
+
+The `weights_to_log` function takes in a PyTorch model and a function or dictionary of functions that specify how to log the model's parameters. It then creates a dictionary of reduced weights to log, which gives a sense of the model's training progress. The function first checks if the `how_to_log` argument is not None. If it is None, the function returns immediately. Otherwise, it iterates over the named parameters of the model and applies the specified logging function to each parameter. The resulting values are added to a dictionary with keys that indicate the parameter name and the logging function used. The function returns this dictionary.
+
+The `log_ebc_norms` function takes in a PyTorch model state dictionary, a list of embedding keys to log, and a sample size. It logs the norms of the embedding tables specified by the `ebc_keys` argument. For each embedding key, the function retrieves the corresponding weight tensor from the model state dictionary and computes the norm of a random sample of rows from the tensor. The resulting average norm is then logged. The function uses PyTorch's distributed communication package to gather the norms from all ranks and returns a dictionary of the norms with keys that indicate the embedding key and the rank.
+
+Overall, these functions provide a way to monitor the training progress of the Twitter Recommendation Algorithm by logging the model weights and norms of embedding tables. The logged information can be used to analyze the model's performance and make improvements as necessary.
+## Questions: 
+ 1. What is the purpose of the `weights_to_log` function?
+- The `weights_to_log` function creates a dictionary of reduced weights to log to give a sense of training, based on the specified parameters and how to log them.
+
+2. What is the purpose of the `log_ebc_norms` function?
+- The `log_ebc_norms` function logs the norms of the embedding tables as specified by `ebc_keys`, and computes the average norm per rank.
+
+3. What is the purpose of the `DistributedModelParallel` class?
+- The `DistributedModelParallel` class is used for distributed model parallelism, and is used to wrap the model in order to parallelize its computation across multiple GPUs.

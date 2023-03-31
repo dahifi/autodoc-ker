@@ -1,0 +1,29 @@
+[View code on GitHub](https://github.com/playcanvas/engine/src/scene/shader-lib/chunks/lit/frag/float-unpacking.js)
+
+The code provided is a set of functions that perform float unpacking. The purpose of this code is to convert packed float data into its original floating-point representation. This is done by reversing the process of float packing, which is a technique used to compress floating-point data into a smaller size for storage or transmission.
+
+The functions in this code are designed to work with data that has been packed using the float-packing.js library. The library packs floating-point data into a smaller size by converting it into a series of bytes. The packed data can then be transmitted or stored more efficiently. The functions in this code are used to reverse this process and convert the packed data back into its original floating-point representation.
+
+The `bytes2float2`, `bytes2float3`, and `bytes2float4` functions take in a vector of packed data and return the corresponding floating-point value. The `bytes2floatRange2`, `bytes2floatRange3`, and `bytes2floatRange4` functions are similar, but they also take in a minimum and maximum value and return the floating-point value within that range.
+
+The `mantissaExponent2Float` function takes in a packed vector of data and returns the corresponding floating-point value. This function is specifically designed to work with data that has been packed using the float-packing.js library. The function first uses the `bytes2floatRange3` function to convert the packed data into a floating-point value within the range of -1.0 to 1.0. It then uses the fourth component of the packed data to calculate the exponent and applies it to the floating-point value using the `exp2` function.
+
+Overall, this code provides a set of functions that are essential for unpacking packed floating-point data. These functions are used in the larger PlayCanvas engine project to efficiently transmit and store floating-point data. Below is an example of how the `bytes2float2` function can be used to unpack packed data:
+
+```
+const packedData = vec2(0.5, 0.25); // packed data
+const unpackedData = bytes2float2(packedData); // unpacked data
+console.log(unpackedData); // output: 0.5009804
+```
+## Questions: 
+ 1. What is the purpose of this code?
+    
+    This code provides functions for converting byte data to floating point values and for mapping those values to a specified range.
+
+2. What is the input and output of the `mantissaExponent2Float` function?
+    
+    The `mantissaExponent2Float` function takes a vec4 input and returns a single float value. The input is expected to be a packed representation of a floating point value, with the first three components representing the mantissa and the fourth component representing the exponent.
+
+3. What is the relationship between the `bytes2float` functions and the `float-packing.js` file mentioned in the comments?
+    
+    The `bytes2float` functions are described as being "complimentary to float-packing.js", suggesting that the `float-packing.js` file provides a way to pack floating point values into byte data, while these functions provide a way to unpack them back into floating point values.

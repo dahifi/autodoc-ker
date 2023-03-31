@@ -1,0 +1,30 @@
+[View code on GitHub](https://github.com/playcanvas/engine/examples/src/examples/input/gamepad.tsx)
+
+The code defines a class called `GamepadExample` that demonstrates how to use gamepad input in a PlayCanvas application. The `example` method of the class takes two arguments: a canvas element and a string representing the type of graphics device to use. 
+
+The method creates a new PlayCanvas application and sets up the graphics device using the specified device type. It then loads two assets: a cubemap texture and a 3D model. Once the assets are loaded, the method starts the application and sets the skybox of the scene to the cubemap texture. It also creates an entity with a camera component and an entity with a render component for the 3D model. 
+
+The method then creates a new `pc.GamePads` object and registers an event listener for the `update` event of the application. Inside the event listener, it calls the `update` method of the `pc.GamePads` object to update the state of connected gamepads. It then checks if certain buttons on the first gamepad are pressed or were just pressed, and rotates the 3D model entity accordingly. 
+
+This code can be used as a starting point for implementing gamepad input in a PlayCanvas application. Developers can modify the code to handle different types of gamepads and to perform different actions based on the input. For example, they could use gamepad input to control the movement of a player character or to trigger certain events in the game. 
+
+Example usage:
+
+```javascript
+import GamepadExample from 'path/to/GamepadExample';
+
+const canvas = document.getElementById('canvas');
+const deviceType = 'webgl2'; // or 'webgl1' or 'auto'
+
+const gamepadExample = new GamepadExample();
+gamepadExample.example(canvas, deviceType);
+```
+## Questions: 
+ 1. What is the purpose of the `GamepadExample` class?
+- The `GamepadExample` class is an example of how to use gamepads for input in a PlayCanvas application.
+
+2. What assets are being loaded in the `example` method?
+- The `example` method loads a texture asset and a container asset, which contains a 3D model.
+
+3. What input events are being handled in the `example` method?
+- The `example` method handles input events from a gamepad, specifically the left and right directional pads for rotation around the Y-axis, and the up and down directional pads for rotation around the X-axis.

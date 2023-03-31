@@ -1,0 +1,20 @@
+[View code on GitHub](https://github.com/playcanvas/engine/src/scene/shader-lib/chunks/standard/frag/diffuseDetailMap.js)
+
+The code provided is a shader function that takes in a vec3 color value representing the albedo of a material and returns a modified version of that color. The purpose of this function is to add detail to the albedo color based on a texture map, if one is available.
+
+The function first checks if a texture map is available by using the preprocessor directive `#ifdef MAPTEXTURE`. If a texture map is available, the function retrieves the color value of the texture at the current UV coordinates using the `texture2DBias` function. The `textureBias` parameter is used to adjust the level of detail in the texture, and the `$CH` parameter specifies which color channel to use (e.g. red, green, or blue). The resulting color value is stored in the `albedoDetail` variable.
+
+The function then calls another function, `detailMode_$DETAILMODE`, passing in the original albedo color and the albedo detail color as parameters. The `$DETAILMODE` parameter specifies which detail mode to use, and the function itself is not provided in this code snippet. It is likely that this function applies some sort of blending or filtering operation to combine the two colors in a visually pleasing way.
+
+If no texture map is available, the function simply returns the original albedo color.
+
+This shader function can be used in the larger PlayCanvas engine project to add detail to materials in a visually appealing way. By using texture maps to add small variations in color and shading, materials can look more realistic and less flat. The `detailMode_$DETAILMODE` function can be customized to achieve different effects, allowing for a wide range of material styles to be created.
+## Questions: 
+ 1. What is the purpose of the `addAlbedoDetail` function?
+- The `addAlbedoDetail` function takes in a `vec3` parameter called `albedo` and returns either the original `albedo` value or a modified value based on the presence of a texture map.
+
+2. What is the significance of the `#ifdef MAPTEXTURE` preprocessor directive?
+- The `#ifdef MAPTEXTURE` directive checks if the `MAPTEXTURE` macro has been defined. If it has, then the code inside the `#ifdef` block will be compiled, otherwise it will be skipped.
+
+3. What is the purpose of the `detailMode_$DETAILMODE` function call?
+- The `detailMode_$DETAILMODE` function takes in two `vec3` parameters and returns a modified `vec3` value based on the value of the `$DETAILMODE` macro. The specific implementation of this function is not shown in the code provided.

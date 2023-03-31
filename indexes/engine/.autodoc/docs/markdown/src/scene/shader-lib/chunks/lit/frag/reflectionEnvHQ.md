@@ -1,0 +1,21 @@
+[View code on GitHub](https://github.com/playcanvas/engine/src/scene/shader-lib/chunks/lit/frag/reflectionEnvHQ.js)
+
+The code is a GLSL shader that calculates reflections for a 3D scene. It takes in a cube map texture and a material reflectivity value as inputs, and outputs a color value that represents the reflection of the scene in the given direction. The shader uses an environment atlas texture to simulate different levels of roughness in the reflections.
+
+The `calcReflection` function takes in a reflection direction vector and a gloss value, and returns a color value that represents the reflection of the scene in that direction. It first projects the reflection direction onto the cube map using the `cubeMapProject` function, and then converts the resulting direction vector into spherical coordinates using the `toSphericalUv` function. It then calculates the roughness level based on the gloss value, and uses this level to sample two roughness values from the environment atlas texture. These values are then blended together based on the fractional part of the roughness level, and the resulting color is passed through the `processEnvironment` function to apply any additional effects.
+
+The `addReflection` function takes in a reflection direction vector and a gloss value, and adds the resulting reflection color to the `dReflection` variable. This variable is likely used elsewhere in the larger project to apply reflections to the scene.
+
+Overall, this code is an important part of the PlayCanvas engine's rendering pipeline, as it allows for realistic reflections to be calculated and applied to the scene. It demonstrates the use of cube maps and environment atlases to simulate reflections with varying levels of roughness, and provides a useful example of how GLSL shaders can be used to create complex visual effects in real-time applications.
+## Questions: 
+ 1. What does this code do?
+   
+   This code defines GLSL shader code for calculating reflections and adding them to a material in the PlayCanvas engine. It uses a texture atlas and a cube map to calculate the reflection based on the glossiness of the material.
+
+2. What is the purpose of the `texture_envAtlas` uniform?
+   
+   The `texture_envAtlas` uniform is used to sample a texture atlas that contains pre-filtered environment maps at different roughness levels. These maps are used to calculate the reflection of the material based on its glossiness.
+
+3. What is the role of the `addReflection` function?
+   
+   The `addReflection` function is used to add the calculated reflection to the material. It takes a reflection direction and a glossiness value as input, and uses the `calcReflection` function to calculate the reflection color. The resulting color is then added to the material's diffuse reflection using the `dReflection` variable.

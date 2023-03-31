@@ -1,0 +1,22 @@
+[View code on GitHub](https://github.com/playcanvas/engine/src/scene/immediate/immediate-batch.js)
+
+The code defines a helper class called `ImmediateBatch` that is used for rendering lines in real-time. The class is used to store data for a single batch of line rendering using a single material. The class is exported for use in other parts of the PlayCanvas engine project.
+
+The `ImmediateBatch` class has a constructor that takes three parameters: `device`, `material`, and `layer`. The `device` parameter is an instance of the `GraphicsDevice` class, which is used to create a new `Mesh` instance. The `material` parameter is an instance of the `Material` class, which is used to render the lines. The `layer` parameter is an integer that specifies the layer on which the lines should be rendered.
+
+The `ImmediateBatch` class has two methods: `addLines` and `addLinesArrays`. The `addLines` method is used to add line positions and colors to the batch. The method expects position in `Vec3` and colors in `Color` format. The `addLinesArrays` method is used to add line positions and colors to the batch. The method expects positions as arrays of numbers and color as an instance of `Color` or an array of numbers specifying the same number of vertices as positions.
+
+The `ImmediateBatch` class has an `onPreRender` method that is called before the lines are rendered. The method takes two parameters: `visibleList` and `transparent`. The `visibleList` parameter is an instance of the `VisibleList` class, which is used to store the list of visible mesh instances. The `transparent` parameter is a boolean that specifies whether the lines are transparent or not. The method prepares the mesh if its transparency matches and updates the mesh vertices. It then injects the mesh instance into the visible list to be rendered.
+
+The code also defines a constant called `identityGraphNode`, which is an instance of the `GraphNode` class. The `identityGraphNode` is used to store the identity matrix and is used to create a new `MeshInstance` instance.
+
+In summary, the `ImmediateBatch` class is a helper class used to store data for a single batch of line rendering using a single material. The class has methods for adding line positions and colors to the batch and a method for rendering the lines. The class is exported for use in other parts of the PlayCanvas engine project.
+## Questions: 
+ 1. What is the purpose of the `ImmediateBatch` class?
+- The `ImmediateBatch` class is a helper class that stores data for a single batch of line rendering using a single material.
+
+2. What is the `onPreRender` method used for?
+- The `onPreRender` method is used to prepare the mesh for rendering if its transparency matches, update mesh vertices, clear lines after they were rendered, and inject the mesh instance into the visible list to be rendered.
+
+3. What is the purpose of the `identityGraphNode` variable?
+- The `identityGraphNode` variable is a `GraphNode` instance that represents the identity transform and is used as a reference for the `MeshInstance` constructor.

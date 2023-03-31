@@ -1,0 +1,25 @@
+[View code on GitHub](https://github.com/playcanvas/engine/src/polyfill/array-find.js)
+
+The code above is a polyfill for the `Array.prototype.find()` method, which is used to find the first element in an array that satisfies a given condition. The purpose of this code is to provide a fallback implementation of the `find()` method for older browsers that do not support it natively.
+
+The `defineProtoFunc()` function is imported from another module and is used to define a new method on the `Array` prototype. The first argument passed to `defineProtoFunc()` is the object on which the new method will be defined, which in this case is the `Array` constructor. The second argument is the name of the new method, which is `'find'`. The third argument is a function that will be called when the new method is invoked.
+
+The `find()` function defined in this code follows the specification outlined in the ECMAScript 2019 standard. It takes a single argument, `predicate`, which is a function that will be called for each element in the array. The `predicate` function should return `true` if the current element satisfies the condition, and `false` otherwise.
+
+The `find()` function first checks that `this` is not `null` or `undefined`, and then creates a new object `o` that is a reference to `this`. It then gets the length of the array and checks that the `predicate` argument is a function. If `thisArg` is provided as a second argument, it is used as the `this` value inside the `predicate` function. Otherwise, `undefined` is used.
+
+The function then loops through each element in the array, calling the `predicate` function with the current element, its index, and the array itself as arguments. If the `predicate` function returns `true`, the current element is returned. If no element satisfies the condition, `undefined` is returned.
+
+Overall, this code provides a fallback implementation of the `Array.prototype.find()` method for older browsers that do not support it natively. It can be used in the larger PlayCanvas engine project to ensure that the `find()` method works consistently across all browsers. For example, if the engine needs to find a specific entity in an array of entities, it can use the `find()` method to do so.
+## Questions: 
+ 1. What is the purpose of the `defineProtoFunc` function being imported at the beginning of the code?
+    
+    Answer: The `defineProtoFunc` function is used to define a new function on the prototype of a given object.
+
+2. What is the purpose of the `find` function being defined on the `Array` object?
+    
+    Answer: The `find` function is used to search an array for the first element that satisfies a given condition, as defined by the `predicate` function.
+
+3. What happens if the `predicate` argument passed to the `find` function is not a function?
+    
+    Answer: If the `predicate` argument is not a function, a `TypeError` exception is thrown with the message "predicate must be a function".

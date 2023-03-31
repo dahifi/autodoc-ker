@@ -1,0 +1,22 @@
+[View code on GitHub](https://github.com/playcanvas/engine/src/core/event-handler.js)
+
+The code defines a class called `EventHandler` that provides functionality for event handling. The class has several methods that allow subscribing to and firing events, as well as detaching event handlers. The class also defines a callback function type called `HandleEventCallback` that takes up to eight arguments.
+
+The `EventHandler` class can be used as a base class for other classes that need to implement event handling functionality. The class can be instantiated and used directly, or it can be subclassed to add additional functionality.
+
+The `EventHandler` class has several methods that allow subscribing to and detaching event handlers. The `on` method is used to subscribe to an event. It takes a name of the event to bind the callback to, a callback function that is called when the event is fired, and an optional scope object to use as `this` when the event is fired. The `off` method is used to detach an event handler from an event. If the `name` parameter is not provided, all events are unbound. If the `callback` parameter is not provided, all callbacks for the specified event are unbound. If the `scope` parameter is not provided, all events with the callback will be unbound.
+
+The `fire` method is used to fire an event. It takes the name of the event to fire and any additional arguments to pass to the event listener. The `once` method is used to attach an event handler to an event that will be removed after being fired once.
+
+The `hasEvent` method is used to test if there are any handlers bound to an event name. It takes the name of the event to test and returns `true` if the object has handlers bound to the specified event name.
+
+Overall, the `EventHandler` class provides a simple and flexible way to implement event handling functionality in JavaScript applications. It can be used in a variety of contexts, such as game engines, user interfaces, and web applications.
+## Questions: 
+ 1. What is the purpose of the `HandleEventCallback` function?
+- The `HandleEventCallback` function is a callback used by `EventHandler` functions and is limited to 8 arguments.
+
+2. What is the purpose of the `EventHandler` class?
+- The `EventHandler` class is an abstract base class that implements functionality for event handling. It allows developers to register, detach, and fire event handlers.
+
+3. What does the `fire` method do?
+- The `fire` method fires an event and calls all the registered event handlers for that event. It takes in the name of the event and up to 8 arguments to pass to the event handlers. If an event handler was registered with the `once` parameter set to `true`, it will be removed after being fired once.

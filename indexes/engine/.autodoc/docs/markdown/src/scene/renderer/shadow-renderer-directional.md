@@ -1,0 +1,22 @@
+[View code on GitHub](https://github.com/playcanvas/engine/src/scene/renderer/shadow-renderer-directional.js)
+
+The code defines a class called `ShadowRendererDirectional` that is responsible for rendering directional shadows in the PlayCanvas engine. The class contains methods for culling shadow maps, generating frustum split distances, and building a frame graph for rendering directional shadows. 
+
+The `cull` method is responsible for culling shadow casters and calculating the depth range of the caster's AABB from the point of view of the shadow camera. It takes a light, an array of draw calls, and a camera as input. The method generates splits for the cascades, assigns a render target, and sets the viewport. It then calculates the center of the frustum slice, the radius of the world space bounding sphere for the frustum slice, and the axis of the light coordinate system. The method transforms the sphere's center into the center of the shadow map, pixel-aligned, and looks at the center from far away to include all casters during culling. Finally, it adjusts the shadow camera's near and far plane to the depth range of casters to maximize precision of values stored in the shadow map.
+
+The `generateSplitDistances` method generates frustum split distances. It takes a light, a near distance, and a far distance as input. The method fills the shadow cascade distances with the far distance and lerps between linear and logarithmic distance, called practical split distance, to generate the split distances.
+
+The `addLightRenderPasses` method prepares render targets/cameras for rendering and sets up a render pass using any of the cameras. It takes a frame graph, a light, and a camera as input. The method renders all faces inside the render pass and applies VSM blur if needed.
+
+The `buildFrameGraph` method builds a frame graph for rendering of directional shadows for the render action. It takes a frame graph, a render action, and a camera as input. The method creates required render passes per light and adds them to the frame graph.
+
+Overall, the `ShadowRendererDirectional` class is an essential part of the PlayCanvas engine that enables the rendering of directional shadows. It provides methods for culling shadow maps, generating frustum split distances, and building a frame graph for rendering directional shadows.
+## Questions: 
+ 1. What is the purpose of the `getDepthRange` function?
+- The `getDepthRange` function evaluates the depth range that the axis-aligned bounding box (AABB) of visible shadow casters takes in the space of the camera, and returns the minimum and maximum depth values.
+
+2. What is the significance of the `shadowUpdateOverrides` property?
+- The `shadowUpdateOverrides` property is used to manually control which shadow cascades should be rendered in the current frame. If the value for a cascade is set to `SHADOWUPDATE_NONE`, that cascade will not be rendered.
+
+3. What is the role of the `ShadowRendererDirectional` class in the PlayCanvas engine?
+- The `ShadowRendererDirectional` class is responsible for rendering directional shadows in the PlayCanvas engine. It generates split distances for the cascades, culls shadow casters, calculates depth range of the caster's AABB, and builds a frame graph for rendering of directional shadows.

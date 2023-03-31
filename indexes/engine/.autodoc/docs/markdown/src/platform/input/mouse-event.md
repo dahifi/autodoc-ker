@@ -1,0 +1,20 @@
+[View code on GitHub](https://github.com/playcanvas/engine/src/platform/input/mouse-event.js)
+
+The code defines two entities: a function and a class. The function `isMousePointerLocked()` checks if the pointer lock is enabled in the browser. The class `MouseEvent` represents a mouse event object that is passed to events such as 'mousemove', 'mouseup', 'mousedown', and 'mousewheel'. 
+
+The `isMousePointerLocked()` function returns a boolean value indicating whether the pointer lock is enabled or not. The pointer lock is a feature that allows the mouse cursor to be locked to a specific element on the page, so that the cursor is hidden and the mouse movements are restricted to that element. This function checks if the pointer lock is enabled by checking if the `document.pointerLockElement`, `document.mozPointerLockElement`, or `document.webkitPointerLockElement` properties are defined. If any of these properties are defined, it means that the pointer lock is enabled.
+
+The `MouseEvent` class represents a mouse event object that is passed to events such as 'mousemove', 'mouseup', 'mousedown', and 'mousewheel'. The constructor of this class takes two arguments: a `Mouse` device and the original browser event that fired. The `Mouse` device is an object that represents the mouse and provides methods for handling mouse events. The `MouseEvent` object has several properties that represent the state of the mouse during the event. 
+
+The `x` and `y` properties represent the x and y coordinates of the mouse pointer relative to the element that the `Mouse` device is attached to. The `wheelDelta` property represents the amount the mouse wheel has moved, and is only valid for `mousewheel` events. The `dx` and `dy` properties represent the change in x and y coordinates since the last mouse event. The `button` property represents the mouse button associated with the event, and can be `MOUSEBUTTON_LEFT`, `MOUSEBUTTON_MIDDLE`, or `MOUSEBUTTON_RIGHT`. The `buttons` property is an array that represents the state of all mouse buttons during the event. The `element` property represents the element that the mouse was fired from. The `ctrlKey`, `altKey`, `shiftKey`, and `metaKey` properties represent the state of the modifier keys during the event. Finally, the `event` property represents the original browser event that fired.
+
+This class is used to create `MouseEvent` objects that can be passed to event handlers for mouse events. These objects provide a convenient way to access the state of the mouse during the event, and can be used to perform various actions based on the state of the mouse. For example, the `x` and `y` properties can be used to determine the position of the mouse cursor on the screen, and the `button` property can be used to determine which mouse button was pressed.
+## Questions: 
+ 1. What is the purpose of the `isMousePointerLocked` function?
+- The `isMousePointerLocked` function checks if pointer lock is currently enabled and returns a boolean value indicating whether it is enabled or not.
+
+2. What is the `MouseEvent` class used for?
+- The `MouseEvent` class is used to create a new instance of a mouse event object that is passed to events such as 'mousemove', 'mouseup', 'mousedown' and 'mousewheel'.
+
+3. What is the purpose of the `wheelDelta` property in the `MouseEvent` class?
+- The `wheelDelta` property represents the amount the mouse wheel has moved and is only valid for `mousewheel` events. It is used to determine the direction and amount of the mouse wheel movement.

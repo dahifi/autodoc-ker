@@ -1,0 +1,23 @@
+[View code on GitHub](https://github.com/twitter/the-algorithm-ml/common/device.py)
+
+The code above is responsible for setting up and getting the device for the Twitter Recommendation Algorithm - Heavy Ranker and TwHIN embeddings project. The function `maybe_setup_tensorflow()` checks if TensorFlow is installed and if so, disables the GPU. This is done to avoid conflicts with PyTorch, which is the main deep learning framework used in the project.
+
+The function `setup_and_get_device(tf_ok: bool = True) -> torch.device` sets up the device to be used for training the model. It first checks if TensorFlow is okay to use by calling `maybe_setup_tensorflow()`. Then, it sets the device to CPU by default and the backend to "gloo". If a GPU is available, it sets the device to the GPU with the local rank specified in the environment variable "LOCAL_RANK" and the backend to "nccl". Finally, it initializes the distributed process group using the backend specified.
+
+This code is important for the project because it ensures that the correct device is used for training the model. It also sets up the distributed process group, which is necessary for training the model on multiple GPUs. This function can be called at the beginning of the training script to ensure that the device is set up correctly. 
+
+Example usage:
+
+```
+device = setup_and_get_device()
+model.to(device)
+```
+## Questions: 
+ 1. What is the purpose of the `maybe_setup_tensorflow()` function?
+- The `maybe_setup_tensorflow()` function checks if TensorFlow is installed and if so, disables GPU usage for TensorFlow.
+
+2. What is the purpose of the `setup_and_get_device()` function?
+- The `setup_and_get_device()` function sets up the device for PyTorch and initializes the distributed process group if it is not already initialized.
+
+3. What is the significance of the `backend` variable in the `setup_and_get_device()` function?
+- The `backend` variable determines the backend used for distributed training. In this code, the default backend is "gloo", but if a GPU is available, the backend is changed to "nccl".

@@ -1,0 +1,27 @@
+[View code on GitHub](https://github.com/twitter/the-algorithm-ml/projects/twhin/data/data.py)
+
+The code defines a function called `create_dataset` that creates an instance of the `EdgesDataset` class. This function takes two arguments: `data_config` and `model_config`, both of which are instances of their respective classes (`TwhinDataConfig` and `TwhinModelConfig`). 
+
+The purpose of this function is to create a dataset that can be used for training a recommendation algorithm. The `EdgesDataset` class is used to represent the edges in a graph, where each edge connects two nodes. In this case, the nodes represent users and items on Twitter, and the edges represent interactions between them (e.g. retweets, likes, replies).
+
+The `create_dataset` function first extracts the table sizes from the `model_config` object. These tables represent the embeddings for the nodes in the graph. The function then extracts the relations from the `model_config` object, which represent the types of interactions between the nodes.
+
+The function then sets the batch size for the positive examples (i.e. edges that exist in the graph) to be the same as the `per_replica_batch_size` specified in the `data_config` object. Finally, the function creates an instance of the `EdgesDataset` class, passing in the file pattern for the data, the relations, the table sizes, and the batch size.
+
+This function is likely used in the larger project to create a dataset that can be used for training the recommendation algorithm. The `EdgesDataset` class is a key component of this dataset, as it represents the interactions between users and items on Twitter. The table sizes and relations are used to specify the embeddings for the nodes and the types of interactions between them, respectively. Overall, this function plays an important role in preparing the data for training the recommendation algorithm. 
+
+Example usage:
+```
+data_config = TwhinDataConfig(data_root='data/', per_replica_batch_size=32)
+model_config = TwhinModelConfig(embeddings=..., relations=...)
+dataset = create_dataset(data_config, model_config)
+```
+## Questions: 
+ 1. What is the purpose of this code?
+- This code creates a dataset for Twitter's Recommendation Algorithm using Heavy Ranker and TwHIN embeddings.
+
+2. What are the inputs required for this code to run?
+- This code requires two inputs: a TwhinDataConfig object and a TwhinModelConfig object.
+
+3. What is the output of this code?
+- The output of this code is an EdgesDataset object that contains information about the dataset created using the input configurations.

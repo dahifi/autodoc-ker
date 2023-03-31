@@ -1,0 +1,22 @@
+[View code on GitHub](https://github.com/playcanvas/engine/src/core/math/random.js)
+
+The code defines a module called `random` that provides several functions for generating random points on a 2D circle, a 3D sphere, and a pseudo-random sequence using radical inverse. 
+
+The `circlePoint` function generates a random 2D point inside a unit circle with uniform distribution. It takes a `Vec2` object as an argument and sets its `x` and `y` properties to the generated values. 
+
+The `circlePointDeterministic` function generates evenly distributed deterministic points inside a unit circle using Fermat's spiral and Vogel's method. It takes a `Vec2` object, an index, and the total number of points as arguments, and sets the `x` and `y` properties of the `Vec2` object to the generated values. 
+
+The `spherePointDeterministic` function generates evenly distributed deterministic points on a unit sphere using Fibonacci sphere algorithm. It takes a `Vec3` object, an index, the total number of points, and optional `start` and `end` parameters as arguments, and sets the `x`, `y`, and `z` properties of the `Vec3` object to the generated values. The `start` and `end` parameters specify the part of the sphere along the y-axis to generate points for, with 0 being the top of the sphere and 1 being the bottom. If not specified, the function generates points for the entire sphere. 
+
+The `radicalInverse` function generates a repeatable pseudo-random sequence using radical inverse. It takes an index as an argument and returns a pseudo-random value. 
+
+These functions can be used in various parts of the PlayCanvas engine that require random point generation, such as particle systems, procedural generation, and physics simulations. For example, the `spherePointDeterministic` function can be used to generate points on a sphere for placing objects in a game world, while the `radicalInverse` function can be used for generating random numbers for physics simulations.
+## Questions: 
+ 1. What is the purpose of the `math` import?
+- The `math` import is used in the `spherePointDeterministic` function to call the `lerp` method.
+
+2. What is the significance of the `_goldenAngle` constant?
+- The `_goldenAngle` constant represents the golden angle in radians, which is used in the `circlePointDeterministic` and `spherePointDeterministic` functions to generate evenly distributed points.
+
+3. What is the purpose of the `radicalInverse` function?
+- The `radicalInverse` function generates a repeatable pseudo-random sequence using radical inverse, which can be used for various purposes such as generating random numbers or sampling points.

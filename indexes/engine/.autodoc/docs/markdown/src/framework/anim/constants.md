@@ -1,0 +1,22 @@
+[View code on GitHub](https://github.com/playcanvas/engine/src/framework/anim/constants.js)
+
+This code defines three constants that represent different interpolation schemes: stepped, linear, and cubic spline. Interpolation is the process of estimating values between two known values. In the context of game development, interpolation is often used to smooth out movement or animation between frames. 
+
+The `INTERPOLATION_STEP` constant represents a stepped interpolation scheme, where the value jumps directly from one known value to the next without any in-between values. This can create a choppy or jerky effect, but may be useful in certain situations where precise control is needed.
+
+The `INTERPOLATION_LINEAR` constant represents a linear interpolation scheme, where the value changes at a constant rate between the two known values. This creates a smooth and natural-looking transition between values.
+
+The `INTERPOLATION_CUBIC` constant represents a cubic spline interpolation scheme, which is a more complex method of interpolation that uses a mathematical formula to calculate the in-between values. This can create even smoother and more natural-looking transitions than linear interpolation, but may be more computationally expensive.
+
+These constants can be used throughout the PlayCanvas engine to specify which interpolation scheme to use in different contexts. For example, when animating a character's movement, the developer may choose to use linear interpolation to create a smooth and natural-looking motion. Alternatively, when animating a game object's rotation, the developer may choose to use stepped interpolation to create a more precise and controlled effect.
+
+Overall, this code provides a simple and flexible way for developers to specify different interpolation schemes in their projects, allowing for greater control over the look and feel of their games and applications.
+## Questions: 
+ 1. **What is the purpose of this code?**\
+This code defines three constants that represent different interpolation schemes: stepped, linear, and cubic spline.
+
+2. **How are these constants used in the PlayCanvas engine?**\
+Without additional context, it is unclear how these constants are used in the PlayCanvas engine. It is possible that they are used in animation or movement calculations.
+
+3. **What are the possible values for the constants?**\
+The possible values for the constants are 0, 1, and 2, which correspond to the stepped, linear, and cubic spline interpolation schemes, respectively.

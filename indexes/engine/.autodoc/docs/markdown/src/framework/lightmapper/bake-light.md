@@ -1,0 +1,32 @@
+[View code on GitHub](https://github.com/playcanvas/engine/src/framework/lightmapper/bake-light.js)
+
+The code defines a helper class called `BakeLight` that is used to store and manipulate light properties during a baking process. The class takes in a `scene` and a `light` object as parameters. The `scene` parameter is used to access the scene where the light is located, while the `light` parameter is the light object whose properties are being manipulated.
+
+The `constructor` method initializes the `scene` and `light` properties of the class. It also stores the original properties of the light object using the `store` method. Additionally, it sets the `numCascades` property of the light object to 1 and calculates the bounds of the light object if it is not of type `LIGHTTYPE_DIRECTIONAL`.
+
+The `store` method stores the original properties of the light object in the class instance. The `restore` method restores the original properties of the light object from the class instance.
+
+The `startBake` method enables the light object and destroys any shadow map it might have. It also calls the `beginFrame` method of the light object.
+
+The `endBake` method disables the light object and returns its shadow map to a cache if it exists.
+
+This class is used in the PlayCanvas engine to manipulate light properties during a baking process. It is particularly useful for baking lightmaps, where the properties of the lights in the scene need to be temporarily modified to generate the lightmap. An example usage of this class is shown below:
+
+```javascript
+const bakeLight = new BakeLight(scene, light);
+bakeLight.startBake();
+// modify light properties as needed
+bakeLight.endBake(shadowMapCache);
+bakeLight.restore();
+```
+
+In this example, a new `BakeLight` instance is created with the `scene` and `light` parameters. The `startBake` method is called to enable the light and destroy its shadow map. The light properties can then be modified as needed. After the baking process is complete, the `endBake` method is called to disable the light and return its shadow map to the cache. Finally, the `restore` method is called to restore the original properties of the light object.
+## Questions: 
+ 1. What is the purpose of the `BakeLight` class?
+- The `BakeLight` class is a helper class that stores all lights including their original state and provides methods to start and end baking.
+
+2. What is the significance of the `tempSphere` variable?
+- The `tempSphere` variable is used to store a temporary `BoundingSphere` object that is used to calculate the bounds for non-directional lights.
+
+3. What does the `store` method do?
+- The `store` method stores the original properties of the light, such as its mask, shadow update mode, enabled state, intensity, rotation, and number of cascades, so that they can be restored later.

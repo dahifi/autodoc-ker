@@ -1,0 +1,32 @@
+[View code on GitHub](https://github.com/playcanvas/engine/src/framework/anim/evaluator/anim-curve.js)
+
+The `AnimCurve` class is a part of the PlayCanvas engine project and is used to define an animation curve. An animation curve links an input data set to an output data set and defines the interpolation method to use. The purpose of this class is to provide a way to create and manipulate animation curves in the PlayCanvas engine.
+
+The `AnimCurve` class has a constructor that takes four parameters: `paths`, `input`, `output`, and `interpolation`. The `paths` parameter is an array of path strings identifying the targets of this curve. The `input` parameter is the index of the curve which specifies the key data. The `output` parameter is the index of the curve which specifies the value data. The `interpolation` parameter is the interpolation method to use, which can be one of the following: `INTERPOLATION_STEP`, `INTERPOLATION_LINEAR`, or `INTERPOLATION_CUBIC`.
+
+The `AnimCurve` class has four getter methods: `paths`, `input`, `output`, and `interpolation`. The `paths` getter method returns the list of paths which identify targets of this curve. The `input` getter method returns the index of the `AnimTrack` input which contains the key data for this curve. The `output` getter method returns the index of the `AnimTrack` input which contains the value data for this curve. The `interpolation` getter method returns the interpolation method used by this curve.
+
+Here is an example of how to create an `AnimCurve` object:
+
+```
+const paths = ["rootNode.translation"];
+const input = 0;
+const output = 1;
+const interpolation = INTERPOLATION_LINEAR;
+
+const animCurve = new AnimCurve(paths, input, output, interpolation);
+```
+
+In this example, we create a new `AnimCurve` object with a single path, an input index of 0, an output index of 1, and a linear interpolation method. This `AnimCurve` object can then be used to define an animation in the PlayCanvas engine.
+## Questions: 
+ 1. What is the purpose of the `AnimCurve` class?
+    
+    The `AnimCurve` class is used to link an input data set to an output data set and define the interpolation method to use for animation.
+
+2. What parameters are required to create a new instance of the `AnimCurve` class?
+    
+    To create a new instance of the `AnimCurve` class, you need to provide an array of path strings identifying the targets of the curve, the index of the curve which specifies the key data, the index of the curve which specifies the value data, and the interpolation method to use.
+
+3. What are the available interpolation methods that can be used with `AnimCurve`?
+    
+    The available interpolation methods that can be used with `AnimCurve` are `INTERPOLATION_STEP`, `INTERPOLATION_LINEAR`, and `INTERPOLATION_CUBIC`.

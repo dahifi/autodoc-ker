@@ -1,0 +1,28 @@
+[View code on GitHub](https://github.com/playcanvas/engine/examples/src/examples/user-interface/world-ui.tsx)
+
+The `WorldUiExample` class is a code example that demonstrates how to create a 3D world screen with user interface (UI) elements using the PlayCanvas engine. The purpose of this code is to show how to create UI elements that are placed in the 3D world and interact with the scene. 
+
+The `example` method is the main entry point of the code. It takes two parameters: a `canvas` element and a `deviceType` string. The `canvas` element is used to create a graphics device, which is then used to create a PlayCanvas application. The `deviceType` string specifies the type of graphics device to create, such as "webgl2" or "webgpu". 
+
+The `assets` object contains three assets that are used in the example: a texture, a font, and a script. These assets are loaded using the `pc.Asset` class and passed to the `pc.AssetListLoader` class to load them asynchronously. 
+
+The `gfxOptions` object contains options for creating the graphics device, such as the URL of the glslang and twgsl libraries. 
+
+The `createOptions` object contains options for creating the PlayCanvas application, such as the graphics device, mouse and touch input devices, and component and resource systems. 
+
+The `app` object is an instance of the `pc.AppBase` class, which is the main class of the PlayCanvas engine. It is initialized with the `createOptions` object and started with the `start` method. 
+
+The code then creates several entities that are added to the scene. A camera entity is created with a camera component and an orbit camera script that allows the camera to orbit around a target. A ground entity is created with a box render component and a standard material that uses the checkboard texture. A light entity is created with a directional light component that casts shadows. 
+
+The main part of the code creates a 3D world screen entity with a screen component that has `screenSpace` set to false. This means that the screen is placed in the 3D world and not in screen space. A text entity and a button entity are added to the screen entity. The text entity has an element component with text that is displayed on the screen. The button entity has a button component that listens for click events and changes the camera clear color to a random color when clicked. 
+
+Overall, this code demonstrates how to create a 3D world screen with UI elements that interact with the scene. It shows how to use the PlayCanvas engine to create a graphics device, load assets, create entities, and add components to them. This code can be used as a starting point for creating more complex 3D world screens with UI elements.
+## Questions: 
+ 1. What is the purpose of the `WorldUiExample` class?
+- The `WorldUiExample` class is an example of how to create a 3D world screen with UI elements using the PlayCanvas engine.
+
+2. What are the assets being loaded in the `example` method?
+- The assets being loaded are a checkboard texture, a font, and a script for an orbit camera.
+
+3. What happens when the button is clicked?
+- When the button is clicked, the background color of the camera is changed to a random color.

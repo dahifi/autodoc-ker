@@ -1,0 +1,33 @@
+[View code on GitHub](https://github.com/playcanvas/engine/src/scene/shader-lib/chunks/lit/frag/shadowStandard.js)
+
+The code provided is a shader code written in GLSL (OpenGL Shading Language) for the PlayCanvas engine. The code contains functions that are used for shadow mapping in the engine. Shadow mapping is a technique used in computer graphics to create shadows in a 3D scene. The technique involves rendering the scene from the perspective of a light source and storing the depth values of the scene in a texture called a shadow map. The shadow map is then used to determine whether a point in the scene is in shadow or not.
+
+The code contains functions for both direct/spot sampling and omni sampling. The direct/spot sampling functions are used for directional and spot lights, while the omni sampling function is used for point lights.
+
+The `lessThan2` function is a helper function that returns a vector that is clamped between 0 and 1. This function is used to soften the shadows.
+
+The `unpackFloat` function is used to unpack the depth value from the RGBA value stored in the shadow map. The function takes a `vec4` value and returns a `float` value.
+
+The `getShadowPCF3x3` function is used for direct/spot sampling in GL1 and GL2. The function takes a shadow map, shadow coordinate, and shadow parameters as input and returns a float value. The function uses a 3x3 PCF (Percentage Closer Filtering) kernel to determine whether a point is in shadow or not. The function calculates the shadow kernel by sampling the shadow map at different offsets and comparing the depth values with the current depth value. The function then returns the average of the shadow values.
+
+The `getShadowSpotPCF3x3` function is similar to the `getShadowPCF3x3` function but is used for spot lights.
+
+The `_getShadowPCF3x3` function is a helper function used by both `getShadowPCF3x3` and `getShadowSpotPCF3x3` functions. The function takes a shadow map, shadow coordinate, and shadow parameters as input and returns a float value. The function calculates the shadow kernel in the same way as the `getShadowPCF3x3` function.
+
+The `_xgetShadowPCF3x3` function is used for direct/spot sampling in GL1. The function takes a depth kernel, shadow coordinate, shadow map, and shadow parameters as input and returns a float value. The function calculates the shadow kernel in the same way as the `_getShadowPCF3x3` function.
+
+The `_getShadowPoint` function is used for omni sampling. The function takes a shadow map, shadow parameters, and light direction as input and returns a float value. The function calculates the shadow kernel by sampling the shadow map at different offsets and comparing the depth values with the current depth value. The function then returns the average of the shadow values.
+
+In summary, the code provides functions for shadow mapping in the PlayCanvas engine. The functions use different techniques to determine whether a point is in shadow or not, depending on the type of light used. The functions are written in GLSL and are used in the engine to create realistic shadows in a 3D scene.
+## Questions: 
+ 1. What does the `lessThan2` function do and how is it used in this code?
+   
+   The `lessThan2` function returns a vector that clamps the difference between two input vectors multiplied by 1000.0 between 0.0 and 1.0. It is used in the `_getShadowPoint` function to compare depth values to a shadow depth threshold.
+
+2. What is the purpose of the `UNPACKFLOAT` macro and how is it used in this code?
+   
+   The `UNPACKFLOAT` macro defines a function that unpacks a float value from a vec4 RGBA color. It is used in the `_getShadowPCF3x3` function to extract depth values from the shadow map texture.
+
+3. What is the difference between the `getShadowPCF3x3` and `getShadowSpotPCF3x3` functions?
+   
+   The `getShadowPCF3x3` function is used for directional light sources, while the `getShadowSpotPCF3x3` function is used for spot light sources. The latter takes a vec4 shadowParams input, while the former takes a vec3 shadowParams input.
