@@ -1,0 +1,25 @@
+[View code on GitHub](https://github.com/pHaeusler/micro-agent/agent/utils.py)
+
+The `micro-agent` project includes a file with the code shown above. This code provides functionality for parsing and extracting information from Python modules within the project. 
+
+The `parse_file_content` function takes a string as input and returns a tuple containing two elements: the first is a substring of the input string that is delimited by "---" markers, and the second is a description of the substring. This function is used to extract documentation from Python modules in the project.
+
+The `parse_action` function takes a string as input and returns a tuple containing two elements: the first is a substring of the input string that follows the "action:" marker, and the second is an optional input parameter for the action. This function is used to extract information about actions that can be performed by the micro-agent.
+
+The `extract_imports` function takes a string as input and returns a tuple containing three elements: a list of import statements in the input string, a list of function definitions in the input string, and a list of class definitions in the input string. This function uses the `ast` module to parse the input string and extract the desired information.
+
+The `read_python_module_structure` function takes a path as input and returns a tuple containing three elements: a string that describes the structure of the Python modules in the project, a dictionary that maps file names to their contents, and a dictionary that maps file names to the names of other files that they import. This function uses the `glob` and `os` modules to find all Python modules in the project, and then calls `extract_imports` to extract information from each module.
+
+Overall, this code provides a way to extract information about the structure and contents of Python modules in the `micro-agent` project. This information can be used to generate documentation or to perform other tasks related to the project's codebase. For example, the `read_python_module_structure` function could be used to generate a diagram of the project's module dependencies.
+## Questions: 
+ 1. What does the `parse_file_content` function do?
+    
+    The `parse_file_content` function takes a string as input and returns a tuple containing two elements: the first element is a substring of the input string between the first and last occurrence of "---", and the second element is a substring of the input string after the last occurrence of "---". If the input string does not contain "---" or the first and last occurrences of "---" are the same, the function returns `None` for both elements.
+
+2. What is the purpose of the `extract_imports` function?
+    
+    The `extract_imports` function takes a string containing Python code as input and returns a tuple containing three elements: a list of import statements, a list of function definitions, and a list of class definitions. The function uses the `ast` module to parse the input string into an abstract syntax tree, and then walks the tree to extract the desired information.
+
+3. What does the `read_python_module_structure` function do?
+    
+    The `read_python_module_structure` function takes a path as input and returns a tuple containing three elements: a string describing the structure of the Python modules in the specified path, a dictionary mapping file names to their contents, and a dictionary mapping file names to the names of other files that they import. The function uses the `glob` and `os` modules to find all Python files in the specified path, and then calls the `extract_imports` function to extract information about each file. The function also generates a string describing the structure of the modules and their functions and classes.
