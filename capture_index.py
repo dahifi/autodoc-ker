@@ -1,7 +1,3 @@
-"""
-This script will recursively search for .autodoc folders in a source path and move them to a destination path.
-"""
-
 import os
 import shutil
 import json
