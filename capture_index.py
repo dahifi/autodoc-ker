@@ -10,7 +10,7 @@ parser.add_argument("source_path", help="The directory to search for .autodoc fo
 args = parser.parse_args()
 
 # Define the destination path where the .autodoc folders will be moved
-destination_path = os.path.expanduser("./indexes")
+destination_path = os.path.expanduser(os.getcwd() + "/indexes")
 
 # Create the destination path if it does not exist
 if not os.path.exists(destination_path):
